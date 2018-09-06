@@ -59,17 +59,22 @@
 </noscript>
 <!-- /Yandex.Metrika counter -->
 
-<header>
-    <img id="avatar"
-         src="https://instagram.fiev4-1.fna.fbcdn.net/vp/1dfe9b8dd04d799ac74112cc0a6bf41a/5C270929/t51.2885-15/e35/39933858_2101791893371424_6712641488855917763_n.jpg"/>
-    <h1>Taras Labiak</h1>
-</header>
-<article>
-    PostgreSQL, Vue.js, React.js, jQuery, HTML, CSS, SVG, Node.js, Electron,
-    express.js, Meteor, REST/HTTP, PHP 7 (Yii2), Python, tornado, MySQL,
-    MongoDB, IndexedDB, C#, .NET, WPF, Silverlight, Bash, C/C++, Java,
-    Git, Mercurial. Bitcoin, Ethereum (parity) node configuration and usage through API
-</article>
+<div id="app">
+    <header>
+        <img id="avatar"
+             v-bind:class="{large: large}"
+             v-on:click="large = !large"
+             src="https://instagram.fiev4-1.fna.fbcdn.net/vp/1dfe9b8dd04d799ac74112cc0a6bf41a/5C270929/t51.2885-15/e35/39933858_2101791893371424_6712641488855917763_n.jpg"/>
+        <h1>Taras Labiak</h1>
+    </header>
+    <article>
+        PostgreSQL, Vue.js, React.js, jQuery, HTML, CSS, SVG, Node.js, Electron,
+        express.js, Meteor, REST/HTTP, PHP 7 (Yii2), Python, tornado, MySQL,
+        MongoDB, IndexedDB, C#, .NET, WPF, Silverlight, Bash, C/C++, Java,
+        Git, Mercurial. Bitcoin, Ethereum (parity) node configuration and usage through API
+    </article>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
