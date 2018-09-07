@@ -1,5 +1,5 @@
 function main() {
-  const isProduction = /(kissarat\.git(hub|lab)\.io|administer\.tech)$/.test(location.hostname)
+  const isProduction = /(kissarat\.git(hub|lab)\.io|administer\.tech)$/.test(location.hostname);
 
   [].forEach.call(document.querySelectorAll('a'), function (a) {
     a.setAttribute('target', '_blank')
