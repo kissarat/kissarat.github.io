@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-bind="http://www.w3.org/1999/xhtml">
+      xmlns:v-cloak="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="last-modified" content="Fri, 07 Sep 2018 02:02:00 GMT"/>
     <title>Taras Labiak</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="style.css"/>
@@ -24,7 +28,7 @@
 </script>
 
 <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
+<script>
   (function (d, w, c) {
     (w[c] = w[c] || []).push(function () {
       try {
@@ -65,6 +69,7 @@
              itemprop="image"
              v-bind:class="{large: large}"
              v-on:click="large = !large"
+             alt="Taras Labiak"
              src="https://instagram.fiev4-1.fna.fbcdn.net/vp/1dfe9b8dd04d799ac74112cc0a6bf41a/5C270929/t51.2885-15/e35/39933858_2101791893371424_6712641488855917763_n.jpg"/>
         <div>
             <h1>
@@ -109,7 +114,7 @@
             </div>
         </div>
         <div id="updated">
-            Updated <span>2018-09-07T01:29:05.581Z</span>
+            Updated <span></span>
         </div>
     </header>
     <article>
@@ -183,7 +188,7 @@
             </dd>
         </dl>
     </article>
-    <a id="pdf"><img src="images/pdf.png"/></a>
+    <a id="pdf" href="taras-labiak-resume.pdf"><img src="images/pdf.png"/></a>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
 <script src="script.js"></script>

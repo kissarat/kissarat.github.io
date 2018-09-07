@@ -16,7 +16,7 @@ function main() {
     }
   })
 
-  document.querySelector('#updated span').innerHTML = new Date(document.querySelector('#updated span').innerHTML).toLocaleDateString()
+  document.querySelector('#updated span').innerHTML = new Date(document.querySelector('[http-equiv="last-modified"]').innerHTML).toLocaleDateString()
 }
 
 document.addEventListener('DOMContentLoaded', main)
