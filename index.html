@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Taras Labiak</title>
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
@@ -65,16 +65,52 @@
              v-bind:class="{large: large}"
              v-on:click="large = !large"
              src="https://instagram.fiev4-1.fna.fbcdn.net/vp/1dfe9b8dd04d799ac74112cc0a6bf41a/5C270929/t51.2885-15/e35/39933858_2101791893371424_6712641488855917763_n.jpg"/>
-        <h1>Taras Labiak</h1>
+        <div>
+            <h1>Taras Labiak</h1>
+            <h2>Full Stack Developer</h2>
+            <!--<a class="export">PDF</a>-->
+            <div class="abstract">
+                <div class="tile">
+                    <div class="label">Age</div>
+                    <div class="value">29</div>
+                </div>
+                <div class="tile">
+                    <div class="label">Email</div>
+                    <a href="mailto:kissarat@gmail.com" class="value">kissarat@gmail.com</a>
+                </div>
+                <div class="tile">
+                    <div class="label">Location</div>
+                    <div class="value">Lviv</div>
+                </div>
+                <div class="tile">
+                    <div class="label">Phone</div>
+                    <a href="tel:+380671541943" class="value">+380671541943</a>
+                </div>
+                <div>
+                    <div class="label">Facebook</div>
+                    <a href="https://www.facebook.com/kissarat" class="value">www.facebook.com/kissarat</a>
+                </div>
+                <div>
+                    <div class="label">Website</div>
+                    <a href="https://kissarat.github.io/" class="value">kissarat.github.io</a>
+                </div>
+            </div>
+        </div>
     </header>
     <article>
-        PostgreSQL, Vue.js, React.js, jQuery, HTML, CSS, SVG, Node.js, Electron,
-        express.js, Meteor, REST/HTTP, PHP 7 (Yii2), Python, tornado, MySQL,
-        MongoDB, IndexedDB, C#, .NET, WPF, Silverlight, Bash, C/C++, Java,
-        Git, Mercurial. Bitcoin, Ethereum (parity) node configuration and usage through API
+        <dl>
+            <dt>Summary</dt>
+            <dd>
+                PostgreSQL, Vue.js, React.js, jQuery, HTML, SCSS, SVG, Node.js, Electron,
+                express.js, Meteor, REST/HTTP, PHP 7 (Yii2), Python, tornado, MySQL,
+                MongoDB, IndexedDB, C#, .NET, WPF, Silverlight, Bash, C/C++, Java,
+                Git, Mercurial. Bitcoin, Ethereum (parity) node configuration and usage through API
+            </dd>
+        </dl>
     </article>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
