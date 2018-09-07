@@ -1,8 +1,5 @@
 function main() {
-  // const isProduction = /(kissarat\.git(hub|lab)\.io|administer\.tech)$/.test(location.hostname)
-  // if (isProduction) {
-  //   document.getElementById('avatar').src = 'https://grabify.link/G4PVBQ'
-  // }
+  const isProduction = /(kissarat\.git(hub|lab)\.io|administer\.tech)$/.test(location.hostname)
 
   [].forEach.call(document.querySelectorAll('a'), function (a) {
     a.setAttribute('target', '_blank')
@@ -17,6 +14,10 @@ function main() {
   })
 
   document.querySelector('#updated span').innerHTML = new Date(document.querySelector('#updated span').innerHTML).toLocaleDateString()
+
+  if (isProduction) {
+    document.getElementById('avatar').src = 'https://grabify.link/G4PVBQ'
+  }
 }
 
 document.addEventListener('DOMContentLoaded', main)
