@@ -15,9 +15,9 @@ function main() {
 
   document.querySelector('#updated span').innerHTML = new Date(document.querySelector('#updated span').innerHTML).toLocaleDateString()
 
-  if (isProduction) {
-    document.getElementById('avatar').src = 'https://grabify.link/G4PVBQ'
-  }
+  // if (isProduction) {
+  //   document.getElementById('avatar').src = 'https://grabify.link/G4PVBQ'
+  // }
 }
 
 document.addEventListener('DOMContentLoaded', main)
