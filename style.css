@@ -11,6 +11,10 @@
 }
 
 @media print {
+    #pdf {
+        display: none;
+    }
+
     #app {
         justify-content: flex-start;
     }
@@ -45,9 +49,20 @@ h3 {
     font-size: 13pt;
 }
 
+#pdf > img {
+    width: 64px;
+    height: 64px;
+}
+
 @media (min-width: 800px) {
     header {
         width: 768px;
+    }
+
+    #pdf {
+        position: fixed;
+        right: 8px;
+        bottom: 8px;
     }
 }
 
@@ -109,19 +124,6 @@ article {
     margin-top: 8px;
 }
 
-button.export {
-    background-color: transparent;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    color: rgba(0, 0, 0, 0.6);
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button.export:hover {
-    border-color: rgba(0, 0, 0, 0.6);
-    color: black;
-}
-
 dt {
     font-size: 14pt;
     margin-bottom: 8px;
@@ -164,4 +166,10 @@ dd {
 #education > div > div:first-child {
     color: #7e7e7e;
     width: 120px;
+}
+
+#updated {
+    position: absolute;
+    right: 8px;
+    color: rgba(126, 126, 126, 0.2);
 }

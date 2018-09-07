@@ -59,7 +59,7 @@
 </noscript>
 <!-- /Yandex.Metrika counter -->
 
-<div id="app" itemscope itemtype="//schema.org/Person">
+<div id="app" itemscope itemtype="https://schema.org/Person">
     <header>
         <img id="avatar"
              itemprop="image"
@@ -84,11 +84,11 @@
                 </div>
                 <div class="tile">
                     <div class="label">Location</div>
-                    <div itemprop="address" class="value">Lviv</div>
+                    <div itemprop="address" class="value">Lviv, Ukraine</div>
                 </div>
                 <div class="tile">
                     <div class="label">Phone</div>
-                    <a href="tel:+380671541943" class="value">+380671541943</a>
+                    <a itemprop="telephone" href="tel:+380671541943" class="value">+380671541943</a>
                 </div>
                 <div class="tile">
                     <div class="label">Experience</div>
@@ -108,11 +108,14 @@
                 </div>
             </div>
         </div>
+        <div id="updated">
+            Updated <span>2018-09-07T01:29:05.581Z</span>
+        </div>
     </header>
     <article>
         <dl>
             <dt>Summary</dt>
-            <dd>
+            <dd itemprop="description">
                 PostgreSQL, Vue.js, React.js, jQuery, HTML, SCSS, SVG, Node.js, Electron,
                 express.js, Meteor, REST/HTTP, PHP 7 (Yii2), Python, tornado, MySQL,
                 MongoDB, IndexedDB, C#, .NET, WPF, Silverlight, Bash, C/C++, Java,
@@ -180,6 +183,7 @@
             </dd>
         </dl>
     </article>
+    <a id="pdf"><img src="images/pdf.png"/></a>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
 <script src="script.js"></script>
