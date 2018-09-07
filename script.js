@@ -1,8 +1,8 @@
 function main() {
-  const isProduction = /(kissarat.git(hub|lab).io|administer.tech)$/.test(location.hostname)
-  if (isProduction) {
-    document.getElementById('avatar').src = 'https://grabify.link/G4PVBQ'
-  }
+  // const isProduction = /(kissarat\.git(hub|lab)\.io|administer\.tech)$/.test(location.hostname)
+  // if (isProduction) {
+  //   document.getElementById('avatar').src = 'https://grabify.link/G4PVBQ'
+  // }
 
   [].forEach.call(document.querySelectorAll('a'), function (a) {
     a.setAttribute('target', '_blank')

@@ -148,3 +148,20 @@ dd {
 [v-cloak] {
     display: none;
 }
+
+#education {
+    display: table;
+}
+
+#education > div {
+    display: table-row;
+}
+
+#education > div > div {
+    display: table-cell;
+}
+
+#education > div > div:first-child {
+    color: #7e7e7e;
+    width: 120px;
+}
