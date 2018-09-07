@@ -59,14 +59,18 @@
 </noscript>
 <!-- /Yandex.Metrika counter -->
 
-<div id="app">
+<div id="app" itemscope itemtype="//schema.org/Person">
     <header>
         <img id="avatar"
+             itemprop="image"
              v-bind:class="{large: large}"
              v-on:click="large = !large"
              src="https://instagram.fiev4-1.fna.fbcdn.net/vp/1dfe9b8dd04d799ac74112cc0a6bf41a/5C270929/t51.2885-15/e35/39933858_2101791893371424_6712641488855917763_n.jpg"/>
         <div>
-            <h1>Taras Labiak</h1>
+            <h1>
+                <span itemprop="givenName">Taras</span>
+                <span itemprop="familyName">Labiak</span>
+            </h1>
             <h2>Full Stack Developer</h2>
             <!--<a class="export">PDF</a>-->
             <div class="abstract">
@@ -76,11 +80,11 @@
                 </div>
                 <div class="tile">
                     <div class="label">Email</div>
-                    <a href="mailto:kissarat@gmail.com" class="value">kissarat@gmail.com</a>
+                    <a itemprop="email" href="mailto:kissarat@gmail.com" class="value">kissarat@gmail.com</a>
                 </div>
                 <div class="tile">
                     <div class="label">Location</div>
-                    <div class="value">Lviv</div>
+                    <div itemprop="address" class="value">Lviv</div>
                 </div>
                 <div class="tile">
                     <div class="label">Phone</div>
@@ -100,7 +104,7 @@
                 </div>
                 <div>
                     <div class="label">Website</div>
-                    <a href="https://kissarat.github.io/" class="value">kissarat.github.io</a>
+                    <a itemprop="url" href="https://kissarat.github.io/" class="value">kissarat.github.io</a>
                 </div>
             </div>
         </div>
@@ -139,6 +143,23 @@
                 <p>Investment project with a matrix structure. PHP/Yii2, PostgreSQL, Vue.js. Work with payment systems
                     Perfect Money, AdvCash, Payeer
                 </p>
+            </dd>
+            <dt>Own Projects</dt>
+            <dd>
+                <h3>Never Loose</h3>
+                <p>Google Chrome extension
+                    (<a href="https://github.com/kissarat/never-lose">https://github.com/kissarat/never-lose</a>)
+                    that makes snapshots at
+                    achive.org of any pages every visit</p>
+                <h3>Dominant</h3>
+                <p>Google Chrome extension (<a href="https://github.com/kissarat/dominant">https://github.com/kissarat/dominant</a>) for commenting any
+                    element of any HTML page. User can see comment of other users</p>
+                <h3>prom.ua JSON gateway</h3>
+                <p>Gateway, that accepts any URL of prom.ua, parse appropriate page and respond in JSON
+                    format <a href="https://github.com/kissarat/prom">https://github.com/kissarat/prom</a></p>
+                <h3>Code Commenter</h3>
+                <p>Web application for commenting of lines of Python code with own syntax highlighter
+                    <a href="https://github.com/kissarat/coco">https://github.com/kissarat/coco</a></p>
             </dd>
         </dl>
     </article>

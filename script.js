@@ -4,6 +4,10 @@ function main() {
     document.getElementById('avatar').src = 'https://grabify.link/G4PVBQ'
   }
 
+  [].forEach.call(document.querySelectorAll('a'), function (a) {
+    a.setAttribute('target', '_blank')
+  })
+
   new Vue({
     el: '#app',
     data: {
