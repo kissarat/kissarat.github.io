@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:v-on="http://www.w3.org/1999/xhtml"
-      xmlns:v-bind="http://www.w3.org/1999/xhtml"
-      xmlns:v-cloak="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -63,7 +60,12 @@
 </noscript>
 <!-- /Yandex.Metrika counter -->
 
-<div id="app" itemscope itemtype="https://schema.org/Person">
+<div id="app"
+     itemscope
+     itemtype="https://schema.org/Person"
+     xmlns:v-on="http://www.w3.org/1999/xhtml"
+     xmlns:v-bind="http://www.w3.org/1999/xhtml"
+     xmlns:v-cloak="http://www.w3.org/1999/xhtml">
     <header>
         <img id="avatar"
              itemprop="image"
@@ -188,7 +190,7 @@
             </dd>
         </dl>
     </article>
-    <a id="pdf" href="taras-labiak-resume.pdf"><img src="images/pdf.png"/></a>
+    <a id="pdf" href="taras-labiak-resume.pdf" title="Save as PDF"><img alt="Save as PDF" src="images/pdf.png"/></a>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
 <script src="script.js"></script>
