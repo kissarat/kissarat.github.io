@@ -33,10 +33,16 @@ h1 {
 
 h2 {
     margin-top: 0;
-    margin-bottom: 6px;
-    font-size: 14pt;
+    margin-bottom: 8px;
+    font-size: 15pt;
     color: #7e7e7e;
     font-weight: 300;
+}
+
+h3 {
+    margin-top: 4px;
+    margin-bottom: 2px;
+    font-size: 13pt;
 }
 
 @media (min-width: 800px) {
@@ -63,6 +69,9 @@ h2 {
 }
 
 .abstract .value {
+}
+
+a {
     color: black;
     text-decoration: none;
 }
@@ -79,15 +88,14 @@ h2 {
 }
 
 #avatar.large {
-    width: 80vw;
+    width: 400px;
+    height: 400px;
 }
 
 article {
     max-width: 768px;
     text-align: justify;
-    border-top: 1px solid rgba(126, 126, 126, 0.3);
     margin-top: 8px;
-    padding-top: 12px;
 }
 
 button.export {
@@ -107,8 +115,15 @@ dt {
     font-size: 14pt;
     margin-bottom: 8px;
     font-weight: 700;
+    margin-top: 16px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(126, 126, 126, 0.3);
 }
 
 dd {
     margin-left: 0;
+}
+
+v-cloak {
+    display: none;
 }

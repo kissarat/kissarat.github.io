@@ -7,7 +7,8 @@ function main() {
   new Vue({
     el: '#app',
     data: {
-      large: false
+      large: false,
+      ico: atob('SUNPIEhvbGRpbmc=')
     }
   })
 }
