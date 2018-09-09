@@ -4,3 +4,7 @@
 __MACOSX
 node_modules/
 Thumbs.db
+track/bin/
+track/main
+vendor/
+*.pyc
