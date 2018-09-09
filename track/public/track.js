@@ -1,9 +1,9 @@
-const KISSARAT_TRACK_SCRIPT_ID = 'kissarat_track';
 (function () {
   function main() {
 
   }
 
+  const KISSARAT_TRACK_SCRIPT_ID = 'kissarat_track';
   var script = document.getElementById(KISSARAT_TRACK_SCRIPT_ID)
   if (script) {
     main()

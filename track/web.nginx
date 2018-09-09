@@ -1,9 +1,9 @@
 server {
     listen 80;
-#    listen 443 ssl;
+    listen 443 ssl;
     server_name track.administer.tech;
-    root /home/web/www/kissarat.github.com/track/public;
+    root /home/web/www/kissarat.github.io/track/public;
     index index.html;
-#    ssl_certificate /etc/letsencrypt/live/track.administer.tech/fullchain.pem;
-#    ssl_certificate_key /etc/letsencrypt/live/track.administer.tech/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/track.administer.tech/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/track.administer.tech/privkey.pem;
 }
