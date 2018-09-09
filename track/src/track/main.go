@@ -3,15 +3,15 @@ package main
 import (
 	"log"
 	"net/http"
-	"runtime"
-	"path"
+	"os"
 )
 
+// Static server
 func main() {
-	_, filename, _, _ := runtime.Caller(1)
-	fs := http.FileServer(path.Dir(filename) + "/../../../public")
+	//_, filename, _, _ := runtime.Caller(1)
+	fs := http.FileServer(http.Dir(os.Args[1]))
 	http.Handle("/", fs)
 
-	log.Println("Starting localhost:80")
-	http.ListenAndServe(":80", nil)
+	log.Println("Starting http://localhost:3000")
+	http.ListenAndServe(":3000", nil)
 }

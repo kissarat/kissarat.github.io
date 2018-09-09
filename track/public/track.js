@@ -1,12 +1,12 @@
-const KISSARAT_TRACK_SCRIPT_ID = 'kissarat_track'
+const KISSARAT_TRACK_SCRIPT_ID = 'kissarat_track';
 (function () {
-  function run() {
+  function main() {
 
   }
 
   var script = document.getElementById(KISSARAT_TRACK_SCRIPT_ID)
   if (script) {
-    run()
+    main()
     window.KISSARAT_TRACK_SCRIPT_ID = KISSARAT_TRACK_SCRIPT_ID
     console.log('Run main script of track.js')
   }
