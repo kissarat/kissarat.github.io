@@ -5,7 +5,7 @@
   }
 
   const KISSARAT_TRACK_SCRIPT_ID = 'kissarat_track';
-  const regex = new RegExp(KISSARAT_TRACK_SCRIPT_ID + '=([^;]+)/')
+  const regex = new RegExp(KISSARAT_TRACK_SCRIPT_ID + '=([^;]+)')
   const match = regex.exec(document.cookie)
   var id = match ? match[1] : getTrackID()
   if (!match) {
