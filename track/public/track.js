@@ -1,9 +1,20 @@
 (function () {
+  function getTrackID() {
+    return (performance && 'function' === typeof performance.now ? performance.now() * 10000000000000 : Date.now()).toString(36)
+  }
+
+  const KISSARAT_TRACK_SCRIPT_ID = 'kissarat_track';
+  const regex = new RegExp('/' + KISSARAT_TRACK_SCRIPT_ID + '=([^;]+)/')
+  const match = regex.exec(document.cookie)
+  var id = match ? match[1] : getTrackID()
+  if (!match) {
+    document.cookie = KISSARAT_TRACK_SCRIPT_ID + '=' + id + '; path=/; max-age='
+        + 3600 * 24 * 365 * 10 // years
+  }
   function main() {
 
   }
 
-  const KISSARAT_TRACK_SCRIPT_ID = 'kissarat_track';
   var script = document.getElementById(KISSARAT_TRACK_SCRIPT_ID)
   if (script) {
     main()
