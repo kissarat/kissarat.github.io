@@ -94,7 +94,8 @@
       }
       navigator.sendBeacon(ORIGIN + '/report' + location.pathname
           + (location.search ? '?' + location.search : ''),
-          DEBUG ? JSON.stringify(data, null, '\t') : JSON.stringify(data))
+          // DEBUG ? JSON.stringify(data, null, '\t') : JSON.stringify(data))
+          JSON.stringify(data))
     })
   }
 

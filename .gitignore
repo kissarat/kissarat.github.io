@@ -1,3 +1,4 @@
+*.pyc
 *~
 .DS_Store
 .idea/
@@ -6,5 +7,5 @@ node_modules/
 Thumbs.db
 track/bin/
 track/main
+track/track.sqlite
 vendor/
-*.pyc
