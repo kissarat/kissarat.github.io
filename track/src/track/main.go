@@ -65,10 +65,11 @@ func main() {
 			if nil != err1 {
 				log.Println(err1)
 			}
+			w.WriteHeader(http.StatusOK)
 		} else {
 			log.Println(err0)
+			w.WriteHeader(http.StatusInternalServerError)
 		}
-
 	})
 
 	port, err := strconv.Atoi(os.Args[2])
