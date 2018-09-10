@@ -4,6 +4,18 @@ server {
     server_name track.administer.tech;
     root /home/web/www/kissarat.github.io/track/public;
     index index.html;
+
+    location /track.js {
+        root /home/web/www/kissarat.github.io/track/public;
+    }
+
+    location ~ ^/report {
+        proxy_pass http://localhost:3000;
+        proxy_set_header host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_pass_request_headers on;
+    }
+
     ssl_certificate /etc/letsencrypt/live/track.administer.tech/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/track.administer.tech/privkey.pem;
 }

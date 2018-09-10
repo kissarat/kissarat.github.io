@@ -15,6 +15,7 @@ import (
 
 //const METHODS = []string{"UNKNOWN", "GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT"}
 var regexToken = regexp.MustCompile("kissarat_track=([^;]+)")
+const pidFilename = "/tmp/track.pid"
 
 const schema = `create table report (
   id     integer primary key autoincrement,
@@ -43,6 +44,7 @@ func open() *sql.DB {
 }
 
 func main() {
+	ioutil.WriteFile(pidFilename, []byte(strconv.Itoa(os.Getpid())), 0644)
 	db := open()
 	fs := http.FileServer(http.Dir(os.Args[1]))
 	http.Handle("/", fs)
@@ -72,5 +74,9 @@ func main() {
 	strPort := strconv.Itoa(port)
 	log.Println("Starting http://localhost:" + strPort)
 	http.ListenAndServe(":"+strPort, nil)
-	db.Close()
+	//db.Close()
+	//err2 := os.Remove(pidFilename)
+	//if nil != err2 {
+	//	fmt.Println("Cannot delete pid file " + pidFilename)
+	//}
 }
