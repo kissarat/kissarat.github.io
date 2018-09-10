@@ -1,9 +1,11 @@
 (function () {
+  const KISSARAT_TRACK_SCRIPT_ID = 'kissarat_track';
   const ORIGIN = /administer\.tech$/.test(location.hostname) ? location.origin : 'https://track.administer.tech'
   const STARTED = Date.now()
   const DEBUG = 'object' === typeof localStorage && +localStorage.getItem('kissarat.track.debug') > 0
-  const history = []
   const TRACK_ID_SCALE = 1000000000000000
+  const regex = new RegExp(KISSARAT_TRACK_SCRIPT_ID + '=([^;]+)')
+  const history = []
   var ip
 
   function debug() {
@@ -15,9 +17,6 @@
   function getTrackID() {
     return 'z' + (performance && 'function' === typeof performance.now ? performance.now() * TRACK_ID_SCALE : Date.now()).toString(36)
   }
-
-  const KISSARAT_TRACK_SCRIPT_ID = 'kissarat_track';
-  const regex = new RegExp(KISSARAT_TRACK_SCRIPT_ID + '=([^;]+)')
 
   function loadScript(src) {
     script = document.createElement('script')
@@ -81,6 +80,7 @@
 
     addEventListener('beforeunload', function () {
       const data = {
+        auth: id,
         start: STARTED,
         spend: Date.now() - STARTED
       }
