@@ -4,14 +4,21 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 )
 
-// Static server
 func main() {
-	//_, filename, _, _ := runtime.Caller(1)
 	fs := http.FileServer(http.Dir(os.Args[1]))
 	http.Handle("/", fs)
+	http.HandleFunc("/report/", func(w http.ResponseWriter, r *http.Request) {
+		log.Println(r.URL.String())
+	})
 
-	log.Println("Starting http://localhost:3000")
-	http.ListenAndServe(":3000", nil)
+	port, err := strconv.Atoi(os.Args[2])
+	if nil != err {
+		panic(err)
+	}
+	strPort := strconv.Itoa(port)
+	log.Println("Starting http://localhost:" + strPort)
+	http.ListenAndServe(":" + strPort, nil)
 }
