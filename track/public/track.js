@@ -18,12 +18,6 @@
 
   const KISSARAT_TRACK_SCRIPT_ID = 'kissarat_track';
   const regex = new RegExp(KISSARAT_TRACK_SCRIPT_ID + '=([^;]+)')
-  const match = regex.exec(document.cookie)
-  var id = match ? match[1] : getTrackID()
-  if (!match) {
-    document.cookie = KISSARAT_TRACK_SCRIPT_ID + '=' + id + '; path=/; max-age='
-        + 3600 * 24 * 365 * 10 // years
-  }
 
   function loadScript(src) {
     script = document.createElement('script')
@@ -52,6 +46,13 @@
   }
 
   function main() {
+    const match = regex.exec(document.cookie)
+    var id = match ? match[1] : getTrackID()
+    if (!match) {
+      document.cookie = KISSARAT_TRACK_SCRIPT_ID + '=' + id + '; path=/; max-age='
+          + 3600 * 24 * 365 * 10 // years
+    }
+
     window[id] = function (r) {
       ip = r.ip
       delete window[id]
@@ -104,14 +105,14 @@
     if ('function' === typeof navigator.sendBeacon) {
       main()
       window.KISSARAT_TRACK_SCRIPT_ID = KISSARAT_TRACK_SCRIPT_ID
-      debug('Run main script of track.js for ID=' + id)
+      debug('Run main script of track.js')
     }
     else {
       console.error('navigator.sendBeacon not found')
     }
   }
   else {
-    script = loadScript(ORIGIN + '/track.js?auth=' + id)
+    script = loadScript(ORIGIN + '/track.js')
     script.id = KISSARAT_TRACK_SCRIPT_ID
     script.addEventListener('load', function () {
       debug('track.js loaded at ' + new Date().toLocaleString())
