@@ -43,6 +43,16 @@ func open() *sql.DB {
 	return db
 }
 
+func answer(w http.ResponseWriter, statusCode int)  {
+	w.WriteHeader(statusCode)
+	w.Header().Set("Content-Type", "text/plain")
+	text := "OK"
+	if statusCode >= 400 {
+		text = "FAIL"
+	}
+	w.Write([]byte(text))
+}
+
 func main() {
 	ioutil.WriteFile(pidFilename, []byte(strconv.Itoa(os.Getpid())), 0644)
 	db := open()
@@ -54,6 +64,10 @@ func main() {
 		if len(m) >= 2 {
 			token = m[1]
 		}
+		ip := strings.Split(r.RemoteAddr, ":")[0]
+		if "127.0.0.1" == ip {
+			ip = r.Header.Get("X-Real-IP")
+		}
 		data, err0 := ioutil.ReadAll(r.Body)
 		if nil == err0 {
 			_, err1 := db.Exec("INSERT INTO report (url, agent, token, data, ip) VALUES ($1, $2, $3, $4, $5)",
@@ -61,14 +75,14 @@ func main() {
 				r.Header.Get("User-Agent"),
 				token,
 				string(data),
-				strings.Split(r.RemoteAddr, ":")[0])
+				ip)
 			if nil != err1 {
 				log.Println(err1)
 			}
-			w.WriteHeader(http.StatusOK)
+			answer(w, http.StatusOK)
 		} else {
 			log.Println(err0)
-			w.WriteHeader(http.StatusInternalServerError)
+			answer(w, http.StatusInternalServerError)
 		}
 	})
 
