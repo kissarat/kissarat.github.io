@@ -50,12 +50,16 @@ func main() {
 	http.Handle("/", fs)
 	http.HandleFunc("/report/", func(w http.ResponseWriter, r *http.Request) {
 		m := regexToken.FindStringSubmatch(r.Header.Get("Cookie"))
+		token := ""
+		if len(m) >= 2 {
+			token = m[1]
+		}
 		data, err0 := ioutil.ReadAll(r.Body)
 		if nil == err0 {
 			_, err1 := db.Exec("INSERT INTO report (url, agent, token, data, ip) VALUES ($1, $2, $3, $4, $5)",
 				r.URL.String()[7:],
 				r.Header.Get("User-Agent"),
-				m[1],
+				token,
 				string(data),
 				strings.Split(r.RemoteAddr, ":")[0])
 			if nil != err1 {

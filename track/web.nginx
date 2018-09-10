@@ -5,10 +5,6 @@ server {
     root /home/web/www/kissarat.github.io/track/public;
     index index.html;
 
-    location /track.js {
-        root /home/web/www/kissarat.github.io/track/public;
-    }
-
     location ~ ^/report {
         proxy_pass http://localhost:3000;
         proxy_set_header host $host;
