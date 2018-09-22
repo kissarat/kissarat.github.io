@@ -3,11 +3,24 @@
     width: 100vw;
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    /*align-items: center;*/
     justify-content: center;
-    flex-direction: column;
+    /*flex-direction: column;*/
     font-family: 'Nunito', sans-serif;
     text-align: center;
+}
+
+iframe {
+    width: 0;
+    height: calc(100vh - 32px);
+    margin-top: 28px;
+    margin-left: 16px;
+    border: none;
+}
+
+.preview iframe {
+    width: calc(100vw - (768px + 64px));
+    transition: 300ms all ease-out;
 }
 
 @media print {

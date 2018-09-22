@@ -1,9 +1,22 @@
 function main() {
-  const isProduction = /(kissarat\.git(hub|lab)\.io|administer\.tech)$/.test(location.hostname);
+  // const isProduction = /(kissarat\.git(hub|lab)\.io|administer\.tech)$/.test(location.hostname);
+  const isWide = 'function' === typeof matchMedia && matchMedia('(min-width: 768px)').matches
 
-  [].forEach.call(document.querySelectorAll('a'), function (a) {
-    a.setAttribute('target', '_blank')
-  })
+  if (isWide) {
+    [].forEach.call(document.querySelectorAll('a'), function (a) {
+      if (/https:\/\/[\w.]*wikipedia\.org/.test(a.href)) {
+        a.setAttribute('data-href', a.href)
+        a.removeAttribute('href')
+        a.addEventListener('click', function (e) {
+          e.preventDefault()
+          return false
+        })
+      }
+      else {
+        a.setAttribute('target', '_blank')
+      }
+    })
+  }
 
   new Vue({
     el: '#app',

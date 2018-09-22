@@ -13,228 +13,229 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-58031952-14"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-  function gtag() {
-    dataLayer.push(arguments);
-  }
+    function gtag() {
+        dataLayer.push(arguments);
+    }
 
-  gtag('js', new Date());
+    gtag('js', new Date());
 
-  gtag('config', 'UA-58031952-14');
+    gtag('config', 'UA-58031952-14');
 </script>
 
 <!-- Yandex.Metrika counter -->
 <script>
-  (function (d, w, c) {
-    (w[c] = w[c] || []).push(function () {
-      try {
-        w.yaCounter38832885 = new Ya.Metrika({
-          id: 38832885,
-          clickmap: true,
-          trackLinks: true,
-          accurateTrackBounce: true
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function () {
+            try {
+                w.yaCounter38832885 = new Ya.Metrika({
+                    id: 38832885,
+                    clickmap: true,
+                    trackLinks: true,
+                    accurateTrackBounce: true
+                });
+            } catch (e) {
+            }
         });
-      } catch (e) {
-      }
-    });
 
-    var n = d.getElementsByTagName("script")[0],
-        s = d.createElement("script"),
-        f = function () {
-          n.parentNode.insertBefore(s, n);
-        };
-    s.type = "text/javascript";
-    s.async = true;
-    s.src = "https://mc.yandex.ru/metrika/watch.js";
+        var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () {
+                    n.parentNode.insertBefore(s, n);
+                };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
 
-    if (w.opera == "[object Opera]") {
-      d.addEventListener("DOMContentLoaded", f, false);
-    } else {
-      f();
-    }
-  })(document, window, "yandex_metrika_callbacks");
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else {
+            f();
+        }
+    })(document, window, "yandex_metrika_callbacks");
 </script>
 <noscript>
     <div><img src="https://mc.yandex.ru/watch/38832885" style="position:absolute; left:-9999px;" alt=""/></div>
 </noscript>
 <!-- /Yandex.Metrika counter -->
 
-<div id="app"
-     itemscope
-     itemtype="https://schema.org/Person"
-     xmlns:v-on="http://www.w3.org/1999/xhtml"
-     xmlns:v-bind="http://www.w3.org/1999/xhtml"
-     xmlns:v-cloak="http://www.w3.org/1999/xhtml">
-    <header>
-        <img id="avatar"
-             itemprop="image"
-             v-bind:class="{large: large}"
-             v-on:click="large = !large"
-             alt="Taras Labiak"
-             src="https://instagram.fiev4-1.fna.fbcdn.net/vp/1dfe9b8dd04d799ac74112cc0a6bf41a/5C270929/t51.2885-15/e35/39933858_2101791893371424_6712641488855917763_n.jpg"/>
-        <div>
-            <h1>
-                <span itemprop="givenName">Taras</span>
-                <span itemprop="familyName">Labiak</span>
-            </h1>
-            <h2>PHP, Node.js, Python Full Stack Developer</h2>
-            <!--<a class="export">PDF</a>-->
-            <div class="abstract">
-                <div class="tile">
-                    <div class="label">Age</div>
-                    <div class="value">29</div>
-                </div>
-                <div class="tile">
-                    <div class="label">Email</div>
-                    <a itemprop="email" href="mailto:kissarat@gmail.com" class="value">kissarat@gmail.com</a>
-                </div>
-                <div class="tile">
-                    <div class="label">Location</div>
-                    <div itemprop="address" class="value">Lviv, Ukraine</div>
-                </div>
-                <div class="tile">
-                    <div class="label">Phone</div>
-                    <a itemprop="telephone" href="tel:+380671541943" class="value">+380671541943</a>
-                </div>
-                <div class="tile">
-                    <div class="label">Experience</div>
-                    <div class="value">3 years</div>
-                </div>
-                <div class="tile">
-                    <div class="label">Skype</div>
-                    <div class="value">taradox89</div>
-                </div>
-                <div>
-                    <div class="label">Facebook</div>
-                    <a href="https://www.facebook.com/kissarat" class="value">www.facebook.com/kissarat</a>
-                </div>
-                <div>
-                    <div class="label">Website</div>
-                    <a itemprop="url" href="https://kissarat.github.io/" class="value">kissarat.github.io</a>
+<div id="app" itemscope itemtype="https://schema.org/Person">
+    <div id="resume">
+        <header>
+            <img id="avatar"
+                 itemprop="image"
+                 v-bind:class="{large: large}"
+                 v-on:click="large = !large"
+                 alt="Taras Labiak"
+                 src="https://instagram.fiev4-1.fna.fbcdn.net/vp/1dfe9b8dd04d799ac74112cc0a6bf41a/5C270929/t51.2885-15/e35/39933858_2101791893371424_6712641488855917763_n.jpg"/>
+            <div>
+                <h1>
+                    <span itemprop="givenName">Taras</span>
+                    <span itemprop="familyName">Labiak</span>
+                </h1>
+                <h2>PHP, Node.js, Python Full Stack Developer</h2>
+                <!--<a class="export">PDF</a>-->
+                <div class="abstract">
+                    <div class="tile">
+                        <div class="label">Age</div>
+                        <div class="value">29</div>
+                    </div>
+                    <div class="tile">
+                        <div class="label">Email</div>
+                        <a itemprop="email" href="mailto:kissarat@gmail.com" class="value">kissarat@gmail.com</a>
+                    </div>
+                    <div class="tile">
+                        <div class="label">Location</div>
+                        <div itemprop="address" class="value">Lviv, Ukraine</div>
+                    </div>
+                    <div class="tile">
+                        <div class="label">Phone</div>
+                        <a itemprop="telephone" href="tel:+380671541943" class="value">+380671541943</a>
+                    </div>
+                    <div class="tile">
+                        <div class="label">Experience</div>
+                        <div class="value">3 years</div>
+                    </div>
+                    <div class="tile">
+                        <div class="label">Skype</div>
+                        <div class="value">taradox89</div>
+                    </div>
+                    <div>
+                        <div class="label">Facebook</div>
+                        <a href="https://www.facebook.com/kissarat" class="value">www.facebook.com/kissarat</a>
+                    </div>
+                    <div>
+                        <div class="label">Website</div>
+                        <a itemprop="url" href="https://kissarat.github.io/" class="value">kissarat.github.io</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="updated">
-            Updated <span>2018-09-22T11:10:35.829Z</span>
-        </div>
-    </header>
-    <article>
-        <dl>
-            <dt>Summary</dt>
-            <dd itemprop="description">
-                <ul>
-                    <li><a href="https://en.wikipedia.org/wiki/PHP">PHP</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/JavaScript">JavaScript</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/C%2B%2B">C++</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/C_Sharp_(programming_language)">C#</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Go_(programming_language)">Go</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Solidity">Solidity</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/HTML">HTML</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Sass_(stylesheet_language)#SCSS">SCSS</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Vue.js">Vue.js</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/React_(JavaScript_library)">React.js</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/jQuery">jQuery</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Node.js">Node.js</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Electron_(software_framework)">Electron</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/express.js">express.js</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Meteor_(web_framework)">Meteor</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/REST">REST/HTTP</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Yii">Yii</a> 2</li>
-                    <li><a href="https://en.wikipedia.org/wiki/Tornado_(web_server)">tornado</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/PostgreSQL">PostgreSQL</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/MySQL">MySQL</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/MongoDB">MongoDB</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/IndexedDB">IndexedDB</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/.NET_Framework">.NET</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Windows_Presentation_Foundation">WPF</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Microsoft_Silverlight">Silverlight</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Git">Git</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Mercurial">Mercurial</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Redis">Redis</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Bitcoin">Bitcoin</a></li>
-                    <li><a href="https://en.wikipedia.org/wiki/Ethereum">Ethereum</a>
-                        (<a href="https://www.parity.io/">parity</a>)
-                        node configuration and usage through API</li>
-                </ul>
-            </dd>
-            <dt>Experience</dt>
-            <dd>
-                <h3 v-cloak>{{ ico }}</h3>
-                <p>Investment project. PHP/Yii2, PostgreSQL, Vue.js. Work with payment systems Perfect Money, AdvCash,
-                    Payeer, Bitcoin (using block.io), Ethereum (using parity)
-                </p>
+            <div id="updated">
+                Updated <span>2018-09-22T11:10:35.829Z</span>
+            </div>
+        </header>
+        <article>
+            <dl>
+                <dt>Summary</dt>
+                <dd itemprop="description">
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/PHP">PHP</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/JavaScript">JavaScript</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/C%2B%2B">C++</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/C_Sharp_(programming_language)">C#</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Go_(programming_language)">Go</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Solidity">Solidity</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/HTML">HTML</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Sass_(stylesheet_language)#SCSS">SCSS</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Vue.js">Vue.js</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/React_(JavaScript_library)">React.js</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/jQuery">jQuery</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Node.js">Node.js</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Electron_(software_framework)">Electron</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/express.js">express.js</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Meteor_(web_framework)">Meteor</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/REST">REST/HTTP</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Yii">Yii</a> 2</li>
+                        <li><a href="https://en.wikipedia.org/wiki/Tornado_(web_server)">tornado</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/PostgreSQL">PostgreSQL</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/MySQL">MySQL</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/MongoDB">MongoDB</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/IndexedDB">IndexedDB</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/.NET_Framework">.NET</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Windows_Presentation_Foundation">WPF</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Microsoft_Silverlight">Silverlight</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Git">Git</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Mercurial">Mercurial</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Redis">Redis</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Bitcoin">Bitcoin</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Ethereum">Ethereum</a>
+                            (<a href="https://www.parity.io/">parity</a>)
+                            node configuration and usage through API
+                        </li>
+                    </ul>
+                </dd>
+                <dt>Experience</dt>
+                <dd>
+                    <h3 v-cloak>{{ ico }}</h3>
+                    <p>Investment project. PHP/Yii2, PostgreSQL, Vue.js. Work with payment systems Perfect Money,
+                        AdvCash,
+                        Payeer, Bitcoin (using block.io), Ethereum (using parity)
+                    </p>
 
-                <h3>MLBot for Skype</h3>
-                <p>Massive (and periodic) message sender, importing and adding contact list, automatic deletion
-                    of contacts. The backend is implemented on Node.js and PostgreSQL, the
-                    frontend is made using Electron, React.js.
-                </p>
+                    <h3>MLBot for Skype</h3>
+                    <p>Massive (and periodic) message sender, importing and adding contact list, automatic deletion
+                        of contacts. The backend is implemented on Node.js and PostgreSQL, the
+                        frontend is made using Electron, React.js.
+                    </p>
 
-                <h3>Evart Social Network</h3>
-                <p>
-                    The social network. Node.js + Marionette.js
-                    <a href="https://github.com/kissarat/evart-social-network-node.js">https://github.com/kissarat/evart-social-network-node.js</a>
-                    and on Meteor.js + React
-                    <a href="https://github.com/kissarat/evart-social-network-node.js">https://github.com/kissarat/evart-social-network-meteor</a>.
-                </p>
+                    <h3>Evart Social Network</h3>
+                    <p>
+                        The social network. Node.js + Marionette.js
+                        <a href="https://github.com/kissarat/evart-social-network-node.js">https://github.com/kissarat/evart-social-network-node.js</a>
+                        and on Meteor.js + React
+                        <a href="https://github.com/kissarat/evart-social-network-node.js">https://github.com/kissarat/evart-social-network-meteor</a>.
+                    </p>
 
-                <h3>BestChoice Club</h3>
-                <p>Investment project with a matrix structure. PHP/Yii2, PostgreSQL, Vue.js. Work with payment systems
-                    Perfect Money, AdvCash, Payeer
-                </p>
+                    <h3>BestChoice Club</h3>
+                    <p>Investment project with a matrix structure. PHP/Yii2, PostgreSQL, Vue.js. Work with payment
+                        systems
+                        Perfect Money, AdvCash, Payeer
+                    </p>
 
-                <h3>IntelSCADA</h3>
-                <p>Python/JavaScript Developer. Smart home management system.
-                    My role is the development of a room sensor editor. Created on the basis of SVG format
-                </p>
-            </dd>
-            <dt>Education</dt>
-            <dd id="education">
-                <div>
-                    <div>2006 - 2011</div>
+                    <h3>IntelSCADA</h3>
+                    <p>Python/JavaScript Developer. Smart home management system.
+                        My role is the development of a room sensor editor. Created on the basis of SVG format
+                    </p>
+                </dd>
+                <dt>Education</dt>
+                <dd id="education">
                     <div>
-                        Bachelor's degree, Computer Systems and Networks | Ternopil Ivan Pul'uj
-                        National Technical University
+                        <div>2006 - 2011</div>
+                        <div>
+                            Bachelor's degree, Computer Systems and Networks | Ternopil Ivan Pul'uj
+                            National Technical University
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <div>2002 - 2006</div>
                     <div>
-                        High school degree | Technical Liceum
+                        <div>2002 - 2006</div>
+                        <div>
+                            High school degree | Technical Liceum
+                        </div>
                     </div>
-                </div>
-            </dd>
-            <dt>Own Projects</dt>
-            <dd>
-                <h3>Never Loose</h3>
-                <p>Google Chrome extension
-                    (<a href="https://github.com/kissarat/never-lose">https://github.com/kissarat/never-lose</a>)
-                    that makes snapshots at
-                    achive.org of any pages every visit</p>
-                <h3>Dominant</h3>
-                <p>Google Chrome extension (<a href="https://github.com/kissarat/dominant">https://github.com/kissarat/dominant</a>)
-                    for commenting any
-                    element of any HTML page. User can see comment of other users</p>
-                <h3>prom.ua JSON gateway</h3>
-                <p>Gateway, that accepts any URL of prom.ua, parse appropriate page and respond in JSON
-                    format <a href="https://github.com/kissarat/prom">https://github.com/kissarat/prom</a></p>
-                <h3>Code Commenter</h3>
-                <p>Web application for commenting of lines of Python code with own syntax highlighter
-                    <a href="https://github.com/kissarat/coco">https://github.com/kissarat/coco</a></p>
-                <!--h3>track.js</h3>
-                <p>
-                    <a href="track/public/">view more</a>
-                </p-->
-            </dd>
-        </dl>
-    </article>
+                </dd>
+                <dt>Own Projects</dt>
+                <dd>
+                    <h3>Never Loose</h3>
+                    <p>Google Chrome extension
+                        (<a href="https://github.com/kissarat/never-lose">https://github.com/kissarat/never-lose</a>)
+                        that makes snapshots at
+                        achive.org of any pages every visit</p>
+                    <h3>Dominant</h3>
+                    <p>Google Chrome extension (<a href="https://github.com/kissarat/dominant">https://github.com/kissarat/dominant</a>)
+                        for commenting any
+                        element of any HTML page. User can see comment of other users</p>
+                    <h3>prom.ua JSON gateway</h3>
+                    <p>Gateway, that accepts any URL of prom.ua, parse appropriate page and respond in JSON
+                        format <a href="https://github.com/kissarat/prom">https://github.com/kissarat/prom</a></p>
+                    <h3>Code Commenter</h3>
+                    <p>Web application for commenting of lines of Python code with own syntax highlighter
+                        <a href="https://github.com/kissarat/coco">https://github.com/kissarat/coco</a></p>
+                    <!--h3>track.js</h3>
+                    <p>
+                        <a href="track/public/">view more</a>
+                    </p-->
+                </dd>
+            </dl>
+        </article>
+    </div>
+    <iframe src="https://en.wikipedia.org/wiki/Ethereum"></iframe>
     <a id="pdf" href="taras-labiak-resume.pdf" title="Save as PDF"><img alt="Save as PDF" src="images/pdf.png"/></a>
 </div>
 <script src="track/public/polyfill.js?v=1536475558698"></script>
