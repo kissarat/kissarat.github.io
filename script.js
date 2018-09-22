@@ -4,17 +4,17 @@ function main() {
 
   if (isWide) {
     [].forEach.call(document.querySelectorAll('a'), function (a) {
-      if (/https:\/\/[\w.]*wikipedia\.org/.test(a.href)) {
-        a.setAttribute('data-href', a.href)
-        a.removeAttribute('href')
-        a.addEventListener('click', function (e) {
-          e.preventDefault()
-          return false
-        })
-      }
-      else {
+      // if (/https:\/\/[\w.]*wikipedia\.org/.test(a.href)) {
+        // a.setAttribute('data-href', a.href)
+        // a.removeAttribute('href')
+        // a.addEventListener('click', function (e) {
+        //   e.preventDefault()
+        //   return false
+        // })
+      // }
+      // else {
         a.setAttribute('target', '_blank')
-      }
+      // }
     })
   }
 
