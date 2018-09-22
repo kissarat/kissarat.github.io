@@ -15,7 +15,7 @@
   }
 
   function getTrackID() {
-    return 'z' + (performance && 'function' === typeof performance.now ? performance.now() * TRACK_ID_SCALE : Date.now()).toString(36)
+    return 'z' + ('undefined' !== typeof performance && 'function' === typeof performance.now ? performance.now() * TRACK_ID_SCALE : Date.now()).toString(36)
   }
 
   function loadScript(src) {
@@ -70,7 +70,7 @@
     register([window], ['keyup'], function (event, e) {
       const t = e.target;
       var a = null
-      remember(event, ((a = t.getAttribute('name')) && ('[name=' + a + ']'))
+      remember(event, ((a = t.getAttribute('name')) && ('[name="' + a + '"]'))
           || ((a = t.id) && ('#' + a))
           || ((a = t.getAttribute('class')) && ('.' + a.replace(/\s+/g, '.')))
           || t.tagName,

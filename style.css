@@ -173,3 +173,23 @@ dd {
     right: 8px;
     color: rgba(126, 126, 126, 0.2);
 }
+
+[itemprop="description"] ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+}
+
+[itemprop="description"] ul li {
+    list-style: none;
+    display: inline;
+    padding-right: 4px;
+}
+
+[itemprop="description"] ul li::after {
+    content: ", ";
+}
+
+[itemprop="description"] ul li:last-child::after {
+    content: "";
+}
