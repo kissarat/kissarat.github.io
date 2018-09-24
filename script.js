@@ -22,7 +22,9 @@ function main() {
     el: '#app',
     data: {
       large: false,
-      ico: atob('SUNPIEhvbGRpbmc=')
+      project3: atob('T2NlYW4gb2YgRXRoZXJldW0='),
+      project2: atob('QW50aWt2YXIgUGx1cw=='),
+      project1: atob('SUNPIEhvbGRpbmc=')
     }
   })
 

@@ -56,10 +56,15 @@ h2 {
     font-weight: 300;
 }
 
-h3 {
+article > dl > dd > dl > dt {
     margin-top: 4px;
     margin-bottom: 2px;
     font-size: 13pt;
+    font-weight: 600;
+}
+
+article > dl > dd > dl > dd .label {
+    font-weight: 600;
 }
 
 #pdf > img {
@@ -137,7 +142,7 @@ article {
     margin-top: 8px;
 }
 
-dt {
+article > dl > dt {
     font-size: 14pt;
     margin-bottom: 8px;
     font-weight: 700;
@@ -146,16 +151,16 @@ dt {
     border-bottom: 1px solid rgba(126, 126, 126, 0.3);
 }
 
-dd {
+article > dl > dd {
     margin-left: 0;
 }
 
 @media (max-width: 799px) {
-    dt {
+    article > dl > dt {
         padding-left: 12px;
     }
 
-    dd {
+    article > dl > dd {
         padding: 0 12px;
     }
 }
@@ -209,4 +214,8 @@ dd {
 
 [itemprop="description"] ul li a:hover {
     color: blue;
+}
+
+.duration {
+    display: none;
 }
