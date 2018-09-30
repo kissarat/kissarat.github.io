@@ -5,15 +5,15 @@ function main() {
   if (isWide) {
     [].forEach.call(document.querySelectorAll('a'), function (a) {
       // if (/https:\/\/[\w.]*wikipedia\.org/.test(a.href)) {
-        // a.setAttribute('data-href', a.href)
-        // a.removeAttribute('href')
-        // a.addEventListener('click', function (e) {
-        //   e.preventDefault()
-        //   return false
-        // })
+      // a.setAttribute('data-href', a.href)
+      // a.removeAttribute('href')
+      // a.addEventListener('click', function (e) {
+      //   e.preventDefault()
+      //   return false
+      // })
       // }
       // else {
-        a.setAttribute('target', '_blank')
+      a.setAttribute('target', '_blank')
       // }
     })
   }
@@ -34,12 +34,17 @@ function main() {
   //   document.getElementById('avatar').src = 'https://grabify.link/G4PVBQ'
   // }
 
+  const hired = document.getElementById('hired')
   function close() {
     removeEventListener('keyup', close)
-    document.getElementById('hired').remove()
+    .remove()
   }
 
   addEventListener('keyup', close)
+
+  setTimeout(function () {
+    hired.style.opacity = 1
+  }, 3000)
 }
 
 document.addEventListener('DOMContentLoaded', main)
