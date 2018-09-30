@@ -33,6 +33,13 @@ function main() {
   // if (isProduction) {
   //   document.getElementById('avatar').src = 'https://grabify.link/G4PVBQ'
   // }
+
+  function close() {
+    removeEventListener('keyup', close)
+    document.getElementById('hired').remove()
+  }
+
+  addEventListener('keyup', close)
 }
 
 document.addEventListener('DOMContentLoaded', main)

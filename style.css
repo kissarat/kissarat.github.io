@@ -1,3 +1,7 @@
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
 #app {
     position: absolute;
     width: 100vw;
@@ -6,7 +10,6 @@
     /*align-items: center;*/
     justify-content: center;
     /*flex-direction: column;*/
-    font-family: 'Nunito', sans-serif;
     text-align: center;
 }
 
@@ -218,4 +221,20 @@ article > dl > dd {
 
 .duration {
     display: none;
+}
+
+#hired {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    flex-direction: column;
+}
+
+#hired a {
+    color: blue;
+    text-decoration: underline;
 }
