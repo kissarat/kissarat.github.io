@@ -37,7 +37,7 @@ function main() {
   const hired = document.getElementById('hired')
   function close() {
     removeEventListener('keyup', close)
-    .remove()
+    hired.remove()
   }
 
   addEventListener('keyup', close)
