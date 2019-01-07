@@ -219,10 +219,6 @@ article > dl > dd {
     color: blue;
 }
 
-.duration {
-    display: none;
-}
-
 #hired {
     position: fixed;
     display: flex;

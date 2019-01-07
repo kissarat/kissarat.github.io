@@ -68,7 +68,7 @@
                  v-bind:class="{large: large}"
                  v-on:click="large = !large"
                  alt="Taras Labiak"
-                 src="https://instagram.fiev4-1.fna.fbcdn.net/vp/1dfe9b8dd04d799ac74112cc0a6bf41a/5C270929/t51.2885-15/e35/39933858_2101791893371424_6712641488855917763_n.jpg"/>
+                 src="https://scontent.flwo1-1.fna.fbcdn.net/v/t1.0-9/41124548_1957186050971018_7259873118389272576_n.jpg?_nc_cat=110&_nc_ht=scontent.flwo1-1.fna&oh=5668b04c3824193923aef38514e350e9&oe=5CD3162B"/>
             <div>
                 <h1>
                     <span itemprop="givenName">Taras</span>
@@ -112,7 +112,7 @@
                 </div>
             </div>
             <div id="updated">
-                Updated <span>2018-09-25T00:00:00.000Z</span>
+                Updated <span>2019-01-07T00:00:00.000Z</span>
             </div>
         </header>
         <article>
@@ -147,7 +147,9 @@
                         <li><a href="https://en.wikipedia.org/wiki/Node.js">Node.js</a></li>
                         <li><a href="https://en.wikipedia.org/wiki/Electron_(software_framework)">Electron</a></li>
                         <li><a href="https://en.wikipedia.org/wiki/express.js">express.js</a></li>
-                        <li><a href="https://knexjs.org/">knex.js</a></li>
+                        <li><a href="https://strapi.io">strapi</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Stripe_(company)">Stripe</a></li>
+                        <li><a href="https://knexjs.org">knex.js</a></li>
                         <li><a href="https://en.wikipedia.org/wiki/Meteor_(web_framework)">Meteor</a></li>
                         <li><a href="https://en.wikipedia.org/wiki/REST">REST</a>/HTTP</li>
                         <li><a href="https://en.wikipedia.org/wiki/WebSocket">WebSocket</a></li>
@@ -184,6 +186,30 @@
                 <dt>Experience</dt>
                 <dd>
                     <dl>
+                        <dt class="indeema" v-cloak>Indeema</dt>
+                        <dd class="indeema">
+                            <div class="position">
+                                <span class="label">Position:</span>
+                                <span class="value">Web Backend Developer</span>
+                            </div>
+                            <div class="website">
+                                <span class="label">Company website:</span>
+                                <span class="value"><a href="https://indeema.com/">https://indeema.com/</a></span>
+                            </div>
+                            <div class="technologies">
+                                <span class="label">Technologies:</span>
+                                <span class="value">Node.js, strapi 3, express.js, Stripe, Ethereum Solidity</span>
+                            </div>
+                            <div class="responsibilities">
+                                <span class="label">Responsibilities:</span>
+                                <span class="value">Developing architecture and implementation of backend on Node.js, MongoDB</span>
+                            </div>
+                            <div class="duration">
+                                <span class="label">Since:</span>
+                                <span class="value">{{ sinceOctober2018 }}</span>
+                            </div>
+                        </dd>
+
                         <dt v-cloak>{{ project3 }}</dt>
                         <dd>
                             <div class="position">
@@ -197,11 +223,12 @@
                             <div class="responsibilities">
                                 <span class="label">Responsibilities:</span>
                                 <span class="value">Implementing business logic, database design, frontend part.
-                                    Integrating with Ethereum node API (<a href="https://www.parity.io/">parity</a>).</span>
+                                    Integrating with Ethereum node API (<a
+                                            href="https://www.parity.io/">parity</a>).</span>
                             </div>
                             <div class="duration">
-                                <span class="label">Duration:</span>
-                                <span class="value">4 months</span>
+                                <span class="label">Since:</span>
+                                <span class="value">{{ sinceMay2018 }}</span>
                             </div>
                         </dd>
 
@@ -262,6 +289,10 @@
                             <a href="https://github.com/kissarat/evart-social-network-node.js">https://github.com/kissarat/evart-social-network-node.js</a>
                             and on Meteor.js + React
                             <a href="https://github.com/kissarat/evart-social-network-meteor">https://github.com/kissarat/evart-social-network-meteor</a>.
+                            <div class="duration">
+                                <span class="label">Duration:</span>
+                                <span class="value">10 months</span>
+                            </div>
                         </dd>
 
                         <dt>BestChoice Club</dt>
@@ -350,12 +381,15 @@
     <iframe src="https://en.wikipedia.org/wiki/Ethereum"></iframe>
     <a id="pdf" href="taras-labiak-resume.pdf" title="Save as PDF"><img alt="Save as PDF" src="images/pdf.png"/></a>
 </div>
-<script src="track/public/polyfill.js?v=1536475558698"></script>
-<script src="track/public/track.js?v=1536475558698"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<!--script src="track/public/polyfill.js?v=1536475558698"></script-->
+<!--script-- src="track/public/track.js?v=1536475558698"></script-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js"
+        integrity="sha256-VBLiveTKyUZMEzJd6z2mhfxIqz3ZATCuVMawPZGzIfA=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.min.js"
+        integrity="sha256-ui3vFTgbIIvd9ePh+wF+ju05O3jympV4FyFlpNMV2cw=" crossorigin="anonymous"></script>
 <script src="script.js"></script>
-<div id="hired" style="opacity: 0">
+<!--div id="hired" style="opacity: 0">
     <h1>Hired by <a href="https://indeema.com/">Indeema</a></h1>
-</div>
+</div-->
 </body>
 </html>
