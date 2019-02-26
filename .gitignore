@@ -1,8 +1,8 @@
-*.pyc
-*~
+__MACOSX
 .DS_Store
 .idea/
-__MACOSX
+*.pyc
+*~
 node_modules/
 Thumbs.db
 track/bin/

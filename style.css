@@ -123,12 +123,17 @@ a {
     text-decoration: none;
 }
 
+#experience a:hover {
+    opacity: 0.6;
+}
+
 .abstract .label::after {
     content: ': ';
 }
 
 #avatar {
     width: 200px;
+    min-width: 200px;
     height: 200px;
     cursor: pointer;
     margin-bottom: 8px;

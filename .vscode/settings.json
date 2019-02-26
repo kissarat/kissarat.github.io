@@ -2,8 +2,12 @@
   "docker.attachShellCommand.linuxContainer": "/bin/bash",
   "editor.fontSize": 13,
   "editor.formatOnSave": true,
-  "editor.rulers": [100],
-  "emmet.excludeLanguages": ["markdown"],
+  "editor.rulers": [
+    100
+  ],
+  "emmet.excludeLanguages": [
+    "markdown"
+  ],
   "files.autoSave": "onFocusChange",
   "files.encoding": "utf8",
   "files.eol": "\n",
