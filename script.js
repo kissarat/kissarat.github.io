@@ -1,9 +1,13 @@
 function main() {
-  const isProduction = /(kissarat\.git(hub|lab)\.io|(local\.)?labiak\.org)$/.test(location.hostname);
-  const isWide = 'function' === typeof matchMedia && matchMedia('(min-width: 768px)').matches
+  const isProduction = /(kissarat\.git(hub|lab)\.io|(local\.)?labiak\.org)$/.test(
+    location.hostname
+  );
+  const isWide =
+    "function" === typeof matchMedia &&
+    matchMedia("(min-width: 768px)").matches;
 
   if (isWide) {
-    [].forEach.call(document.querySelectorAll('a'), function (a) {
+    [].forEach.call(document.querySelectorAll("a"), function(a) {
       // if (/https:\/\/[\w.]*wikipedia\.org/.test(a.href)) {
       //   a.setAttribute('data-href', a.href)
       //   a.removeAttribute('href')
@@ -13,50 +17,49 @@ function main() {
       //   })
       // }
       // else {
-      a.setAttribute('target', '_blank')
+      a.setAttribute("target", "_blank");
       // }
-    })
+    });
   }
 
   new Vue({
-    el: '#app',
+    el: "#app",
     data: {
       large: false,
-      project3: atob('T2NlYW4gb2YgRXRoZXJldW0='),
-      project2: atob('QW50aWt2YXIgUGx1cw=='),
-      project1: atob('SUNPIEhvbGRpbmc=')
+      project3: atob("T2NlYW4gb2YgRXRoZXJldW0="),
+      project2: atob("QW50aWt2YXIgUGx1cw=="),
+      project1: atob("SUNPIEhvbGRpbmc=")
     },
     computed: {
       sinceMay2018() {
-        return moment("2018-06-25", "YYYY-MM-DD").fromNow()
+        return moment("2018-06-25", "YYYY-MM-DD").fromNow();
       }
     }
-  })
+  });
 
-  const updated = document.querySelector('#updated span');
+  const updated = document.querySelector("#updated span");
   if (updated) {
-    updated.innerHTML = new Date(updated.innerHTML).toLocaleDateString()
-  }
-  else {
+    updated.innerHTML = new Date(updated.innerHTML).toLocaleDateString();
+  } else {
     console.error("#updated not found");
   }
 
   if (isProduction) {
-    document.getElementById('avatar').src = 'https://grabify.link/20Y9EH'
+    document.getElementById("avatar").src = "https://grabify.link/20Y9EH";
   }
 
-  // const hired = document.getElementById('hired')
+  const hired = document.getElementById("hired");
 
-  // function close() {
-  //   removeEventListener('keyup', close)
-  //   hired.remove()
-  // }
+  function close() {
+    removeEventListener("keyup", close);
+    hired.remove();
+  }
 
-  // addEventListener('keyup', close)
+  addEventListener("keyup", close);
 
-  // setTimeout(function () {
-  //   hired.style.opacity = 1
-  // }, 3000)
+  setTimeout(function() {
+    hired.style.opacity = 1;
+  }, 3000);
 }
 
-document.addEventListener('DOMContentLoaded', main)
+document.addEventListener("DOMContentLoaded", main);
