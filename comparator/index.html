@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comparator Generator</title>
+    <style>
+        #app {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 8px;
+        }
+
+        .areas {
+            flex: 1;
+        }
+
+        textarea {
+            height: calc(100% - 20px);
+            min-width: calc(100% / 2 - 20px);
+        }
+
+        #error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <header>
+        <button type="button" id="convert" disabled>Convert</button>
+        <div id="error">JavaScript is disabled</div>
+    </header>
+    <article class="areas">
+        <textarea id="input">
+            {
+                "simple": true,
+                "array": [true],
+                "object": {"property": true},
+                "arrayOfObjects": [{
+                    "property": true
+                }],
+                "methodCompare": ".compare1",
+                "functionCompare": "compare2",
+                "nested": {"nested": [{"nested": true}]}
+            }
+        </textarea>
+        <textarea id="output"></textarea>
+    </article>
+</div>
+<script>
+  function name(prefix = '_') {
+    if (!(name[prefix] >= 0)) {
+      name[prefix] = 0;
+    }
+    return prefix + ++name[prefix];
+  }
+
+  function translate(object, first = name('a'), second = name('b')) {
+    if (object) {
+      if (object instanceof Array) {
+        const compare = translate(object[0], 'item', `${second}[i]`);
+        return `${first}.length === ${second}.length && ${first}.every((item, i) => ${compare})`
+      }
+      switch (typeof object) {
+        case 'object':
+          const items = [];
+          for (const key in object) {
+            const v = translate(object[key], `${first}.${key}`, `${second}.${key}`);
+            if (v) {
+              items.push(v);
+            }
+          }
+          return `${first} && ${second} && ` + items.join(' && ')
+        case 'string':
+          if ('.' === object[0]) {
+            return `${first}${object}(${second})`;
+          }
+          return `${object}(${first},${second})`;
+        default:
+          return `${first} === ${second}`;
+      }
+    }
+    return '';
+  }
+
+  addEventListener('load', function () {
+    const input = document.getElementById('input');
+    const output = document.getElementById('output');
+    const convert = document.getElementById('convert');
+    const error = document.getElementById('error');
+    error.innerHTML = 'Something wrong happens';
+    input.value = input.value.replace(/ {12}/g, '');
+
+    convert.addEventListener('click', function () {
+      error.innerHTML = '';
+      let data;
+      try {
+        data = JSON.parse(input.value);
+      }
+      catch (e) {
+        return error.innerHTML = 'Invalid JSON input';
+      }
+      error.innerHTML = 'Bad format';
+      output.value = '(a, b) => ' + translate(data, 'a', 'b');
+      error.innerHTML = '';
+    })
+
+    error.innerHTML = '';
+    convert.disabled = false;
+  });
+</script>
+</body>
+</html>

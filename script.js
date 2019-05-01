@@ -128,7 +128,7 @@ function main() {
 
   setTimeout(function () {
     hired.style.opacity = 1;
-  }, 6000);
+  }, 7000);
 }
 
 document.addEventListener("DOMContentLoaded", main);
