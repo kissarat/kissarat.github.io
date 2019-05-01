@@ -66,7 +66,7 @@ article > dl > dd > dl > dt {
     font-weight: 600;
 }
 
-article > dl > dd > dl > dd .label {
+.label {
     font-weight: 600;
 }
 
@@ -173,10 +173,6 @@ article > dl > dd {
     }
 }
 
-[v-cloak] {
-    display: none;
-}
-
 #education {
     display: table;
 }
@@ -243,4 +239,22 @@ article > dl > dd {
 #hired a {
     color: blue;
     text-decoration: underline;
+}
+
+[v-cloak] > :not(.cloak) {
+    display: none;
+}
+
+.cloak {
+    display: none;
+}
+
+[v-cloak] > .cloak {
+    display: block;
+}
+
+[v-cloak] .cloak a {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
 }

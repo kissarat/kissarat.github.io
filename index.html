@@ -190,176 +190,23 @@
                         </ul>
                     </dd>
                     <dt>Experience</dt>
-                    <dd id="experience">
-                        <dl>
-                            <dt class="indeema" v-cloak>Indeema</dt>
-                            <dd class="indeema">
-                                <div class="position">
-                                    <span class="label">Position:</span>
-                                    <span class="value">Web Backend Developer</span>
+                    <dd id="experience" class="robots-noindex" v-cloak>
+                        <div class="cloak">
+                            Something wrong happens. Please
+                            <a href="taras-labiak-resume.pdf">download</a>
+                            resume in PDF format
+                        </div>
+                        <div>
+                            <div class="item" v-for="job in jobs">
+                                <h4>{{ job.name }}</h4>
+                                <div class="properties">
+                                    <div v-for="property in describe(job)" v-if="property">
+                                        <span class="label">{{ property.label }}:</span>
+                                        <span class="value" v-html="property.value"></span>
+                                    </div>
                                 </div>
-                                <div class="website">
-                                    <span class="label">Company website:</span>
-                                    <span class="value"><a href="https://indeema.com/">https://indeema.com/</a></span>
-                                </div>
-                                <div class="technologies">
-                                    <span class="label">Technologies:</span>
-                                    <span class="value">Node.js, strapi 3, express.js, Stripe, Ethereum Solidity
-                                        (ERC20), AWS EC2, MQTT (AWS IoT Core), MongoDB (Mongoose), microservices, AWS
-                                        S3, AWS SES</span>
-                                </div>
-                                <div class="responsibilities">
-                                    <span class="label">Responsibilities:</span>
-                                    <span class="value">Developing architecture and implementation of backend on
-                                        Node.js, MongoDB</span>
-                                </div>
-                                <div class="duration">
-                                    <span class="label">Duration:</span>
-                                    <span class="value">6 months</span>
-                                </div>
-                                <div class="projects">
-                                    <span class="label">Projects:</span>
-                                    <span class="value">
-                                        <a href="https://ubreez.com">ubreez.com</a>,
-                                        <a href="https://synqiubique.co">synqiubique.co</a> (support),
-                                        <a href="https://wasihub.com">wasihub.com</a>
-                                    </span>
-                                </div>
-                            </dd>
-
-                            <dt v-cloak>{{ project3 }}</dt>
-                            <dd>
-                                <div class="position">
-                                    <span class="label">Position:</span>
-                                    <span class="value">Full Stack Web Developer</span>
-                                </div>
-                                <div class="technologies">
-                                    <span class="label">Technologies:</span>
-                                    <span class="value">PHP 7.2, Yii 2, PostgreSQL 10, Vue.js, Ethereum parity
-                                        API</span>
-                                </div>
-                                <div class="responsibilities">
-                                    <span class="label">Responsibilities:</span>
-                                    <span class="value">Implementing business logic, database design, frontend part.
-                                        Integrating with Ethereum node API (<a
-                                            href="https://www.parity.io/">parity</a>).</span>
-                                </div>
-                                <div class="duration">
-                                    <span class="label">Since:</span>
-                                    <span class="value">{{ sinceMay2018 }}</span>
-                                </div>
-                            </dd>
-
-                            <dt v-cloak>{{ project2 }}</dt>
-                            <dd>
-                                <div class="position">
-                                    <span class="label">Position:</span>
-                                    <span class="value">Full Stack Web Developer</span>
-                                </div>
-                                <div class="technologies">
-                                    <span class="label">Technologies:</span>
-                                    <span class="value">PHP 7.2, Yii 2, PostgreSQL 9.6, Vue.js, SCSS, jQuery,
-                                        block.io API, Ethereum parity API, Payeer API, Perfect Money API, AdvCash
-                                        API</span>
-                                </div>
-                                <div class="responsibilities">
-                                    <span class="label">Responsibilities:</span>
-                                    <span class="value">Business logic implementation, database design.
-                                        Integrating external payment API.</span>
-                                </div>
-                                <div class="duration">
-                                    <span class="label">Duration:</span>
-                                    <span class="value">3 months</span>
-                                </div>
-                            </dd>
-
-                            <dt v-cloak>{{ project1 }}</dt>
-                            <dd>
-                                <div class="position">
-                                    <span class="label">Position:</span>
-                                    <span class="value">Full Stack Web Developer</span>
-                                </div>
-                                <div class="technologies">
-                                    <span class="label">Technologies:</span>
-                                    <span class="value">PHP 7.1, Yii 2, PostgreSQL 9.6, Vue.js, Bootstrap, HTML, CSS,
-                                        jQuery,
-                                        Perfect Money API, AdvCash API,
-                                        Payeer API, block.io API, Ethereum parity API</span>
-                                </div>
-                                <div class="responsibilities">
-                                    <span class="label">Responsibilities:</span>
-                                    <span class="value">Implementing business logic, database design, frontend part.
-                                        Integrating external payment API.</span>
-                                </div>
-                                <div class="duration">
-                                    <span class="label">Duration:</span>
-                                    <span class="value">4 months</span>
-                                </div>
-                            </dd>
-
-                            <dt>MLBot for Skype</dt>
-                            <dd>Massive (and periodic) message sender, importing and adding contact list, automatic
-                                deletion
-                                of contacts. The backend is implemented on Node.js and PostgreSQL, the
-                                frontend is made using Electron, React.js.
-                            </dd>
-
-                            <dt>Evart Social Network</dt>
-                            <dd>
-                                The social network. Node.js + Marionette.js
-                                <a
-                                    href="https://github.com/kissarat/evart-social-network-node.js">https://github.com/kissarat/evart-social-network-node.js</a>
-                                and on Meteor.js + React
-                                <a
-                                    href="https://github.com/kissarat/evart-social-network-meteor">https://github.com/kissarat/evart-social-network-meteor</a>.
-                                <div class="duration">
-                                    <span class="label">Duration:</span>
-                                    <span class="value">10 months</span>
-                                </div>
-                            </dd>
-
-                            <dt>BestChoice Club</dt>
-                            <dd>
-                                <div class="position">
-                                    <span class="label">Position:</span>
-                                    <span class="value">Full Stack Web Developer</span>
-                                </div>
-                                <div class="technologies">
-                                    <span class="label">Technologies:</span>
-                                    <span class="value">PHP 5.6, Yii 2, PostgreSQL 9.4, Bootstrap, HTML, CSS, jQuery,
-                                        Perfect Money API, AdvCash API, NixMoney API</span>
-                                </div>
-                                <div class="responsibilities">
-                                    <span class="label">Responsibilities:</span>
-                                    <span class="value">Implementing business logic, database design. Integrating
-                                        external payment API.</span>
-                                </div>
-                                <div class="duration">
-                                    <span class="label">Duration:</span>
-                                    <span class="value">4 months</span>
-                                </div>
-                            </dd>
-
-                            <dt>IntelSCADA</dt>
-                            <dd>
-                                <div class="position">
-                                    <span class="label">Position:</span>
-                                    <span class="value">Full Stack Web Developer</span>
-                                </div>
-                                <div class="technologies">
-                                    <span class="label">Technologies:</span>
-                                    <span class="value">Python 3, tornado web framework, SVG</span>
-                                </div>
-                                <div class="responsibilities">
-                                    <span class="label">Responsibilities:</span>
-                                    <span class="value">Implementing editor for building sensors viewer</span>
-                                </div>
-                                <div class="duration">
-                                    <span class="label">Duration:</span>
-                                    <span class="value">4 months</span>
-                                </div>
-                            </dd>
-                        </dl>
+                            </div>
+                        </div>
                     </dd>
                     <dt>Education</dt>
                     <dd id="education">
@@ -420,7 +267,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.min.js"
         integrity="sha256-ui3vFTgbIIvd9ePh+wF+ju05O3jympV4FyFlpNMV2cw=" crossorigin="anonymous"></script>
     <script src="script.js"></script>
-    <div id="hired" style="opacity: 0">
+    <div id="hired" style="opacity: 0; display: none">
         <h1>Hired by <a href="http://www.ukeess.com/">UKEESS</a></h1>
     </div>
 </body>
