@@ -2,6 +2,7 @@ function main() {
   const isProduction = /(kissarat\.git(hub|lab)\.io|(local\.)?labiak\.org)$/.test(
       location.hostname
   );
+  const isDebug = 'object' === typeof localStorage && +localStorage.getItem('kissarat.debug') > 0;
   const isWide =
       "function" === typeof matchMedia &&
       matchMedia("(min-width: 768px)").matches;
@@ -22,13 +23,13 @@ function main() {
     });
   }
 
-  const labels = ["Description", "Position", "Website", "Technologies", "Responsibilities",  "Projects", "Duration"];
+  const labels = ["Description", "Position", "Website", "Technologies", "Responsibilities", "Projects", "Duration"];
 
   new Vue({
     el: "#app",
     data: {
       large: false,
-      original: 'aHR0cHM6Ly9raXNzYXJhdC5naXRodWIuaW8=' === btoa(location.origin),
+      original: isDebug || 'aHR0cHM6Ly9raXNzYXJhdC5naXRodWIuaW8=' === btoa(location.origin),
       jobs: [
         {
           name: "Indeema",
