@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
+    <title>Word Search</title>
+    <style>
+        body {
+            font-family: 'Ubuntu Mono', monospace;
+        }
+
+        ul {
+            padding-left: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .example {
+            margin-left: 40px;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+<h1>Search English words by pattern</h1>
+<div id="app">
+    <div v-if="words.length > 0">
+        <form>
+            <input type="search" v-model="search"/>
+            <label>
+                <input type="checkbox" v-model="contains"/>
+                contains
+            </label>
+            <label>
+                <input type="checkbox" v-model="regex"/>
+                regex
+            </label>
+            <span class="example">
+                <span class="single">single char - {{ regex ? '.' : '?' }}</span>
+                <span class="multiple">multiple chars - {{ regex ? '.*' : '*' }}</span>
+            </span>
+        </form>
+        <ul>
+            <li v-for="word in matches">{{word}}</li>
+        </ul>
+    </div>
+    <div v-else>
+        Loading English dictionary...
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script>
+  function dictionary(language = 'en') {
+    return fetch(`../dictionary/${language}.txt`)
+        .then(r => r.text())
+        .then(text => text.trim().split(/\s+/))
+  }
+
+  const data = {
+    search: '',
+    contains: true,
+    regex: false,
+    words: []
+  }
+
+  new Vue({
+    el: '#app',
+    data,
+    computed: {
+      pattern() {
+        const search = this.regex
+            ? this.search
+            : this.search
+                .replace(/\*/g, '.*')
+                .replace(/\?/g, '.')
+        return new RegExp(this.contains ? search : `^${search}$`, 'i')
+      },
+      matches() {
+        return this.words.filter(word => this.pattern.test(word))
+      }
+    }
+  })
+
+  dictionary()
+      .then(words => data.words.push(...words))
+</script>
+</body>
+</html>
