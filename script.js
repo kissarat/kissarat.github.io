@@ -28,6 +28,7 @@ function main() {
     el: "#app",
     data: {
       large: false,
+      original: 'aHR0cHM6Ly9raXNzYXJhdC5naXRodWIuaW8v' === btoa(location.origin),
       jobs: [
         {
           name: "Indeema",

@@ -253,7 +253,8 @@ article > dl > dd {
     display: block;
 }
 
-[v-cloak] .cloak a {
+[v-cloak] .cloak a,
+.foreign a {
     color: blue;
     text-decoration: underline;
     cursor: pointer;

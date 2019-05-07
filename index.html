@@ -193,10 +193,10 @@
                     <dd id="experience" class="robots-noindex" v-cloak>
                         <div class="cloak">
                             Something wrong happens. Please
-                            <a href="taras-labiak-resume.pdf">download</a>
+                            <a href="https://kissarat.github.io/taras-labiak-resume.pdf">download</a>
                             resume in PDF format
                         </div>
-                        <div>
+                        <div v-if="original">
                             <div class="item" v-for="job in jobs">
                                 <h4>{{ job.name }}</h4>
                                 <div class="properties">
@@ -206,6 +206,11 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div v-else class="foreign">
+                            You can see this section at <a href="https://kissarat.github.io/">kissarat.github.io</a> or
+                            <a href="https://kissarat.github.io/taras-labiak-resume.pdf">download</a>
+                            resume in PDF format
                         </div>
                     </dd>
                     <dt>Education</dt>
@@ -257,7 +262,7 @@
             </article>
         </div>
         <iframe src="https://en.wikipedia.org/wiki/Ethereum"></iframe>
-        <a id="pdf" href="taras-labiak-resume.pdf" title="Save as PDF"><img alt="Save as PDF"
+        <a id="pdf" href="https://kissarat.github.io/taras-labiak-resume.pdf" title="Save as PDF"><img alt="Save as PDF"
                 src="images/pdf.png" /></a>
     </div>
     <!--script src="track/public/polyfill.js?v=1536475558698"></script-->
@@ -266,7 +271,7 @@
         integrity="sha256-VBLiveTKyUZMEzJd6z2mhfxIqz3ZATCuVMawPZGzIfA=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.min.js"
         integrity="sha256-ui3vFTgbIIvd9ePh+wF+ju05O3jympV4FyFlpNMV2cw=" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="https://kissarat.github.io/script.js"></script>
     <div id="hired" style="opacity: 0; display: none">
         <h1>Hired by <a href="http://www.ukeess.com/">UKEESS</a></h1>
     </div>
