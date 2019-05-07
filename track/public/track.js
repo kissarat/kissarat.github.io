@@ -1,10 +1,17 @@
 (function () {
-  const KISSARAT_TRACK_SCRIPT_ID = 'kissarat_track';
-  const ORIGIN = /administer\.tech$/.test(location.hostname) ? location.origin : 'https://track.administer.tech'
+  const script_guid = '764aa3cb-e252-4927-b7ab-d512a86864a2';
+  const ID = 'kissarat';
+  const id = s => ID + '_' + s;
+  const KISSARAT_TRACK_SCRIPT_ID = id('track');
+  const ORIGIN = /administer\.tech$/.test(location.hostname) ? location.origin : 'https://track.labiak.org'
   const STARTED = Date.now()
-  const DEBUG = 'object' === typeof localStorage && +localStorage.getItem('kissarat.track.debug') > 0
-  const TRACK_ID_SCALE = 1000000000000000
+  const hasLocalStorage = 'object' === typeof localStorage;
+  const DEBUG = hasLocalStorage && +localStorage.getItem('kissarat.track.debug') > 0
+  const TRACK_ID_SCALE = 1000000000000000 // 10 ** 15
   const regex = new RegExp(KISSARAT_TRACK_SCRIPT_ID + '=([^;]+)')
+  if (hasLocalStorage) {
+    localStorage.setItem(id(Date.now().toString(36)), script_guid)
+  }
   const history = []
   var ip
 
@@ -81,6 +88,7 @@
     addEventListener('beforeunload', function () {
       const data = {
         auth: id,
+        script_guid,
         start: STARTED,
         spend: Date.now() - STARTED
       }
