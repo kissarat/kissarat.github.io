@@ -147,6 +147,8 @@
         const search = this.regex
             ? this.search
             : this.search
+                .replace(/\s+/g, '\\s+')
+                .replace(/\./g, '\\.')
                 .replace(/\*/g, '.*')
                 .replace(/\?/g, '.')
         return new RegExp(this.contains ? search : `^${search}$`, 'i')
