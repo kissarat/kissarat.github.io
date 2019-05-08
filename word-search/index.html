@@ -21,48 +21,107 @@
             margin-left: 40px;
             opacity: 0.5;
         }
+
+        .languages {
+            margin-bottom: 12px;
+        }
+
+        .language {
+            margin-right: 8px;
+        }
+
+        .language:not(.active) {
+            text-decoration: underline;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 <h1>Search English words by pattern</h1>
 <div id="app">
-    <div v-if="words.length > 0">
-        <form>
-            <input type="search" v-model="search"/>
-            <label>
-                <input type="checkbox" v-model="contains"/>
-                contains
-            </label>
-            <label>
-                <input type="checkbox" v-model="regex"/>
-                regex
-            </label>
-            <span class="example">
+    <div class="languages">
+        <span>Language:</span>
+        <span v-for="(name, code) in languages"
+              v-bind:class="{active: language === code, language: true}"
+              v-on:click="dictionary(code)">{{ name }}</span>
+    </div>
+    <div>
+        <div v-if="words.length > 0">
+            <form>
+                <input type="search" v-model="search"/>
+                <label>
+                    <input type="checkbox" v-model="contains"/>
+                    contains
+                </label>
+                <label>
+                    <input type="checkbox" v-model="regex"/>
+                    regex
+                </label>
+                <span class="example">
                 <span class="single">single char - {{ regex ? '.' : '?' }}</span>
                 <span class="multiple">multiple chars - {{ regex ? '.*' : '*' }}</span>
             </span>
-        </form>
-        <ul>
-            <li v-for="word in matches">{{word}}</li>
-        </ul>
-    </div>
-    <div v-else>
-        Loading English dictionary...
+            </form>
+            <ul>
+                <li v-for="word in matches">{{word}}</li>
+            </ul>
+        </div>
+        <div v-else>
+            Loading dictionary...
+        </div>
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
 <script>
-  function dictionary(language = 'en') {
-    return fetch(`../dictionary/${language}.txt`)
-        .then(r => r.text())
-        .then(text => text.trim().split(/\s+/))
+  const languages = {
+    en: 'English',
+    ru: 'Russian'
   }
+  const dictionaries = {}
+  for (const code in languages) {
+    dictionaries[code] = []
+  }
+
+  const PAGE_SIZE = 2000;
 
   const data = {
     search: '',
+    languages,
     contains: true,
+    language: 'en',
     regex: false,
     words: []
+  }
+
+  function choose(language) {
+    const d = dictionaries[language]
+    for(let i = 0; true; i += PAGE_SIZE) {
+      const part = d.slice(i, PAGE_SIZE)
+      if (part.length > 0) {
+        data.words.push(...part)
+      }
+      else {
+        break;
+      }
+    }
+    data.language = language
+  }
+
+  function dictionary(language = 'en') {
+    if (data.words.length > 0) {
+      data.words.splice(0, data.words.length);
+    }
+    if (dictionaries[language].length > 0) {
+      choose(language)
+    }
+    else {
+      fetch(`../dictionary/${language}.txt`)
+          .then(r => r.text())
+          .then(text => {
+            dictionaries[language] = text.trim().split(/\s+/)
+            choose(language)
+          })
+    }
   }
 
   new Vue({
@@ -80,11 +139,13 @@
       matches() {
         return this.words.filter(word => this.pattern.test(word))
       }
+    },
+    methods: {
+      dictionary
     }
   })
 
   dictionary()
-      .then(words => data.words.push(...words))
 </script>
 </body>
 </html>
