@@ -53,8 +53,8 @@
     return build(x, y, () => 0)
   }
 
-  function cut(A, left = 0, top = 0) {
-    return filter(A, (a, i, j) => i >= left && j >= top)
+  function cut(A, rx, ry) {
+    return filter(A, (a, i, j) => rx.indexOf(i) >= 0)
   }
 
   function size(A) {
@@ -78,7 +78,7 @@
     return array;
   }
 
-  function except(s, v) {
+  function exc(s, v) {
     return s.filter(i => i !== v);
   }
 
@@ -89,7 +89,7 @@
     else {
       for (const i of rx) {
         const z = (-1) ** (i + j) === -1 ? '- ' : '+ ';
-        let exp = Array.from(determinantFactory(except(rx, i), j + 1));
+        let exp = Array.from(determinantFactory(exc(rx, i), j + 1));
         exp = exp.length > 1 ? `(${exp.join(' ')})` : exp[0];
         yield `${z} get(${i},${j}) * ${exp}`
         // yield [i, j, Array.from(determinator(except(rx, i), j + 1))];
@@ -105,6 +105,7 @@
       return cached.cache[s];
     };
     cached.cache = [];
+    cached.cache.for = (...args) => args.map(arg => cached(arg));
     return cached;
   }
 
@@ -115,7 +116,7 @@
   function detFactory(rx, j = 0) {
     if (rx.length > 1) {
       return get => rx.map(
-          i => ((-1) ** (i + j)) * get(i, j) * detFactory(except(rx, i), j + 1)(get)
+          i => ((-1) ** (i + j)) * get(i, j) * detFactory(exc(rx, i), j + 1)(get)
       ).reduce((a, b) => a + b, 0)
     }
     return get => get(rx[0], j);
@@ -123,25 +124,21 @@
 
   const det2 = A => detFactory(range(A.length))(get.of(A));
 
-  function determinant(A, j = 0) {
+  function det0(A, j = 0) {
     const s = A.length;
     if (1 === s) {
       return get(A)
     }
     let d = 0;
     for (let i = 0; i < s; i++) {
-      d += (-1) ** (i + j) * determinant(cut(A, 1, i), j + 1);
+      d += (-1) ** (i + j) * det0(cut(A, 1, i), j + 1);
     }
     return d;
   }
 
-  // function scalar(A, op) {
-  //   return A.map((row, i) => row.map((a, j) => op(a,)));
-  // }
-
-  Array.prototype.show = function () {
-    return this.map(row => row.join(' ')).join('\n')
-  };
+  function show(A) {
+    return A.map(row => row.join(' ')).join('\n')
+  }
 
   const invoke = (A, fn) => (...args) => fn(A, ...args);
 
@@ -149,15 +146,82 @@
     return (...args) => this(A, ...args);
   };
 
-  [vector, size, transpose, add, mult, cut].forEach(function (fn) {
+  [vector, size, transpose, add, mult, cut, show].forEach(function (fn) {
     Array.prototype[fn.name] = function () {
       return fn(this, ...arguments);
     }
   });
 
-  D = build(1, 1);
-  E = build(2, 2);
-  F = build(3, 3);
+  function test(fn, check, items) {
+    let time = 0;
+    for(const item of items) {
+      const start = performance.now();
+      const result = fn(item);
+      time += performance.now() - start;
+      if (!check(item, result)) {
+        return item;
+      }
+    }
+    return time;
+  }
+
+  function mutual(fn1, fn2, items) {
+    const check = det => (item, result) => det(item) === result;
+    return [
+        test(fn1, check(fn2), items),
+        test(fn2, check(fn1), items),
+    ];
+  }
+
+  function detTest() {
+    const items = range(100)
+        .map(() => random(5, 1))
+        .map(size => build(size, size));
+
+    const [d2, d1] = mutual(det2, det1, items);
+    return {
+      items: items.map(show).join('\n\n'),
+      d1, d2
+    }
+  }
+
+  const elementaryOperations = {
+    present: (B, a) => B.indexOf(a) >= 0
+  };
+
+  function createOperations(operations) {
+    const {present} = operations;
+
+    function put(items, A = []) {
+      for(const item of items) {
+        if (!present(A, item)) {
+          A.push(item);
+        }
+      }
+    }
+
+    function conjunction(A, B) {
+      return filter(A, a => present(B, a))
+    }
+
+    function expect(A, B) {
+      return filter(A, a => !present(B, a))
+    }
+
+    return {
+      put,
+      conjunction
+    }
+  }
+
+  const {put, conjunction} = createOperations(elementaryOperations);
+
+
+
+  // for(const i of [1, 2, 3, 4, 5]) {
+  //   determinator(i);
+  // }
+
 </script>
 </body>
 </html>
