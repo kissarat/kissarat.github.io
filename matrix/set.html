@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  const elementaryOperations = {
+    present: (B, a) => B.indexOf(a) >= 0
+  };
+
+  function createOperations(operations) {
+    const {present} = operations;
+
+    function put(items, A = []) {
+      for (const item of items) {
+        if (!present(A, item)) {
+          A.push(item);
+        }
+      }
+    }
+
+    function* range(s, i = 0) {
+      for (; i < s; i++) {
+        yield i
+      }
+    }
+
+    function* filter(items, check) {
+      for (const item of items) {
+        if (check(item)) {
+          yield item;
+        }
+      }
+    }
+
+    function conjunction(A, B) {
+      return A.filter(a => present(B, a))
+    }
+
+    function arrayEquals(A, B) {
+      if (A.length !== B.length) {
+        return false;
+      }
+      for(let i = 0; i < A.length; i++) {
+        if (A[i] !== B[i]) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function* compose(items, ...args) {
+      if (args.length > 0) {
+        for (const item of items) {
+          for (const part of compose(...args)) {
+            yield [item, ...part]
+          }
+        }
+      }
+      else {
+        for (const item of items) {
+          yield [item];
+        }
+      }
+    }
+
+    function* space(...args) {
+      yield * compose(...args.map(arg => Array.from(range(arg))))
+    }
+
+    function* map(A, fn) {
+      for(const a of A) {
+        yield fn(a);
+      }
+    }
+
+    return {
+      put,
+      conjunction,
+      compose,
+      filter,
+      range,
+      space,
+      arrayEquals,
+      map,
+      ...operations
+    }
+  }
+
+  const basic = createOperations(elementaryOperations);
+
+  const {put, conjunction, compose, filter, range, space, arrayEquals} = basic;
+
+  const comb = createOperations({
+    present: (B, a) => B.find(b => arrayEquals(a, b))
+  });
+
+  function matrixOperations() {
+    function create(x, y, initial = () => 0) {
+      const m = Array.from(range(x)).map(() => Array.from(range(y)).map(initial));
+
+      return m;
+    }
+
+    function index(A) {
+      return A.map((row, i) => row.map((item, j) => [i, j, item]))
+    }
+
+    function assemble(indexed, defaultValue = 0) {
+      return function (i, j) {
+        const found = indexed.find(idx => i === idx[0] && j === idx[1]);
+        return found ? found[2] : defaultValue
+      }
+    }
+
+    return {
+      create,
+      index
+    }
+  }
+
+  matrix = matrixOperations();
+
+  function simplify(...args) {
+    const tokens = [];
+    for(const token of args) {
+      if (token) {
+        if (token instanceof Array) {
+          if (token.length > 1) {
+            tokens.push(simplify(...token));
+          }
+          else if (token.length === 1) {
+            tokens.push(...simplify(token[0]));
+          }
+        }
+        else if ('function' === typeof token) {
+          tokens.push(...simplify(...token()))
+        }
+        else {
+          tokens.push(token)
+        }
+      }
+    }
+    return tokens;
+  }
+
+  function address(name, ...args) {
+    return () => [name, ...args.map(arg => '[' + arg + ']')]
+  }
+
+  function generate(...args) {
+    const strings = [];
+    for(const token of simplify(...args)) {
+      strings.push(token instanceof Array ? '(' + generate(...token) + ')' : token.toString())
+    }
+    return strings.join('');
+  }
+
+  function declare(args, body) {
+    const a = args.join(',');
+    const b = generate(...body);
+    return eval(`(${a}) => ${b}`);
+  }
+
+  function* determinantFactory(rx, j = 0) {
+    if (rx.length === 1) {
+      yield address('A', rx[0], j);
+    }
+    else {
+      for (const i of rx) {
+        yield (-1) ** (i + j) === -1 ? '-' : '+';
+        yield address('A', i, j);
+        yield '*';
+        const newRX = rx.filter(ii => ii !== i);
+        yield Array.from(determinantFactory(newRX, j + 1));
+      }
+    }
+  }
+
+  function random(max = 10, min = 0) {
+    return min + Math.floor(max * Math.random())
+  }
+
+  function cache(fn) {
+    const cached = function (s) {
+      if (!cached.cache[s]) {
+        cached.cache[s] = fn(s);
+      }
+      return cached.cache[s];
+    };
+    cached.cache = [];
+    cached.cache.for = (...args) => args.map(arg => cached(arg));
+    return cached;
+  }
+
+  const matrixDet = cache(s => declare(['A'], determinantFactory(Array.from(range(s)))));
+  matrixDet.cache.for(1, 2, 3, 4, 5);
+  const det = A => matrixDet(A.length)(A)
+
+</script>
+</body>
+</html>

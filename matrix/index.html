@@ -154,7 +154,7 @@
 
   function test(fn, check, items) {
     let time = 0;
-    for(const item of items) {
+    for (const item of items) {
       const start = performance.now();
       const result = fn(item);
       time += performance.now() - start;
@@ -168,8 +168,8 @@
   function mutual(fn1, fn2, items) {
     const check = det => (item, result) => det(item) === result;
     return [
-        test(fn1, check(fn2), items),
-        test(fn2, check(fn1), items),
+      test(fn1, check(fn2), items),
+      test(fn2, check(fn1), items),
     ];
   }
 
@@ -184,43 +184,6 @@
       d1, d2
     }
   }
-
-  const elementaryOperations = {
-    present: (B, a) => B.indexOf(a) >= 0
-  };
-
-  function createOperations(operations) {
-    const {present} = operations;
-
-    function put(items, A = []) {
-      for(const item of items) {
-        if (!present(A, item)) {
-          A.push(item);
-        }
-      }
-    }
-
-    function conjunction(A, B) {
-      return filter(A, a => present(B, a))
-    }
-
-    function expect(A, B) {
-      return filter(A, a => !present(B, a))
-    }
-
-    return {
-      put,
-      conjunction
-    }
-  }
-
-  const {put, conjunction} = createOperations(elementaryOperations);
-
-
-
-  // for(const i of [1, 2, 3, 4, 5]) {
-  //   determinator(i);
-  // }
 
 </script>
 </body>
