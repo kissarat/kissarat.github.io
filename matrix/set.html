@@ -43,7 +43,7 @@
       if (A.length !== B.length) {
         return false;
       }
-      for(let i = 0; i < A.length; i++) {
+      for (let i = 0; i < A.length; i++) {
         if (A[i] !== B[i]) {
           return false;
         }
@@ -67,11 +67,11 @@
     }
 
     function* space(...args) {
-      yield * compose(...args.map(arg => Array.from(range(arg))))
+      yield* compose(...args.map(arg => Array.from(range(arg))))
     }
 
     function* map(A, fn) {
-      for(const a of A) {
+      for (const a of A) {
         yield fn(a);
       }
     }
@@ -125,7 +125,7 @@
 
   function simplify(...args) {
     const tokens = [];
-    for(const token of args) {
+    for (const token of args) {
       if (token) {
         if (token instanceof Array) {
           if (token.length > 1) {
@@ -150,15 +150,23 @@
     return () => [name, ...args.map(arg => '[' + arg + ']')]
   }
 
+  function invoke(name, ...args) {
+    return () => [name, '(', args.join(','), ')']
+  }
+
+  function expression(...args) {
+    return () => [...args]
+  }
+
   function generate(...args) {
     const strings = [];
-    for(const token of simplify(...args)) {
+    for (const token of simplify(...args)) {
       strings.push(token instanceof Array ? '(' + generate(...token) + ')' : token.toString())
     }
     return strings.join('');
   }
 
-  function declare(args, body) {
+  function declare(args, ...body) {
     const a = args.join(',');
     const b = generate(...body);
     return eval(`(${a}) => ${b}`);
@@ -167,15 +175,16 @@
   function* determinantFactory(rx, j = 0) {
     if (rx.length === 1) {
       yield address('A', rx[0], j);
+      return;
     }
-    else {
-      for (const i of rx) {
-        yield (-1) ** (i + j) === -1 ? '-' : '+';
-        yield address('A', i, j);
-        yield '*';
-        const newRX = rx.filter(ii => ii !== i);
-        yield Array.from(determinantFactory(newRX, j + 1));
-      }
+    for (const i of rx) {
+      const newRX = rx.filter(ii => ii !== i);
+      yield expression(
+          (-1) ** (i + j) === -1 ? '-' : '+',
+          address('A', i, j),
+          '*',
+          [...determinantFactory(newRX, j + 1)]
+      );
     }
   }
 
@@ -195,7 +204,7 @@
     return cached;
   }
 
-  const matrixDet = cache(s => declare(['A'], determinantFactory(Array.from(range(s)))));
+  const matrixDet = cache(s => declare(['A'], ...determinantFactory([...range(s)])));
   matrixDet.cache.for(1, 2, 3, 4, 5);
   const det = A => matrixDet(A.length)(A)
 
