@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Matrix</title>
+</head>
+<body>
+<script>
+  function get(A, i = 0, j = 0) {
+    return A[i][j];
+  }
+
+  function abstract(method) {
+    return (A, op) => ('function' === typeof A ? A : A[method])((row, i) => row[method]((a, j) => op(a, i, j)))
+  }
+
+  const map = abstract('map');
+  const filter = abstract('filter');
+
+  function copy(A) {
+    return map(A, a => a)
+  }
+
+  function vector(A, B, op) {
+    return map(A, (a, i, j) => op(a, get(B, j, i)))
+  }
+
+  function add(A, B) {
+    return vector(A, B, (a, b) => a + b)
+  }
+
+  function mult(A, B) {
+    return vector(A, B, (a, b) => a * b)
+  }
+
+  function random(max = 10, min = 0) {
+    return min + Math.floor(max * Math.random())
+  }
+
+  function build(x, y, op = () => random()) {
+    const A = [];
+    for (let i = 0; i < x; i++) {
+      const row = [];
+      for (let j = 0; j < y; j++) {
+        row.push(op(i, j))
+      }
+      A.push(row);
+    }
+    return A;
+  }
+
+  function zero(x, y) {
+    return build(x, y, () => 0)
+  }
+
+  function cut(A, left = 0, top = 0) {
+    return filter(A, (a, i, j) => i >= left && j >= top)
+  }
+
+  function size(A) {
+    return [A.length, A[0].length];
+  }
+
+  function transpose(A) {
+    const [x, y] = size(A);
+    return build(y, x, (i, j) => get(A, j, i));
+  }
+
+  function identity(size) {
+    return build(size, size, (i, j) => i === j ? 1 : 0);
+  }
+
+  function range(s) {
+    const array = [];
+    for (let i = 0; i < s; i++) {
+      array.push(i)
+    }
+    return array;
+  }
+
+  function except(s, v) {
+    return s.filter(i => i !== v);
+  }
+
+  function* determinantFactory(rx, j = 0) {
+    if (rx.length === 1) {
+      yield `get(${rx[0]},${j})`
+    }
+    else {
+      for (const i of rx) {
+        const z = (-1) ** (i + j) === -1 ? '- ' : '+ ';
+        let exp = Array.from(determinantFactory(except(rx, i), j + 1));
+        exp = exp.length > 1 ? `(${exp.join(' ')})` : exp[0];
+        yield `${z} get(${i},${j}) * ${exp}`
+        // yield [i, j, Array.from(determinator(except(rx, i), j + 1))];
+      }
+    }
+  }
+
+  function cache(fn) {
+    const cached = function (s) {
+      if (!cached.cache[s]) {
+        cached.cache[s] = fn(s);
+      }
+      return cached.cache[s];
+    };
+    cached.cache = [];
+    return cached;
+  }
+
+  const determinator = cache(s => eval('get => ' + Array.from(determinantFactory(range(s))).join('')));
+
+  const det1 = A => determinator(A.length)(get.of(A));
+
+  function detFactory(rx, j = 0) {
+    if (rx.length > 1) {
+      return get => rx.map(
+          i => ((-1) ** (i + j)) * get(i, j) * detFactory(except(rx, i), j + 1)(get)
+      ).reduce((a, b) => a + b, 0)
+    }
+    return get => get(rx[0], j);
+  }
+
+  const det2 = A => detFactory(range(A.length))(get.of(A));
+
+  function determinant(A, j = 0) {
+    const s = A.length;
+    if (1 === s) {
+      return get(A)
+    }
+    let d = 0;
+    for (let i = 0; i < s; i++) {
+      d += (-1) ** (i + j) * determinant(cut(A, 1, i), j + 1);
+    }
+    return d;
+  }
+
+  // function scalar(A, op) {
+  //   return A.map((row, i) => row.map((a, j) => op(a,)));
+  // }
+
+  Array.prototype.show = function () {
+    return this.map(row => row.join(' ')).join('\n')
+  };
+
+  const invoke = (A, fn) => (...args) => fn(A, ...args);
+
+  Function.prototype.of = function (A) {
+    return (...args) => this(A, ...args);
+  };
+
+  [vector, size, transpose, add, mult, cut].forEach(function (fn) {
+    Array.prototype[fn.name] = function () {
+      return fn(this, ...arguments);
+    }
+  });
+
+  D = build(1, 1);
+  E = build(2, 2);
+  F = build(3, 3);
+</script>
+</body>
+</html>
