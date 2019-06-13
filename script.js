@@ -25,6 +25,14 @@ function main() {
 
   const labels = ["Description", "Position", "Website", "Technologies", "Responsibilities", "Projects", "Duration"];
 
+  function anchor(hostname) {
+    return '<a href="https://' + hostname + '/">' + hostname + '</a>';
+  }
+
+  function anchorList(encoded) {
+    return atob(encoded).split(' ').map(anchor).join(', ')
+  }
+
   new Vue({
     el: "#app",
     data: {
@@ -32,16 +40,16 @@ function main() {
       original: isDebug || 'aHR0cHM6Ly9raXNzYXJhdC5naXRodWIuaW8=' === btoa(location.origin),
       jobs: [
         {
-          name: "Indeema",
+          name: atob("SW5kZWVtYQ=="),
           position: "Web Backend Developer",
-          website: "<a href=\"https://indeema.com/\">https://indeema.com/</a>",
+          website: anchorList("aW5kZWVtYS5jb20="),
           technologies: "Node.js, strapi 3, express.js, Stripe, Ethereum Solidity (ERC20), AWS EC2, MQTT (AWS IoT Core), MongoDB (Mongoose), microservices, AWS S3, AWS SES",
           responsibilities: "Developing architecture and implementation of backend on Node.js, MongoDB",
-          duration: "6 months",
-          projects: "<a href=\"https://ubreez.com\">ubreez.com</a>, <a href=\"https://synqiubique.co\">synqiubique.co</a> (support), <a href=\"https://wasihub.com\">wasihub.com</a>"
+          duration: "5 months",
+          projects: anchorList('dWJyZWV6LmNvbSBzeW5xaXViaXF1ZS5jbyB3YXNpaHViLmNvbQ==')
         },
         {
-          name: "Ocean of Ethereum",
+          name: atob("T2NlYW4gb2YgRXRoZXJldW0="),
           position: "Full Stack Web Developer",
           technologies: "PHP 7.2, Yii 2, PostgreSQL 10, Vue.js, Ethereum parity API",
           responsibilities: "Implementing business logic, database design, frontend part. Integrating with Ethereum node API (<a href=\"https://www.parity.io/\">parity</a>).",
