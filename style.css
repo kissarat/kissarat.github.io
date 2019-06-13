@@ -259,3 +259,16 @@ article > dl > dd {
     text-decoration: underline;
     cursor: pointer;
 }
+
+#hired button {
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+#hired button:hover {
+    background-color: transparent;
+    color: black;
+}

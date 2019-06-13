@@ -123,6 +123,7 @@ function main() {
   }
 
   addEventListener("keyup", close);
+  document.querySelector('#hired button').addEventListener('click', close);
 
   setTimeout(function () {
     hired.style.removeProperty('display');
