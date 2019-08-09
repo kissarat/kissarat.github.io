@@ -23,7 +23,7 @@ function main() {
     });
   }
 
-  const labels = ["Description", "Position", "Website", "Technologies", "Responsibilities", "Projects", "Duration", "Hired"];
+  const labels = ["Description", "Position", "Website", "Technologies", "Responsibilities", "Projects", "Duration", "Since"];
 
   function anchor(hostname) {
     return '<a href="https://' + hostname + '/">' + hostname + '</a>';
@@ -43,7 +43,7 @@ function main() {
           name: 'Confidential',
           position: "Frontend Developer",
           technologies: "React 16, Redux, Saga, express.js, immutable.js, jest, enzyme, Terraform, Jenkins, AWS",
-          hired: moment('2019-03-11').fromNow(),
+          since: new Date('2019-03-11T11:00:00.000Z').toLocaleDateString(),
           projects: 'Confidential'
         },
         {

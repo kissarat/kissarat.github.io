@@ -282,7 +282,7 @@ article > dl > dd {
     content: 'Confidential'
 }
 
-.item:first-child .property-hired .value {
+.item:first-child .property-since .value {
     font-weight: bold;
     text-decoration: underline;
 }
