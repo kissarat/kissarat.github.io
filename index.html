@@ -70,7 +70,7 @@
                      v-bind:class="{large: large}"
                      v-on:click="large = !large"
                     alt="Taras Labiak"
-                    src="http://i.imgur.com/lkuglvm.jpg" />
+                    src="avatar.jpg" />
                 <div>
                     <h1>
                         <span itemprop="givenName">Taras</span>
@@ -190,6 +190,11 @@
                             <li><a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel">MVVM</a>
                             </li>
                             <li><a href="https://en.wikipedia.org/wiki/Software_design_pattern" class="notranslate">Design patterns</a></li>
+                            <li><a href="https://www.npmjs.com/package/immutable" class="notranslate">immutable.js</a></li>
+                            <li><a href="https://www.npmjs.com/package/jest" class="notranslate">Jest</a></li>
+                            <li><a href="https://www.npmjs.com/package/enzyme" class="notranslate">Enzyme</a></li>
+                            <li><a href="https://en.wikipedia.org/wiki/Terraform_(software)" class="notranslate">Terraform</a></li>
+                            <li><a href="https://en.wikipedia.org/wiki/Jenkins_(software)" class="notranslate">Jenkins</a></li>
                         </ul>
                     </dd>
                     <dt>Experience</dt>
@@ -201,11 +206,13 @@
                         </div>
                         <div v-if="original">
                             <div class="item" v-for="job in jobs">
-                                <h4 class="notranslate">{{ job.name }}</h4>
+                                <h4 class="notranslate confidential" v-if="job.name === 'Confidential'"></h4>
+                                <h4 class="notranslate" v-else>{{ job.name }}</h4>
                                 <div class="properties">
-                                    <div v-for="property in describe(job)" v-if="property">
+                                    <div v-bind:class="{['property-' + property.key]: true}" v-for="property in describe(job)" v-if="property">
                                         <span class="label">{{ property.label }}:</span>
-                                        <span class="value" v-html="property.value"></span>
+                                        <span class="value confidential" v-if="property.value === 'Confidential'"></span>
+                                        <span class="value" v-else v-html="property.value"></span>
                                     </div>
                                 </div>
                             </div>
@@ -274,7 +281,7 @@
         integrity="sha256-VBLiveTKyUZMEzJd6z2mhfxIqz3ZATCuVMawPZGzIfA=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.min.js"
         integrity="sha256-ui3vFTgbIIvd9ePh+wF+ju05O3jympV4FyFlpNMV2cw=" crossorigin="anonymous"></script>
-    <script src="https://kissarat.github.io/script.js"></script>
+    <script src="script.js"></script>
     <div id="hired" style="opacity: 0; display: none">
         <h1>I am hired</h1>
         <button type="button">OK</button>

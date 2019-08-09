@@ -23,7 +23,7 @@ function main() {
     });
   }
 
-  const labels = ["Description", "Position", "Website", "Technologies", "Responsibilities", "Projects", "Duration"];
+  const labels = ["Description", "Position", "Website", "Technologies", "Responsibilities", "Projects", "Duration", "Hired"];
 
   function anchor(hostname) {
     return '<a href="https://' + hostname + '/">' + hostname + '</a>';
@@ -39,6 +39,13 @@ function main() {
       large: false,
       original: isDebug || 'aHR0cHM6Ly9raXNzYXJhdC5naXRodWIuaW8=' === btoa(location.origin),
       jobs: [
+        {
+          name: 'Confidential',
+          position: "Frontend Developer",
+          technologies: "React 16, Redux, Saga, express.js, immutable.js, jest, enzyme, Terraform, Jenkins, AWS",
+          hired: moment('2019-03-11').fromNow(),
+          projects: 'Confidential'
+        },
         {
           name: atob("SW5kZWVtYQ=="),
           position: "Web Backend Developer",

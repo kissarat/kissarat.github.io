@@ -272,3 +272,17 @@ article > dl > dd {
     background-color: transparent;
     color: black;
 }
+
+.confidential {
+    font-style: italic;
+    opacity: 0.5;
+}
+
+.confidential::after {
+    content: 'Confidential'
+}
+
+.item:first-child .property-hired .value {
+    font-weight: bold;
+    text-decoration: underline;
+}
