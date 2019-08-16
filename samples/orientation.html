@@ -38,7 +38,7 @@
 </div>
 <script>
     function showOrientation() {
-        area.innerHTML = `Type: ${screen.orientation.type}<br/>Angle: ${screen.orientation.angle}`;
+        area.innerHTML = `Type: ${screen.orientation.type}<br/>Angle: ${screen.orientation.angle}<br/>Click to fullscreen`;
     }
 
     addEventListener('orientationchange', showOrientation);
@@ -58,6 +58,10 @@
         button.addEventListener('click', () => screen.orientation.lock(name));
         controls.appendChild(button);
     }
+
+    document.body.addEventListener('click', function () {
+        document.body.requestFullscreen();
+    })
 </script>
 </body>
 </html>
