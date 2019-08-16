@@ -44,7 +44,15 @@
     addEventListener('orientationchange', showOrientation);
     showOrientation();
 
-    for(const name of ['portrait', 'landscape', 'portrait-primary', 'portrait-secondary']) {
+    const orientations = [
+        'landscape',
+        'landscape-primary',
+        'landscape-secondary',
+        'portrait',
+        'portrait-primary',
+        'portrait-secondary',
+    ];
+    for(const name of orientations) {
         const button = document.createElement('button');
         button.innerHTML = name;
         button.addEventListener('click', () => screen.orientation.lock(name));
