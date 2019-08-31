@@ -147,6 +147,42 @@ function main() {
   setTimeout(function () {
     hired.style.opacity = 1;
   }, 7000);
+
+  function fetchJSON(url) {
+    if ('function' === typeof window.fetch) {
+      return window.fetch(url)
+          .then(function (r) {
+            return r.json();
+          })
+    } else {
+      console.warn('Cannot load JSON')
+    }
+  }
+
+  if (navigator.languages
+      && navigator.languages.length > 0
+      && navigator.languages.indexOf('ru') >= 0
+      && localStorage.getItem('language') !== 'en') {
+    fetchJSON('/i18n/ru.json')
+        .then(function (json) {
+          for (const selector in json) {
+            const elements = document.querySelectorAll(selector);
+            if (elements.length > 0) {
+              elements[0].innerHTML = json[selector];
+            }
+            if (elements.length !== 1) {
+              console.warn("Selector '" + selector + "' found " + elements.length + ' times for "ru"');
+            }
+          }
+        });
+
+    const english = document.querySelector('.english');
+    english.addEventListener('click', function () {
+      localStorage.setItem('language', 'en');
+      location.reload();
+    });
+    english.style.removeProperty('display');
+  }
 }
 
 document.addEventListener("DOMContentLoaded", main);

@@ -1,5 +1,5 @@
 body {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 #app {
@@ -73,18 +73,6 @@ article > dl > dd > dl > dt {
 #pdf > img {
     width: 64px;
     height: 64px;
-}
-
-@media (min-width: 800px) {
-    header {
-        width: 768px;
-    }
-
-    #pdf {
-        position: fixed;
-        right: 8px;
-        bottom: 8px;
-    }
 }
 
 @media (max-width: 510px) {
@@ -285,4 +273,35 @@ article > dl > dd {
 .item:first-child .property-since .value {
     font-weight: bold;
     text-decoration: underline;
+}
+
+.english {
+    background: white;
+    padding: 4px 6px;
+    border: 1px solid black;
+    border-radius: 0;
+    margin-bottom: 6px;
+    position: fixed;
+    right: 8px;
+    bottom: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media (min-width: 800px) {
+    header {
+        width: 768px;
+    }
+
+    #pdf {
+        position: fixed;
+        right: 8px;
+        bottom: 8px;
+    }
+
+    .english {
+        top: 8px;
+        bottom: auto;
+    }
 }

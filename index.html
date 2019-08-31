@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="PHP, Node.js, Python and Go Full Stack Developer" />
     <title>Taras Labiak - Resume</title>
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
@@ -76,10 +76,11 @@
                         <span itemprop="givenName">Taras</span>
                         <span itemprop="familyName">Labiak</span>
                     </h1>
+                    <button style="display: none" class="english" type="button">EN</button>
                     <h2 class="notranslate">PHP, Node.js, Python Full Stack Developer</h2>
                     <!--<a class="export">PDF</a>-->
                     <div class="abstract">
-                        <div class="tile">
+                        <div class="tile age">
                             <div class="label">Age</div>
                             <div class="value">29</div>
                         </div>
@@ -87,17 +88,17 @@
                             <div class="label">Email</div>
                             <a itemprop="email" href="mailto:kissarat@gmail.com" class="value">kissarat@gmail.com</a>
                         </div>
-                        <div class="tile">
+                        <div class="tile location">
                             <div class="label">Location</div>
                             <div itemprop="address" class="value">Lviv, Ukraine</div>
                         </div>
-                        <div class="tile">
+                        <div class="tile phone">
                             <div class="label">Phone</div>
                             <a itemprop="telephone" href="tel:+380671541943" class="value">+380671541943</a>
                         </div>
-                        <div class="tile">
+                        <div class="tile experience">
                             <div class="label">Experience</div>
-                            <div class="value">3 years</div>
+                            <div class="value">4 years</div>
                         </div>
                         <div class="tile">
                             <div class="label">Skype</div>
@@ -107,7 +108,7 @@
                             <div class="label">Facebook</div>
                             <a href="https://www.facebook.com/kissarat" class="value">www.facebook.com/kissarat</a>
                         </div>
-                        <div>
+                        <div class="tile website">
                             <div class="label">Website</div>
                             <a itemprop="url" href="https://kissarat.github.io/" class="value">kissarat.github.io</a>
                         </div>
@@ -119,10 +120,10 @@
             </header>
             <article>
                 <dl>
-                    <dt>Summary</dt>
-                    <dd itemprop="description">
+                    <dt class="skills">Summary</dt>
+                    <dd id="skills" itemprop="description">
                         <ul>
-                            <li>Software designing and architecting</li>
+                            <li class="engineering">Software Engineering</li>
                             <li><a href="https://en.wikipedia.org/wiki/PHP">PHP</a></li>
                             <li class="notranslate"><a href="https://en.wikipedia.org/wiki/JavaScript">JavaScript</a>/ES6</li>
                             <li><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a></li>
@@ -197,12 +198,12 @@
                             <li><a href="https://en.wikipedia.org/wiki/Jenkins_(software)" class="notranslate">Jenkins</a></li>
                         </ul>
                     </dd>
-                    <dt>Experience</dt>
+                    <dt class="experience">Experience</dt>
                     <dd id="experience" class="robots-noindex" v-cloak>
                         <div class="cloak">
-                            Something wrong happens. Please
-                            <a href="https://kissarat.github.io/taras-labiak-resume.pdf">download</a>
-                            resume in PDF format
+                            <span class="please">Something wrong happens. Please</span>
+                            <a class="download" href="https://kissarat.github.io/taras-labiak-resume.pdf">download</a>
+                            <span class="pdf">resume in PDF format</span>
                         </div>
                         <div v-if="original">
                             <div class="item" v-for="job in jobs">
@@ -218,28 +219,30 @@
                             </div>
                         </div>
                         <div v-else class="foreign">
-                            You can see this section at <a href="https://kissarat.github.io/">kissarat.github.io</a> or
-                            <a href="https://kissarat.github.io/taras-labiak-resume.pdf">download</a>
-                            resume in PDF format
+                            <span class="can-see">You can see this section at</span>
+                            <a href="https://kissarat.github.io/">kissarat.github.io</a>
+                            <span class="or">or</span>
+                            <a class="download" href="https://kissarat.github.io/taras-labiak-resume.pdf">download</a>
+                            <span class="pdf">resume in PDF format</span>
                         </div>
                     </dd>
-                    <dt>Education</dt>
+                    <dt class="education">Education</dt>
                     <dd id="education">
                         <div>
                             <div>2006 - 2011</div>
-                            <div>
+                            <div class="bachelor">
                                 Bachelor's degree, Computer Systems and Networks | Ternopil Ivan Pul'uj
                                 National Technical University
                             </div>
                         </div>
                         <div>
                             <div>2002 - 2006</div>
-                            <div>
+                            <div class="lyceum">
                                 High school degree | Technical Lyceum
                             </div>
                         </div>
                     </dd>
-                    <dt>Own Projects</dt>
+                    <dt class="own-projects">Own Projects</dt>
                     <dd>
                         <dl>
                             <dt class="notranslate">Auxiliary</dt>
