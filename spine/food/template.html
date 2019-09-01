@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Таблица калорийности более 3300 продуктов</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <meta name="description"
+          content="Найдите энергетическую ценности продуктов питания которые доступны на украинском и российском рынке"/>
+    <style>
+        body {
+            font-family: "Open Sans", sans-serif;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        @media (min-width: 580px) {
+            main {
+                width: 580px;
+            }
+        }
+
+        main {
+            margin: auto;
+            text-align: left;
+            padding-top: 40px;
+        }
+
+        header {
+            position: fixed;
+            height: 40px;
+            top: 0;
+            right: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        tr:hover td {
+            font-weight: 900;
+        }
+
+        tr:nth-child(odd) td {
+            background-color: #dbf3ff;
+        }
+
+        td:nth-child(3),
+        th:nth-child(3) {
+            border-right: 1px solid #0d8dff;
+        }
+
+        thead th {
+            border-top: 1px solid #0d8dff;
+            border-bottom: 1px solid #0d8dff;
+        }
+
+        td {
+            padding: 2px 4px;
+        }
+
+        td span {
+            opacity: 0.25;
+        }
+
+        [title="0"] span {
+            opacity: 0.06;
+        }
+
+        #search {
+            width: calc(100vw - 16px);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 579px) {
+            header span {
+                display: none;
+            }
+
+            thead th {
+                font-weight: 400;
+                font-size: 0.8em;
+            }
+
+            table {
+                width: 100vw;
+            }
+
+            td:not([title="0"]) span {
+                display: none;
+            }
+        }
+    </style>
+
+
+    <script>
+      const DELAY = 200
+      var lastSearch = ''
+      var lastSearchTime = 0
+      var lastSearchTimer
+      var names
+      var tbody
+      function search(words) {
+        if ('string' === typeof words) {
+          lastSearch = words
+          words = words ? words
+              .split(/\s+/)
+              .filter(s => s.length > 1)
+              .map(s => s.toLocaleLowerCase()) : []
+        }
+        const now = Date.now()
+        if (0 === words.length) {
+          return
+        }
+        if (now - lastSearchTime > DELAY) {
+          lastSearchTime = now
+          loop: for (const td of names) {
+            const name = td.getAttribute('title')
+            for (const word of words) {
+              if (name.indexOf(word) < 0) {
+                td.parentNode.classList.add('hidden')
+                continue loop
+              }
+            }
+            td.parentNode.classList.remove('hidden')
+          }
+        }
+        else {
+          clearTimeout(lastSearchTimer)
+          lastSearchTimer = setTimeout(search, DELAY, lastSearch)
+        }
+
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        names = document.querySelectorAll('tbody tr td:first-child')
+        document.getElementById('search').addEventListener('keyup', function () {
+          const current = this.value.trim()
+          if ('' === current) {
+            for (const td of names) {
+              td.parentNode.classList.remove('hidden')
+            }
+          }
+          else if (lastSearch !== current) {
+            search(current)
+          }
+        })
+      })
+
+        const dict = "dict"
+    </script>
+
+</head>
+<body>
+<main>
+    <header>
+        <input id="search" type="search" placeholder="Поиск"/>
+    </header>
+    <article>
+        <table>
+            <thead>
+            <tr>
+                <th>Таблица калорийности</th>
+                <th>Белки</th>
+                <th>Жиры</th>
+                <th>Углев.</th>
+                <th>Ккал</th>
+            </tr>
+            </thead>
+            <tbody>
+            {data}
+            </tbody>
+        </table>
+    </article>
+</main>
+</body>
+</html>
