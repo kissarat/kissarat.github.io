@@ -1,4 +1,7 @@
 {
+  "#avatar": {
+    "alt": "Тарас Лабяк"
+  },
   "#hired h1": "Я нанят :(",
   "#updated": "",
   ".tile.age .label": "Возраст",

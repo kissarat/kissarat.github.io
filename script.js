@@ -167,8 +167,21 @@ function main() {
         .then(function (json) {
           for (const selector in json) {
             const elements = document.querySelectorAll(selector);
-            if (elements.length > 0) {
-              elements[0].innerHTML = json[selector];
+            const object = json[selector];
+            for (let i = 0; i < elements.length; i++) {
+              const element = elements[i];
+              if ('string' === typeof object) {
+                element.innerHTML = object;
+              } else {
+                for(const name in object) {
+                  const translation = object[name];
+                  if (['value'].indexOf(name) >= 0) {
+                    element[name] = translation;
+                  } else {
+                    element.setAttribute(name, translation);
+                  }
+                }
+              }
             }
             if (elements.length !== 1) {
               console.warn("Selector '" + selector + "' found " + elements.length + ' times for "ru"');
