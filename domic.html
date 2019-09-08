@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Domic</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <style>
+        textarea {
+            width: 90vw;
+            min-height: 30vh;
+        }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+<textarea id="source">
+{
+    "tag": "span",
+    "children": [
+        { "children": "Div" },
+        "Hello World!"
+    ]
+}
+</textarea>
+<button type="button" id="build">Build</button>
+<script>
+    class Processor {
+        default(node) {
+            return node;
+        }
+
+        handle(name, node) {
+            if ('function' === typeof this[name]) {
+                return this[name](node)
+            }
+            return this.default(node);
+        }
+
+        process(node) {
+            const type = typeof node;
+            if ('object' === typeof node) {
+                if (Array.isArray(node)) {
+                    return this.handle('array', node);
+                }
+                if (node !== null) {
+                    return this.handle('object', node)
+                }
+                return null;
+            }
+            return this.handle(type, node);
+        }
+    }
+
+    class HtmlProcessor extends Processor {
+        default(node) {
+            if ('string' === typeof node) {
+                return node;
+            }
+            return JSON.stringify(node);
+        }
+
+        object(node) {
+            return (this[node.tag] || this.element).call(this, node);
+        }
+
+        element({ tag = 'div', children, ...props }) {
+            children = Array.isArray(children) ? children : [children];
+            return React.createElement(tag, props, children.map(child => this.process(child)));
+        }
+    }
+
+    build.onclick = function () {
+        const model = JSON.parse(source.value);
+        const processor = new HtmlProcessor();
+        const element = processor.process(model);
+        console.log(element);
+        ReactDOM.render(element, app);
+    };
+</script>
+</body>
+</html>
