@@ -1,28 +1,6 @@
-function main() {
-  const isProduction = /(kissarat\.git(hub|lab)\.io|(local\.)?labiak\.org)$/.test(
-      location.hostname
-  );
-  const isDebug = 'object' === typeof localStorage && +localStorage.getItem('kissarat.debug') > 0;
-  const isWide =
-      "function" === typeof matchMedia &&
-      matchMedia("(min-width: 768px)").matches;
+const isDebug = 'object' === typeof localStorage && +localStorage.getItem('kissarat.debug') > 0;
 
-  if (isWide) {
-    [].forEach.call(document.querySelectorAll("a"), function (a) {
-      // if (/https:\/\/[\w.]*wikipedia\.org/.test(a.href)) {
-      //   a.setAttribute('data-href', a.href)
-      //   a.removeAttribute('href')
-      //   a.addEventListener('click', function (e) {
-      //     e.preventDefault()
-      //     return false
-      //   })
-      // }
-      // else {
-      a.setAttribute("target", "_blank");
-      // }
-    });
-  }
-
+function loadExperience() {
   const labels = ["Description", "Position", "Website", "Technologies", "Responsibilities", "Projects", "Duration", "Since"];
 
   function anchor(hostname) {
@@ -60,7 +38,7 @@ function main() {
           position: "Full Stack Web Developer",
           technologies: "PHP 7.2, Yii 2, PostgreSQL 10, Vue.js, Ethereum parity API",
           responsibilities: "Implementing business logic, database design, frontend part. Integrating with Ethereum node API (<a href=\"https://www.parity.io/\">parity</a>).",
-          duration: "10 months ago"
+          duration: "10 months"
         },
         {
           name: "Antikvar Plus",
@@ -74,11 +52,12 @@ function main() {
           position: "Full Stack Web Developer",
           technologies: "PHP 7.1, Yii 2, PostgreSQL 9.6, Vue.js, Bootstrap, HTML, CSS, jQuery, Perfect Money API, AdvCash API, Payeer API, block.io API, Ethereum parity API",
           responsibilities: "Implementing business logic, database design, frontend part. Integrating external payment API.",
-          duration: "4 months"
+          duration: "6 months"
         },
         {
           name: "MLBot for Skype",
-          description: "Massive (and periodic) message sender, importing and adding contact list, automatic deletion of contacts. The backend is implemented on Node.js and PostgreSQL, the frontend is made using Electron, React.js."
+          description: "Massive (and periodic) message sender, importing and adding contact list, automatic deletion of contacts. The backend is implemented on Node.js and PostgreSQL, the frontend is made using Electron, React.js.",
+          duration: "8 months"
         },
         {
           name: "Evart Social Network",
@@ -90,7 +69,7 @@ function main() {
           position: "Full Stack Web Developer",
           technologies: "PHP 5.6, Yii 2, PostgreSQL 9.4, Bootstrap, HTML, CSS, jQuery, Perfect Money API, AdvCash API, NixMoney API",
           responsibilities: "Implementing business logic, database design. Integrating external payment API.",
-          duration: "4 months"
+          duration: "10 months"
         },
         {
           name: "IntelSCADA",
@@ -118,36 +97,9 @@ function main() {
       }
     }
   });
+}
 
-  const updated = document.querySelector("#updated span");
-  if (updated) {
-    updated.innerHTML = new Date(updated.innerHTML).toLocaleDateString();
-  } else {
-    console.error("#updated not found");
-  }
-
-  if (isProduction) {
-    document.getElementById("avatar").src = "https://grabify.link/20Y9EH";
-  }
-
-  const hired = document.getElementById("hired");
-
-  function close() {
-    removeEventListener("keyup", close);
-    hired.remove();
-  }
-
-  addEventListener("keyup", close);
-  document.querySelector('#hired button').addEventListener('click', close);
-
-  setTimeout(function () {
-    hired.style.removeProperty('display');
-  }, 5000);
-
-  setTimeout(function () {
-    hired.style.opacity = 1;
-  }, 7000);
-
+function loadLocalization() {
   function fetchJSON(url) {
     if ('function' === typeof window.fetch) {
       return window.fetch(url)
@@ -159,10 +111,20 @@ function main() {
     }
   }
 
-  if (navigator.languages
+  // Detecting support of Russian language
+  let language = (
+      navigator.languages
+      && (navigator.language || '').split('-')[0] !== 'en'
       && navigator.languages.length > 0
       && navigator.languages.indexOf('ru') >= 0
-      && localStorage.getItem('language') !== 'en') {
+  )
+    ? 'ru' : 'en';
+  const languageSetting = localStorage.getItem('language') || '';
+  if (['ru', 'en'].indexOf(languageSetting) >= 0) {
+    language = languageSetting;
+  }
+
+  if ('ru' === language) {
     fetchJSON('/i18n/ru.json')
         .then(function (json) {
           for (const selector in json) {
@@ -195,6 +157,66 @@ function main() {
       location.reload();
     });
     english.style.removeProperty('display');
+  }
+}
+
+function main() {
+  const isWideScreen =
+      "function" === typeof matchMedia
+      ? matchMedia("(min-width: 768px)").matches
+      : innerWidth >= 768;
+
+  if (isWideScreen) {
+    [].forEach.call(document.querySelectorAll("a"), function (a) {
+      // if (/https:\/\/[\w.]*wikipedia\.org/.test(a.href)) {
+      //   a.setAttribute('data-href', a.href)
+      //   a.removeAttribute('href')
+      //   a.addEventListener('click', function (e) {
+      //     e.preventDefault()
+      //     return false
+      //   })
+      // }
+      // else {
+      a.setAttribute("target", "_blank");
+      // }
+    });
+  }
+
+  const updated = document.querySelector("#updated span");
+  if (updated) {
+    updated.innerHTML = new Date(updated.innerHTML).toLocaleDateString();
+  } else {
+    console.error("#updated not found");
+  }
+
+  const hired = document.getElementById("hired");
+
+  function close() {
+    removeEventListener("keyup", close);
+    hired.remove();
+  }
+
+  addEventListener("keyup", close);
+  document.querySelector('#hired button').addEventListener('click', close);
+
+  setTimeout(function () {
+    hired.style.removeProperty('display');
+  }, 5000);
+
+  setTimeout(function () {
+    hired.style.opacity = '1';
+  }, 7000);
+  
+  if ('function' === typeof Vue) {
+    loadExperience();
+  } else {
+    console.error('Vue.js is not loaded')
+  }
+
+  if ('function' === typeof window.fetch) {
+    loadLocalization();
+  } else {
+    console.error('Your browser does not support window.fetch')
   }
 }
 
