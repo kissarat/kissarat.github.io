@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Remote Control</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: black;
+        }
+
+        body > * {
+            width: calc(100% - 40px);
+        }
+
+        input {
+            font-size: 20px;
+            border-color: rgba(0, 0, 0, 0.3);
+            border-width: 1px;
+        }
+
+        input:focus {
+            border-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .control {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        button {
+            border: none;
+            background: transparent;
+            padding: 0;
+            margin: 15px;
+        }
+
+        button span {
+            display: inline-block;
+            background-color: white;
+        }
+
+        #pause {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        #pause span {
+            width: 30px;
+            height: 100px;
+        }
+
+        #pause span:first-child {
+            margin-right: 15px;
+        }
+
+        .sibling span {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<input type="search" placeholder="Search" />
+<div class="control">
+    <button type="button" id="previous" class="sibling">
+        <span></span>
+    </button>
+    <button type="button" id="pause">
+        <span></span>
+        <span></span>
+    </button>
+    <button type="button" id="next" class="sibling">
+        <span></span>
+    </button>
+    <script>
+        let lastClick = 0;
+        document.body.addEventListener('click', function () {
+            const now = Date.now();
+            if (now - lastClick < 250) {
+                document.body.requestFullscreen();
+            }
+            lastClick = now;
+        })
+    </script>
+</div>
+</body>
+</html>
