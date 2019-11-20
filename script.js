@@ -21,7 +21,7 @@ function loadExperience() {
           name: atob('VUtFRVNT'),
           position: "Frontend Developer",
           technologies: "React 16, Redux, Saga, express.js, immutable.js, jest, enzyme, Terraform, Jenkins, AWS",
-          duration: '7 months',
+          duration: '8 months',
           projects: 'Confidential'
         },
         {
