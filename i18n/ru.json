@@ -5,7 +5,7 @@
   "#hired h1": "Я нанят :(",
   "#updated": "",
   ".tile.age .label": "Возраст",
-  ".tile.age .value": "29 лет",
+  ".tile.age .value": "30 лет",
   ".tile.experience .label": "Опыт работы",
   ".tile.experience .value": "4 года",
   ".tile.location .label": "Город",
