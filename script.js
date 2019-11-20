@@ -18,7 +18,7 @@ function loadExperience() {
       original: isDebug || 'aHR0cHM6Ly9raXNzYXJhdC5naXRodWIuaW8=' === btoa(location.origin),
       jobs: [
         {
-          name: 'UKEESS',
+          name: atob('VUtFRVNT'),
           position: "Frontend Developer",
           technologies: "React 16, Redux, Saga, express.js, immutable.js, jest, enzyme, Terraform, Jenkins, AWS",
           duration: '7 months',
@@ -191,26 +191,28 @@ function main() {
 
   const hired = document.getElementById("hired");
 
-  function close() {
-    removeEventListener("keyup", close);
-    hired.remove();
-  }
+  if (hired) {
+    function close() {
+      removeEventListener("keyup", close);
+      hired.remove();
+    }
 
-  addEventListener("keyup", close);
-  document.querySelector('#hired button').addEventListener('click', close);
+    addEventListener("keyup", close);
+    document.querySelector('#hired button').addEventListener('click', close);
 
-  setTimeout(function () {
-    hired.style.removeProperty('display');
-  }, 5000);
+    setTimeout(function () {
+      hired.style.removeProperty('display');
+    }, 5000);
 
-  setTimeout(function () {
-    hired.style.opacity = '1';
-  }, 7000);
+    setTimeout(function () {
+      hired.style.opacity = '1';
+    }, 7000);
 
-  if ('function' === typeof Vue) {
-    loadExperience();
-  } else {
-    console.error('Vue.js is not loaded')
+    if ('function' === typeof Vue) {
+      loadExperience();
+    } else {
+      console.error('Vue.js is not loaded')
+    }
   }
 
   if ('function' === typeof window.fetch) {
