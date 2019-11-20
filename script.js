@@ -18,10 +18,10 @@ function loadExperience() {
       original: isDebug || 'aHR0cHM6Ly9raXNzYXJhdC5naXRodWIuaW8=' === btoa(location.origin),
       jobs: [
         {
-          name: 'Confidential',
+          name: 'UKEESS',
           position: "Frontend Developer",
           technologies: "React 16, Redux, Saga, express.js, immutable.js, jest, enzyme, Terraform, Jenkins, AWS",
-          since: new Date('2019-03-11T11:00:00.000Z').toLocaleDateString(),
+          duration: '7 months',
           projects: 'Confidential'
         },
         {
@@ -103,9 +103,9 @@ function loadLocalization() {
   function fetchJSON(url) {
     if ('function' === typeof window.fetch) {
       return window.fetch(url)
-          .then(function (r) {
-            return r.json();
-          })
+        .then(function (r) {
+          return r.json();
+        })
     } else {
       console.warn('Cannot load JSON')
     }
@@ -113,10 +113,10 @@ function loadLocalization() {
 
   // Detecting support of Russian language
   let language = (
-      navigator.languages
-      && (navigator.language || '').split('-')[0] !== 'en'
-      && navigator.languages.length > 0
-      && navigator.languages.indexOf('ru') >= 0
+    navigator.languages
+    && (navigator.language || '').split('-')[0] !== 'en'
+    && navigator.languages.length > 0
+    && navigator.languages.indexOf('ru') >= 0
   )
     ? 'ru' : 'en';
   const languageSetting = localStorage.getItem('language') || '';
@@ -126,30 +126,30 @@ function loadLocalization() {
 
   if ('ru' === language) {
     fetchJSON('/i18n/ru.json')
-        .then(function (json) {
-          for (const selector in json) {
-            const elements = document.querySelectorAll(selector);
-            const object = json[selector];
-            for (let i = 0; i < elements.length; i++) {
-              const element = elements[i];
-              if ('string' === typeof object) {
-                element.innerHTML = object;
-              } else {
-                for(const name in object) {
-                  const translation = object[name];
-                  if (['value'].indexOf(name) >= 0) {
-                    element[name] = translation;
-                  } else {
-                    element.setAttribute(name, translation);
-                  }
+      .then(function (json) {
+        for (const selector in json) {
+          const elements = document.querySelectorAll(selector);
+          const object = json[selector];
+          for (let i = 0; i < elements.length; i++) {
+            const element = elements[i];
+            if ('string' === typeof object) {
+              element.innerHTML = object;
+            } else {
+              for (const name in object) {
+                const translation = object[name];
+                if (['value'].indexOf(name) >= 0) {
+                  element[name] = translation;
+                } else {
+                  element.setAttribute(name, translation);
                 }
               }
             }
-            if (elements.length !== 1) {
-              console.warn("Selector '" + selector + "' found " + elements.length + ' times for "ru"');
-            }
           }
-        });
+          if (elements.length !== 1) {
+            console.warn("Selector '" + selector + "' found " + elements.length + ' times for "ru"');
+          }
+        }
+      });
 
     const english = document.querySelector('.english');
     english.addEventListener('click', function () {
@@ -162,7 +162,7 @@ function loadLocalization() {
 
 function main() {
   const isWideScreen =
-      "function" === typeof matchMedia
+    "function" === typeof matchMedia
       ? matchMedia("(min-width: 768px)").matches
       : innerWidth >= 768;
 
@@ -206,7 +206,7 @@ function main() {
   setTimeout(function () {
     hired.style.opacity = '1';
   }, 7000);
-  
+
   if ('function' === typeof Vue) {
     loadExperience();
   } else {
