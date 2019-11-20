@@ -207,12 +207,12 @@ function main() {
     setTimeout(function () {
       hired.style.opacity = '1';
     }, 7000);
+  }
 
-    if ('function' === typeof Vue) {
-      loadExperience();
-    } else {
-      console.error('Vue.js is not loaded')
-    }
+  if ('function' === typeof Vue) {
+    loadExperience();
+  } else {
+    console.error('Vue.js is not loaded')
   }
 
   if ('function' === typeof window.fetch) {
