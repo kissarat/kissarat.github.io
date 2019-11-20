@@ -1,0 +1,22 @@
+{
+  "name": "taras-labiak-resume",
+  "version": "0.0.1",
+  "description": "Taras Labiak resume",
+  "scripts": {
+    "start": "node server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kissarat/kissarat.github.io.git"
+  },
+  "author": "Taras Labiak <kissarat@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kissarat/kissarat.github.io/issues"
+  },
+  "homepage": "https://github.com/kissarat/kissarat.github.io#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
