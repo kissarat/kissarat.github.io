@@ -305,3 +305,11 @@ article > dl > dd {
         bottom: auto;
     }
 }
+
+a.anchor {
+    color: blue;
+}
+
+a.anchor:hover {
+    text-decoration: underline;
+}
