@@ -349,3 +349,22 @@ header.large h2 {
         margin-left: 24px;
     }
 }
+
+@media (max-width: 512px) {
+    #pdf {
+        margin-right: 24px;
+        margin-top: 8px;
+    }
+
+    header div {
+        margin-left: 4px;
+    }
+
+    header:not(.large) #avatar {
+        margin-left: 20px;
+    }
+
+    header h2 {
+        font-size: 11pt;
+    }
+}
