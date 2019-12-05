@@ -337,3 +337,13 @@ div.table > * > * {
 header.large h2 {
     font-size: 12pt;
 }
+
+@media (max-width: 860px) {
+    #avatar {
+        margin-top: 12px;
+    }
+
+    article {
+        margin-left: 24px;
+    }
+}
