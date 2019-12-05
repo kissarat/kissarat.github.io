@@ -65,8 +65,10 @@
     <div id="app" itemscope itemtype="https://schema.org/Person">
         <div id="resume">
             <header>
-                <img id="avatar" itemprop="image" v-bind:class="{large: large}" v-on:click="large = !large"
-                    alt="Taras Labiak" src="avatar.jpg" />
+                <a v-bind:href="large ? 'avatar.jpg' : ''" v-on:click="$event.preventDefault()">
+                    <img alt="Taras Labiak" itemprop="image" id="avatar" src="avatar.jpg" v-bind:class="{large: large}"
+                        v-on:click="large = !large" />
+                </a>
                 <div>
                     <h1>
                         <span itemprop="givenName">Taras</span>
