@@ -64,7 +64,7 @@
 
     <div id="app" itemscope itemtype="https://schema.org/Person">
         <div id="resume">
-            <header>
+            <header v-bind:class="{large}">
                 <a v-bind:href="large ? 'avatar.jpg' : ''" v-on:click="$event.preventDefault()">
                     <img alt="Taras Labiak" itemprop="image" id="avatar" src="avatar.jpg" v-bind:class="{large: large}"
                         v-on:click="large = !large" />
@@ -77,7 +77,7 @@
                     <button style="display: none" class="english" type="button">EN</button>
                     <h2 class="notranslate">Node.js, PHP, Python Full Stack Developer</h2>
                     <!--<a class="export">PDF</a>-->
-                    <div class="abstract">
+                    <div v-bind:class="{abstract: !large, table: large}">
                         <div class="tile age">
                             <div class="label">Age</div>
                             <div class="value">30</div>

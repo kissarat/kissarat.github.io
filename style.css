@@ -313,3 +313,27 @@ a.anchor {
 a.anchor:hover {
     text-decoration: underline;
 }
+
+div.table {
+    display: table;
+}
+
+div.table > * {
+    display: table-row;
+}
+
+div.table > * > * {
+    display: table-cell;
+}
+
+#resume > header > div > div.table > div > div:first-child::after {
+    content: ':';
+}
+
+#resume > header > div > div.table > div > *:last-child {
+    padding-left: 8px;
+}
+
+header.large h2 {
+    font-size: 12pt;
+}
