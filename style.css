@@ -339,8 +339,10 @@ header.large h2 {
 }
 
 @media (max-width: 860px) {
-    #avatar {
+    header:not(.large) #avatar {
         margin-top: 12px;
+        width: 218px;
+        height: 218px;
     }
 
     article {
