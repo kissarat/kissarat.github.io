@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rxjs</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.3/rxjs.umd.js"></script>
+</head>
+
+<body>
+    <h1>Rxjs</h1>
+    <script>
+        const Rx = rxjs;
+
+        const observable = Rx.Observable.create(observer => {
+            observer.next('hello');
+            observer.next('world');
+        })
+
+        observable.subscribe(val => console.log(val))
+    </script>
+</body>
+
+</html>
