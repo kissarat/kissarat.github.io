@@ -4,20 +4,49 @@
 <head>
     <title>Rxjs</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.3/rxjs.umd.js"></script>
+    <style>
+        button {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
     <h1>Rxjs</h1>
     <script>
-        const Rx = rxjs;
+        const print = (...args) => console.log(...args);
 
-        const observable = Rx.Observable.create(observer => {
-            observer.next('hello');
-            observer.next('world');
-        })
+        const samples = {
+            Subscription() {
+                const observable = rxjs.Observable.create(observer => {
+                    observer.next('hello');
+                    observer.next('world');
+                })
 
-        observable.subscribe(val => console.log(val))
+                observable.subscribe(print)
+            },
+
+            DocumentClick() {
+                const clicks = rxjs.fromEvent(document, 'click');
+                clicks.subscribe(print);
+            },
+
+            Timer() {
+                const timer = rxjs.timer(1500);
+                timer.subscribe(print);
+            }
+        }
+
+        addEventListener('load', function () {
+            Object.keys(samples).forEach(name => {
+                const button = document.createElement('button');
+                button.innerHTML = name;
+                button.addEventListener('click', samples[name]);
+                document.getElementById('samples-list').appendChild(button);
+            });
+        });
     </script>
+    <div id="samples-list"></div>
 </body>
 
 </html>
