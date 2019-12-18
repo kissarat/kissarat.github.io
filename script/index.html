@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Script loader</title>
+</head>
+
+<body>
+    <script id="script"></script>
+    <script>
+        const src = location.hash.slice(1);
+        if (src) {
+            script.addEventListener('load', function () {
+                console.log(src + ' loaded');
+            });
+            script.setAttribute('src', src);
+        } else {
+            console.error('No script URL in hash');
+        }
+    </script>
+</body>
+
+</html>
