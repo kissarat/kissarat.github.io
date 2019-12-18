@@ -6,17 +6,33 @@
 </head>
 
 <body>
+    <h1>Libraries</h1>
+    <ul>
+        <li><a href="#https://unpkg.com/zone.js">Zone.js</a></li>
+        <li><a href="#https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.3/rxjs.umd.js">Rxjs</a></li>
+    </ul>
     <script id="script"></script>
     <script>
-        const src = location.hash.slice(1);
-        if (src) {
-            script.addEventListener('load', function () {
-                console.log(src + ' loaded');
-            });
-            script.setAttribute('src', src);
-        } else {
-            console.error('No script URL in hash');
+        function loadScript(src) {
+            if (src) {
+                document.getElementById('script').remove();
+                const script = document.createElement('script');
+                script.addEventListener('load', function () {
+                    console.log(src + ' loaded');
+                });
+                script.setAttribute('src', src);
+                script.id = 'script';
+                document.body.appendChild(script);
+            } else {
+                console.error('No script URL in hash');
+            }
         }
+        window.addEventListener('load', function () {
+            loadScript(location.hash.slice(1));
+        });
+        window.addEventListener('hashchange', function (e) {
+            loadScript(e.newURL.split('#')[1]);
+        });
     </script>
 </body>
 
