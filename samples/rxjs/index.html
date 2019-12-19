@@ -34,6 +34,12 @@
             Timer() {
                 const timer = rxjs.timer(1500);
                 timer.subscribe(print);
+            },
+
+            SwitchMap() {
+                rxjs.fromEvent(document, 'click')
+                    .switchMap(click => Rx.Observable.interval(500))
+                    .subscribe(i => print(i))
             }
         }
 
