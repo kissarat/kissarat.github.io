@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Animation Frequency</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        article {
+            text-align: center;
+        }
+
+        section {
+            font-size: 48pt;
+        }
+    </style>
+</head>
+
+<body>
+    <article>
+        <h1>Frames per second</h1>
+        <section>0</section>
+    </article>
+    <script>
+        let number = 0;
+        let last = 0;
+        const delta = 1000;
+        const element = document.querySelector('section');
+        function count() {
+            const now = Date.now();
+            const second = Math.floor(now / delta);
+            number++;
+            if (second > last) {
+                element.innerHTML = number;
+                number = 0;
+            } else {
+                number++;
+            }
+            last = second;
+            requestAnimationFrame(count);
+        }
+
+        requestAnimationFrame(count);
+    </script>
+</body>
+
+</html>
