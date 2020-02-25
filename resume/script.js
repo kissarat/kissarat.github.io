@@ -19,9 +19,9 @@ function loadExperience() {
       jobs: [
         {
           name: atob('VUtFRVNT'),
-          position: "Frontend Developer",
+          position: 'Full Stack Web Developer',
           technologies: "React 16, Redux, Saga, express.js, immutable.js, jest, enzyme, Terraform, Jenkins, AWS",
-          duration: '8 months',
+          since: 'March 2019',
           projects: 'Confidential'
         },
         {
