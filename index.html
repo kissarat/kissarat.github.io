@@ -1,317 +1,592 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=0.9" />
-    <meta name="description" content="PHP, Node.js, Python and Go Full Stack Developer" />
+    <meta
+      name="description"
+      content="PHP, Node.js, Python and Go Full Stack Developer"
+    />
     <title>Taras Labiak - Resume</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" type="text/css" href="resume/style.css" />
-</head>
+  </head>
 
-<body>
-
+  <body>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-58031952-14"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-58031952-14"
+    ></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+      window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+      function gtag() {
+        dataLayer.push(arguments);
+      }
 
-        gtag('js', new Date());
+      gtag("js", new Date());
 
-        gtag('config', 'UA-58031952-14');
+      gtag("config", "UA-58031952-14");
     </script>
 
     <!-- Yandex.Metrika counter -->
     <script>
-        (function (d, w, c) {
-            (w[c] = w[c] || []).push(function () {
-                try {
-                    w.yaCounter38832885 = new Ya.Metrika({
-                        id: 38832885,
-                        clickmap: true,
-                        trackLinks: true,
-                        accurateTrackBounce: true
-                    });
-                } catch (e) {
-                }
+      (function (d, w, c) {
+        (w[c] = w[c] || []).push(function () {
+          try {
+            w.yaCounter38832885 = new Ya.Metrika({
+              id: 38832885,
+              clickmap: true,
+              trackLinks: true,
+              accurateTrackBounce: true,
             });
+          } catch (e) {}
+        });
 
-            var n = d.getElementsByTagName("script")[0],
-                s = d.createElement("script"),
-                f = function () {
-                    n.parentNode.insertBefore(s, n);
-                };
-            s.type = "text/javascript";
-            s.async = true;
-            s.src = "https://mc.yandex.ru/metrika/watch.js";
+        var n = d.getElementsByTagName("script")[0],
+          s = d.createElement("script"),
+          f = function () {
+            n.parentNode.insertBefore(s, n);
+          };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
 
-            if (w.opera == "[object Opera]") {
-                d.addEventListener("DOMContentLoaded", f, false);
-            } else {
-                f();
-            }
-        })(document, window, "yandex_metrika_callbacks");
+        if (w.opera == "[object Opera]") {
+          d.addEventListener("DOMContentLoaded", f, false);
+        } else {
+          f();
+        }
+      })(document, window, "yandex_metrika_callbacks");
     </script>
     <noscript>
-        <div><img src="https://mc.yandex.ru/watch/38832885" style="position:absolute; left:-9999px;" alt="" /></div>
+      <div>
+        <img
+          src="https://mc.yandex.ru/watch/38832885"
+          style="position: absolute; left: -9999px;"
+          alt=""
+        />
+      </div>
     </noscript>
     <!-- /Yandex.Metrika counter -->
 
     <div id="app" itemscope itemtype="https://schema.org/Person">
-        <div id="resume">
-            <header v-bind:class="{large}">
-                <a v-bind:href="large ? 'resume/avatar.jpg' : ''" v-on:click="$event.preventDefault()">
-                    <img alt="Taras Labiak" itemprop="image" id="avatar" src="resume/avatar.jpg"
-                        v-bind:class="{large: large}" v-on:click="large = !large" />
-                </a>
-                <div>
-                    <h1>
-                        <span itemprop="givenName">Taras</span>
-                        <span itemprop="familyName">Labiak</span>
-                    </h1>
-                    <button style="display: none" class="english" type="button">EN</button>
-                    <h2 class="notranslate">Node.js, PHP, Python Full Stack Developer</h2>
-                    <!--<a class="export">PDF</a>-->
-                    <div v-bind:class="{abstract: !large, table: large}">
-                        <div class="tile age">
-                            <div class="label">Age</div>
-                            <div class="value">30</div>
-                        </div>
-                        <div class="tile">
-                            <div class="label">Email</div>
-                            <a itemprop="email" href="mailto:kissarat@gmail.com" class="value">kissarat@gmail.com</a>
-                        </div>
-                        <div class="tile location">
-                            <div class="label">Location</div>
-                            <div itemprop="address" class="value">Lviv, Ukraine</div>
-                        </div>
-                        <div class="tile phone">
-                            <div class="label">Phone</div>
-                            <a itemprop="telephone" href="tel:+380671541943" class="value">+380671541943</a>
-                        </div>
-                        <div class="tile experience">
-                            <div class="label">Experience</div>
-                            <div class="value">5 years</div>
-                        </div>
-                        <div class="tile">
-                            <div class="label">Skype</div>
-                            <div class="value">taradox89</div>
-                        </div>
-                        <div>
-                            <div class="label">Facebook</div>
-                            <a href="https://www.facebook.com/kissarat" class="value">www.facebook.com/kissarat</a>
-                        </div>
-                        <div class="tile website">
-                            <div class="label">Website</div>
-                            <a itemprop="url" href="https://kissarat.github.io/" class="value">kissarat.github.io</a>
-                        </div>
+      <div id="resume">
+        <header v-bind:class="{large}">
+          <a
+            v-bind:href="large ? 'resume/avatar.jpg' : ''"
+            v-on:click="$event.preventDefault()"
+          >
+            <img
+              alt="Taras Labiak"
+              itemprop="image"
+              id="avatar"
+              src="resume/avatar.jpg"
+              v-bind:class="{large: large}"
+              v-on:click="large = !large"
+            />
+          </a>
+          <div>
+            <h1>
+              <span itemprop="givenName">Taras</span>
+              <span itemprop="familyName">Labiak</span>
+            </h1>
+            <button style="display: none;" class="english" type="button">
+              EN
+            </button>
+            <h2 class="notranslate">
+              Node.js, PHP, Python Full Stack Developer
+            </h2>
+            <!--<a class="export">PDF</a>-->
+            <div v-bind:class="{abstract: !large, table: large}">
+              <div class="tile age">
+                <div class="label">Age</div>
+                <div class="value">30</div>
+              </div>
+              <div class="tile">
+                <div class="label">Email</div>
+                <a itemprop="email" href="mailto:" class="value"></a>
+              </div>
+              <div class="tile location">
+                <div class="label">Location</div>
+                <div itemprop="address" class="value">Lviv, Ukraine</div>
+              </div>
+              <div class="tile phone">
+                <div class="label">Phone</div>
+                <a itemprop="telephone" href="tel:+380671541943" class="value"
+                  >+380671541943</a
+                >
+              </div>
+              <div class="tile experience">
+                <div class="label">Experience</div>
+                <div class="value">5 years</div>
+              </div>
+              <div class="tile">
+                <div class="label">Skype</div>
+                <div class="value">taradox89</div>
+              </div>
+              <div>
+                <div class="label">Facebook</div>
+                <a href="https://www.facebook.com/kissarat" class="value"
+                  >www.facebook.com/kissarat</a
+                >
+              </div>
+              <div class="tile website">
+                <div class="label">Website</div>
+                <a
+                  itemprop="url"
+                  href="https://kissarat.github.io/"
+                  class="value"
+                  >kissarat.github.io</a
+                >
+              </div>
+            </div>
+          </div>
+          <div id="updated">Updated <span>2020-02-18T00:00:00Z</span></div>
+        </header>
+        <article>
+          <dl>
+            <dt class="skills">Summary</dt>
+            <dd id="skills" itemprop="description">
+              <ul>
+                <li class="engineering">Software Engineering</li>
+                <li><a href="https://en.wikipedia.org/wiki/PHP">PHP</a></li>
+                <li class="notranslate">
+                  <a href="https://en.wikipedia.org/wiki/JavaScript"
+                    >JavaScript</a
+                  >/ES6
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Python_(programming_language)"
+                    >Python</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/C_(programming_language)"
+                    >C</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/C%2B%2B"
+                    class="notranslate"
+                    >C++</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/C_Sharp_(programming_language)"
+                    class="notranslate"
+                    >C#</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Java_(programming_language)"
+                    >Java</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Go_(programming_language)"
+                    class="notranslate"
+                    >Go</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Solidity"
+                    class="notranslate"
+                    >Solidity</a
+                  >
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/ERC-20">ERC-20</a>
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)"
+                    >Bash</a
+                  >
+                </li>
+                <li><a href="https://en.wikipedia.org/wiki/SQL">SQL</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/HTML">HTML</a></li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics"
+                    >SVG</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Sass_(stylesheet_language)#SCSS"
+                    >SCSS</a
+                  >, SASS
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets"
+                    >CSS</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)"
+                    >Bootstrap</a
+                  >
+                </li>
+                <li>
+                  <a href="https://semantic-ui.com/" class="notranslate"
+                    >Semantic UI</a
+                  >
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Vue.js">Vue.js</a>
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/React_(JavaScript_library)"
+                    >React.js</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Redux_(JavaScript_library)"
+                    >Redux</a
+                  >
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/jQuery">jQuery</a>
+                </li>
+                <li><a href="https://marionettejs.com/">Marionette.js</a></li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/webpack">webpack</a>
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Gulp.js">Gulp.js</a>
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Node.js">Node.js</a>
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Electron_(software_framework)"
+                    class="notranslate"
+                    >Electron</a
+                  >
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/express.js"
+                    >express.js</a
+                  >
+                </li>
+                <li><a href="https://strapi.io">strapi</a></li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Stripe_(company)"
+                    class="notranslate"
+                    >Stripe</a
+                  >
+                </li>
+                <li><a href="https://knexjs.org">knex.js</a></li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Meteor_(web_framework)"
+                    >Meteor</a
+                  >
+                </li>
+                <li class="notranslate">
+                  <a href="https://en.wikipedia.org/wiki/REST">REST</a>/HTTP
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/WebSocket"
+                    >WebSocket</a
+                  >
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/WebRTC">WebRTC</a>
+                </li>
+                <li><a href="https://en.wikipedia.org/wiki/Yii">Yii</a> 2</li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Tornado_(web_server)"
+                    >tornado</a
+                  >
+                </li>
+                <li><a href="https://en.wikipedia.org/wiki/NoSQL">NoSQL</a></li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/PostgreSQL"
+                    >PostgreSQL</a
+                  >
+                </li>
+                <li><a href="https://en.wikipedia.org/wiki/MySQL">MySQL</a></li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/MongoDB">MongoDB</a>
+                </li>
+                <li><a href="https://mongoosejs.com/">Mongoose.js</a></li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/IndexedDB"
+                    >IndexedDB</a
+                  >
+                </li>
+                <li><a href="https://en.wikipedia.org/wiki/Redis">Redis</a></li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Amazon_Web_Services"
+                    >AWS</a
+                  >
+                  EC2
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/.NET_Framework"
+                    >.NET</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Windows_Presentation_Foundation"
+                    >WPF</a
+                  >
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Microsoft_Silverlight"
+                    >Silverlight</a
+                  >
+                </li>
+                <li><a href="https://en.wikipedia.org/wiki/Git">Git</a></li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Mercurial"
+                    >Mercurial</a
+                  >
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Docker_(software)"
+                    >Docker</a
+                  >
+                </li>
+                <li><a href="https://en.wikipedia.org/wiki/Nginx">Nginx</a></li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Linux">Linux</a> web
+                  server configuration
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/macOS">macOS</a> as
+                  workstation
+                </li>
+                <li><a href="https://aws.amazon.com/ru/iot-core/">MQTT</a></li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Bitcoin">Bitcoin</a>
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Ethereum">Ethereum</a>
+                  <span class="notranslate"
+                    >(<a href="https://www.parity.io/">parity</a>)</span
+                  >
+                  node configuration and usage through API
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller"
+                    >MVC</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel"
+                    >MVVM</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Software_design_pattern"
+                    class="notranslate"
+                    >Design patterns</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.npmjs.com/package/immutable"
+                    class="notranslate"
+                    >immutable.js</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.npmjs.com/package/jest"
+                    class="notranslate"
+                    >Jest</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.npmjs.com/package/enzyme"
+                    class="notranslate"
+                    >Enzyme</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Terraform_(software)"
+                    class="notranslate"
+                    >Terraform</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://en.wikipedia.org/wiki/Jenkins_(software)"
+                    class="notranslate"
+                    >Jenkins</a
+                  >
+                </li>
+                <li>
+                  <a class="notranslate" href="https://redux-saga.js.org/"
+                    >Redux Saga</a
+                  >
+                </li>
+              </ul>
+            </dd>
+            <dt class="experience">Experience</dt>
+            <dd id="experience" class="robots-noindex" v-cloak>
+              <div class="cloak">
+                <span class="please">Something wrong happens. Please</span>
+                <a class="download" href="https://grabify.link/TB2PKD"
+                  >download</a
+                >
+                <span class="pdf">resume in PDF format</span>
+              </div>
+              <div v-if="original">
+                <div class="item" v-for="job in jobs">
+                  <h4
+                    class="notranslate confidential"
+                    v-if="job.name === 'Confidential'"
+                  ></h4>
+                  <h4 class="notranslate" v-else>{{ job.name }}</h4>
+                  <div class="properties">
+                    <div
+                      v-bind:class="{['property-' + property.key]: true}"
+                      v-for="property in describe(job)"
+                      v-if="property"
+                    >
+                      <span class="label">{{ property.label }}:</span>
+                      <span
+                        class="value confidential"
+                        v-if="property.value === 'Confidential'"
+                      ></span>
+                      <span class="value" v-else v-html="property.value"></span>
                     </div>
+                  </div>
                 </div>
-                <div id="updated">
-                    Updated <span>2020-02-18T00:00:00Z</span>
+              </div>
+              <div v-else class="foreign">
+                <span class="can-see">You can see this section at</span>
+                <a href="https://kissarat.github.io/">kissarat.github.io</a>
+                <span class="or">or</span>
+                <a class="download" href="https://grabify.link/TB2PKD"
+                  >download</a
+                >
+                <span class="pdf">resume in PDF format</span>
+              </div>
+            </dd>
+            <dt class="education">Education</dt>
+            <dd id="education">
+              <div>
+                <div>2006 - 2011</div>
+                <div class="bachelor">
+                  Bachelor's degree, Computer Systems and Networks | Ternopil
+                  Ivan Pul'uj National Technical University
                 </div>
-            </header>
-            <article>
-                <dl>
-                    <dt class="skills">Summary</dt>
-                    <dd id="skills" itemprop="description">
-                        <ul>
-                            <li class="engineering">Software Engineering</li>
-                            <li><a href="https://en.wikipedia.org/wiki/PHP">PHP</a></li>
-                            <li class="notranslate"><a
-                                    href="https://en.wikipedia.org/wiki/JavaScript">JavaScript</a>/ES6</li>
-                            <li><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/C%2B%2B" class="notranslate">C++</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/C_Sharp_(programming_language)"
-                                    class="notranslate">C#</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Go_(programming_language)"
-                                    class="notranslate">Go</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Solidity" class="notranslate">Solidity</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/ERC-20">ERC-20</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/SQL">SQL</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/HTML">HTML</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Sass_(stylesheet_language)#SCSS">SCSS</a>, SASS
-                            </li>
-                            <li><a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)">Bootstrap</a>
-                            </li>
-                            <li><a href="https://semantic-ui.com/" class="notranslate">Semantic UI</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Vue.js">Vue.js</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/React_(JavaScript_library)">React.js</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Redux_(JavaScript_library)">Redux</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/jQuery">jQuery</a></li>
-                            <li><a href="https://marionettejs.com/">Marionette.js</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/webpack">webpack</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Gulp.js">Gulp.js</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Node.js">Node.js</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Electron_(software_framework)"
-                                    class="notranslate">Electron</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/express.js">express.js</a></li>
-                            <li><a href="https://strapi.io">strapi</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Stripe_(company)" class="notranslate">Stripe</a>
-                            </li>
-                            <li><a href="https://knexjs.org">knex.js</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Meteor_(web_framework)">Meteor</a></li>
-                            <li class="notranslate"><a href="https://en.wikipedia.org/wiki/REST">REST</a>/HTTP</li>
-                            <li><a href="https://en.wikipedia.org/wiki/WebSocket">WebSocket</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/WebRTC">WebRTC</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Yii">Yii</a> 2</li>
-                            <li><a href="https://en.wikipedia.org/wiki/Tornado_(web_server)">tornado</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/NoSQL">NoSQL</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/PostgreSQL">PostgreSQL</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/MySQL">MySQL</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/MongoDB">MongoDB</a></li>
-                            <li><a href="https://mongoosejs.com/">Mongoose.js</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/IndexedDB">IndexedDB</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Redis">Redis</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Amazon_Web_Services">AWS</a> EC2</li>
-                            <li><a href="https://en.wikipedia.org/wiki/.NET_Framework">.NET</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Windows_Presentation_Foundation">WPF</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Microsoft_Silverlight">Silverlight</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Git">Git</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Mercurial">Mercurial</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Nginx">Nginx</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Linux">Linux</a> web server configuration</li>
-                            <li><a href="https://en.wikipedia.org/wiki/macOS">macOS</a> as workstation</li>
-                            <li><a href="https://aws.amazon.com/ru/iot-core/">MQTT</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Bitcoin">Bitcoin</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Ethereum">Ethereum</a>
-                                <span class="notranslate">(<a href="https://www.parity.io/">parity</a>)</span>
-                                node configuration and usage through API
-                            </li>
-                            <li><a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC</a>
-                            </li>
-                            <li><a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel">MVVM</a>
-                            </li>
-                            <li><a href="https://en.wikipedia.org/wiki/Software_design_pattern"
-                                    class="notranslate">Design patterns</a></li>
-                            <li><a href="https://www.npmjs.com/package/immutable" class="notranslate">immutable.js</a>
-                            </li>
-                            <li><a href="https://www.npmjs.com/package/jest" class="notranslate">Jest</a></li>
-                            <li><a href="https://www.npmjs.com/package/enzyme" class="notranslate">Enzyme</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Terraform_(software)"
-                                    class="notranslate">Terraform</a></li>
-                            <li><a href="https://en.wikipedia.org/wiki/Jenkins_(software)"
-                                    class="notranslate">Jenkins</a></li>
-                            <li>
-                                <a class="notranslate" href="https://redux-saga.js.org/">Redux Saga</a>
-                            </li>
-                        </ul>
-                    </dd>
-                    <dt class="experience">Experience</dt>
-                    <dd id="experience" class="robots-noindex" v-cloak>
-                        <div class="cloak">
-                            <span class="please">Something wrong happens. Please</span>
-                            <a class="download" href="https://grabify.link/TB2PKD">download</a>
-                            <span class="pdf">resume in PDF format</span>
-                        </div>
-                        <div v-if="original">
-                            <div class="item" v-for="job in jobs">
-                                <h4 class="notranslate confidential" v-if="job.name === 'Confidential'"></h4>
-                                <h4 class="notranslate" v-else>{{ job.name }}</h4>
-                                <div class="properties">
-                                    <div v-bind:class="{['property-' + property.key]: true}"
-                                        v-for="property in describe(job)" v-if="property">
-                                        <span class="label">{{ property.label }}:</span>
-                                        <span class="value confidential"
-                                            v-if="property.value === 'Confidential'"></span>
-                                        <span class="value" v-else v-html="property.value"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div v-else class="foreign">
-                            <span class="can-see">You can see this section at</span>
-                            <a href="https://kissarat.github.io/">kissarat.github.io</a>
-                            <span class="or">or</span>
-                            <a class="download" href="https://grabify.link/TB2PKD">download</a>
-                            <span class="pdf">resume in PDF format</span>
-                        </div>
-                    </dd>
-                    <dt class="education">Education</dt>
-                    <dd id="education">
-                        <div>
-                            <div>2006 - 2011</div>
-                            <div class="bachelor">
-                                Bachelor's degree, Computer Systems and Networks | Ternopil Ivan Pul'uj
-                                National Technical University
-                            </div>
-                        </div>
-                        <div>
-                            <div>2002 - 2006</div>
-                            <div class="lyceum">
-                                High school degree | Technical Lyceum
-                            </div>
-                        </div>
-                    </dd>
-                    <dt class="own-projects">Own Projects</dt>
-                    <dd>
-                        <dl>
-                            <dt class="notranslate">Auxiliary</dt>
-                            <dd>Utilities NPM package (like lodash) <a
-                                    href="https://github.com/kissarat/auxiliary">https://www.npmjs.com/package/auxiliary</a>
-                            </dd>
-                            <dt class="notranslate">Comparator Generator</dt>
-                            <dd>Generates anoymous function that compare equality of two objects
-                                based on JSON description. You can see generator and example of
-                                comparison schema description
-                                <a href="comparator/index.html" class="anchor">here</a>
-                            </dd>
-                            <dt class="notranslate">Never Loose</dt>
-                            <dd>Google Chrome extension
-                                (<a
-                                    href="https://github.com/kissarat/never-lose">https://github.com/kissarat/never-lose</a>)
-                                that makes snapshots at
-                                achive.org of any pages every visit
-                            </dd>
-                            <dt class="notranslate">Dominant</dt>
-                            <dd>Google Chrome extension (<a
-                                    href="https://github.com/kissarat/dominant">https://github.com/kissarat/dominant</a>)
-                                for commenting any
-                                element of any HTML page. User can see comment of other users
-                            </dd>
-                            <dt class="notranslate">prom.ua JSON gateway</dt>
-                            <dd>Gateway, that accepts any URL of prom.ua, parse appropriate page and respond in JSON
-                                format <a href="https://github.com/kissarat/prom">https://github.com/kissarat/prom</a>
-                            </dd>
-                            <dt class="notranslate">Code Commenter</dt>
-                            <dd>Web application for commenting of lines of Python code with own syntax highlighter
-                                <a href="https://github.com/kissarat/coco">https://github.com/kissarat/coco</a>
-                            </dd>
-                        </dl>
-                    </dd>
-                </dl>
-            </article>
-        </div>
-        <iframe src="https://en.wikipedia.org/wiki/Ethereum"></iframe>
-        <a id="pdf" href="https://grabify.link/TB2PKD" class="download" title="Save as PDF" target="_blank">
-            <img alt="Save as PDF" src="images/pdf.png" />
-        </a>
+              </div>
+              <div>
+                <div>2002 - 2006</div>
+                <div class="lyceum">
+                  High school degree | Technical Lyceum
+                </div>
+              </div>
+            </dd>
+            <dt class="own-projects">Own Projects</dt>
+            <dd>
+              <dl>
+                <dt class="notranslate">Auxiliary</dt>
+                <dd>
+                  Utilities NPM package (like lodash)
+                  <a href="https://github.com/kissarat/auxiliary"
+                    >https://www.npmjs.com/package/auxiliary</a
+                  >
+                </dd>
+                <dt class="notranslate">Comparator Generator</dt>
+                <dd>
+                  Generates anoymous function that compare equality of two
+                  objects based on JSON description. You can see generator and
+                  example of comparison schema description
+                  <a href="comparator/index.html" class="anchor">here</a>
+                </dd>
+                <dt class="notranslate">Never Loose</dt>
+                <dd>
+                  Google Chrome extension (<a
+                    href="https://github.com/kissarat/never-lose"
+                    >https://github.com/kissarat/never-lose</a
+                  >) that makes snapshots at achive.org of any pages every visit
+                </dd>
+                <dt class="notranslate">Dominant</dt>
+                <dd>
+                  Google Chrome extension (<a
+                    href="https://github.com/kissarat/dominant"
+                    >https://github.com/kissarat/dominant</a
+                  >) for commenting any element of any HTML page. User can see
+                  comment of other users
+                </dd>
+                <dt class="notranslate">prom.ua JSON gateway</dt>
+                <dd>
+                  Gateway, that accepts any URL of prom.ua, parse appropriate
+                  page and respond in JSON format
+                  <a href="https://github.com/kissarat/prom"
+                    >https://github.com/kissarat/prom</a
+                  >
+                </dd>
+                <dt class="notranslate">Code Commenter</dt>
+                <dd>
+                  Web application for commenting of lines of Python code with
+                  own syntax highlighter
+                  <a href="https://github.com/kissarat/coco"
+                    >https://github.com/kissarat/coco</a
+                  >
+                </dd>
+              </dl>
+            </dd>
+          </dl>
+        </article>
+      </div>
+      <iframe src="https://en.wikipedia.org/wiki/Ethereum"></iframe>
+      <a
+        id="pdf"
+        href="https://grabify.link/TB2PKD"
+        class="download"
+        title="Save as PDF"
+        target="_blank"
+      >
+        <img alt="Save as PDF" src="images/pdf.png" />
+      </a>
     </div>
     <script src="track/public/polyfill.js?v=1536475558698"></script>
     <!--script src="https://kissarat.github.io/track/public/track.js?v=1557262896259"></script-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js"
-        integrity="sha256-VBLiveTKyUZMEzJd6z2mhfxIqz3ZATCuVMawPZGzIfA=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.min.js"
-        integrity="sha256-ui3vFTgbIIvd9ePh+wF+ju05O3jympV4FyFlpNMV2cw=" crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js"
+      integrity="sha256-VBLiveTKyUZMEzJd6z2mhfxIqz3ZATCuVMawPZGzIfA="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.min.js"
+      integrity="sha256-ui3vFTgbIIvd9ePh+wF+ju05O3jympV4FyFlpNMV2cw="
+      crossorigin="anonymous"
+    ></script>
     <script src="resume/script.js"></script>
     <script src="resume/hired.js"></script>
-    <div id="hired" style="opacity: 0; display: none">
-        <h1>I am hired</h1>
-        <button type="button">OK</button>
+    <div id="hired" style="opacity: 0; display: none;">
+      <h1>I am hired</h1>
+      <button type="button">OK</button>
     </div>
-</body>
-
+  </body>
 </html>
 
 <!-- Copyright (c) 2019, Taras Labiak -->
