@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>URL tools</title>
+    <style>
+      form > * {
+        margin-bottom: 6px;
+        min-width: 80vw;
+      }
+
+      textarea {
+        min-height: 50vh;
+        font-family: "Courier New", Courier, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <input type="url" placeholder="URL" />
+      <textarea></textarea>
+    </form>
+    <script>
+      const keys = [
+        "hash",
+        "host",
+        "hostname",
+        "href",
+        "origin",
+        "password",
+        "pathname",
+        "port",
+        "protocol",
+        "search",
+        "username",
+      ];
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlInput = document.querySelector('[type="url"]');
+        const textarea = document.querySelector("textarea");
+        urlInput.addEventListener("change", function (e) {
+          const url = new URL(e.target.value);
+          const json = { query: {} };
+          for (const key of keys) {
+            json[key] = url[key];
+          }
+          for (const [key, value] of url.searchParams.entries()) {
+            json.query[key] = value;
+          }
+          textarea.value = JSON.stringify(json, null, "  ");
+        });
+      });
+    </script>
+  </body>
+</html>
