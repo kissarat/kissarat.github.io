@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quickbooks: Create token for card</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      textarea {
+        width: 450px;
+        height: 250px;
+      }
+
+      button {
+        margin-top: 6px;
+        margin-bottom: 6px;
+      }
+
+      input {
+        width: 450px;
+        font-family: "Courier New", Courier, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea>
+        {
+            "card": {
+              "name": "emulate=0",
+              "number": "4111111111111111",
+              "expMonth": "02",
+              "address": {
+                "postalCode": "94086",
+                "country": "US",
+                "region": "CA",
+                "streetAddress": "1130 Kifer Rd",
+                "city": "Sunnyvale"
+              },
+              "expYear": "2026",
+              "cvc": "123"
+            }
+          }
+    </textarea>
+    <button type="button">Get token</button>
+    <input placeholder="Token" readonly />
+    <script>
+      const textarea = document.querySelector("textarea");
+      const input = document.querySelector("input");
+      let json = JSON.parse(textarea.value);
+      textarea.value = JSON.stringify(json, null, "  ");
+      const button = document.querySelector("button");
+      button.addEventListener("click", async function () {
+        const res = await fetch(
+          "https://sandbox.api.intuit.com/quickbooks/v4/payments/tokens",
+          {
+            method: "POST",
+            body: textarea.value,
+            headers: {
+              accept: "application/json",
+              "content-type": "application/json",
+            },
+          }
+        );
+        const tokenValue = await res.json();
+        if ("string" === typeof tokenValue.value) {
+          input.value = tokenValue.value;
+        } else {
+          alert("Invalid response. See dev console for details");
+          console.error(tokenValue);
+        }
+      });
+    </script>
+  </body>
+</html>
