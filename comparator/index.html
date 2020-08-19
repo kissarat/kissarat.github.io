@@ -1,63 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Comparator Generator</title>
     <style>
-        #app {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-        }
+      #app {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
 
-        header {
-            padding: 8px;
-        }
+      header {
+        padding: 8px;
+      }
 
-        .areas {
-            flex: 1;
-        }
+      .areas {
+        flex: 1;
+      }
 
-        textarea {
-            height: calc(100% - 20px);
-            min-width: calc(100% / 2 - 20px);
-            resize: none;
-        }
+      textarea {
+        height: calc(100% - 20px);
+        min-width: calc(100% / 2 - 20px);
+        resize: none;
+      }
 
-        #error {
-            color: red;
-        }
+      #error {
+        color: red;
+      }
     </style>
-</head>
-<body>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-58031952-14"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
+  </head>
+  <body>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-58031952-14"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
 
-  function gtag() {
-    dataLayer.push(arguments);
-  }
+      function gtag() {
+        dataLayer.push(arguments);
+      }
 
-  gtag('js', new Date());
+      gtag("js", new Date());
 
-  gtag('config', 'UA-58031952-14');
-</script>
+      gtag("config", "UA-58031952-14");
+    </script>
 
-<div id="app">
-    <header>
+    <div id="app">
+      <header>
         <button type="button" id="convert" disabled>Convert</button>
         <div id="error">JavaScript is disabled</div>
-    </header>
-    <article class="areas">
+      </header>
+      <article class="areas">
         <textarea id="input">
             {
                 "simple": true,
@@ -72,73 +75,78 @@
             }
         </textarea>
         <textarea id="output"></textarea>
-    </article>
-</div>
-<script>
-  function name(prefix = '_') {
-    if (!(name[prefix] >= 0)) {
-      name[prefix] = 0;
-    }
-    return prefix + ++name[prefix];
-  }
-
-  function translate(schema, first = name('a'), second = name('b')) {
-    if (schema) {
-      if (schema instanceof Array) {
-        const compare = translate(schema[0], 'item', `${second}[i]`);
-        return `${first}.length === ${second}.length && ${first}.every((item, i) => ${compare})`
+      </article>
+    </div>
+    <script>
+      function name(prefix = "_") {
+        if (!(name[prefix] >= 0)) {
+          name[prefix] = 0;
+        }
+        return prefix + ++name[prefix];
       }
-      switch (typeof schema) {
-        case 'object':
-          const items = [];
-          for (const key in schema) {
-            const v = translate(schema[key], `${first}.${key}`, `${second}.${key}`);
-            if (v) {
-              items.push(v);
-            }
+
+      function translate(schema, first = name("a"), second = name("b")) {
+        if (schema) {
+          if (schema instanceof Array) {
+            const compare = translate(schema[0], "item", `${second}[i]`);
+            return `${first}.length === ${second}.length && ${first}.every((item, i) => ${compare})`;
           }
-          return `${first} && ${second} && ` + items.join(' && ')
-        case 'string':
-          if ('.' === schema[0]) {
-            return `${first}${schema}(${second})`;
+          switch (typeof schema) {
+            case "object":
+              const items = [];
+              for (const key in schema) {
+                const v = translate(
+                  schema[key],
+                  `${first}.${key}`,
+                  `${second}.${key}`
+                );
+                if (v) {
+                  items.push(v);
+                }
+              }
+              return `${first} && ${second} && ` + items.join(" && ");
+            case "string":
+              if ("." === schema[0]) {
+                return `${first}${schema}(${second})`;
+              }
+              return `${schema}(${first},${second})`;
+            default:
+              return `${first} === ${second}`;
           }
-          return `${schema}(${first},${second})`;
-        default:
-          return `${first} === ${second}`;
+        }
+        return "";
       }
-    }
-    return '';
-  }
 
-  function comparator(schema, first = 'a', second = 'b') {
-    return eval(`(${first}, ${second}) => ` + translate(schema, first, second));
-  }
-
-  addEventListener('load', function () {
-    const input = document.getElementById('input');
-    const output = document.getElementById('output');
-    const convert = document.getElementById('convert');
-    const error = document.getElementById('error');
-    error.innerHTML = 'Something wrong happens';
-    input.value = input.value.replace(/ {12}/g, '');
-
-    convert.addEventListener('click', function () {
-      error.innerHTML = '';
-      let data;
-      try {
-        data = JSON.parse(input.value);
+      function comparator(schema, first = "a", second = "b") {
+        return eval(
+          `(${first}, ${second}) => ` + translate(schema, first, second)
+        );
       }
-      catch (e) {
-        return error.innerHTML = 'Invalid JSON input';
-      }
-      error.innerHTML = 'Bad format';
-      output.value = '(a, b) => ' + translate(data, 'a', 'b');
-      error.innerHTML = '';
-    })
 
-    error.innerHTML = '';
-    convert.disabled = false;
-  });
-</script>
-</body>
+      addEventListener("load", function () {
+        const input = document.getElementById("input");
+        const output = document.getElementById("output");
+        const convert = document.getElementById("convert");
+        const error = document.getElementById("error");
+        error.innerHTML = "Something wrong happens";
+        input.value = input.value.replace(/ {12}/g, "");
+
+        convert.addEventListener("click", function () {
+          error.innerHTML = "";
+          let data;
+          try {
+            data = JSON.parse(input.value);
+          } catch (e) {
+            return (error.innerHTML = "Invalid JSON input");
+          }
+          error.innerHTML = "Bad format";
+          output.value = "(a, b) => " + translate(data, "a", "b");
+          error.innerHTML = "";
+        });
+
+        error.innerHTML = "";
+        convert.disabled = false;
+      });
+    </script>
+  </body>
 </html>

@@ -1,185 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Swine</title>
-    <link rel="alternate" type="text/svg+"/>
+    <link rel="alternate" type="text/svg+" />
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-        #spine {
-            height: 90vh;
-        }
+      #spine {
+        height: 90vh;
+      }
 
-        #hernia {
-            visibility: hidden;
-        }
+      #hernia {
+        visibility: hidden;
+      }
 
-        #hernia.active {
-            visibility: visible;
-        }
+      #hernia.active {
+        visibility: visible;
+      }
 
-        #hernia.scaled {
-            transform: scale(1.5);
-        }
+      #hernia.scaled {
+        transform: scale(1.5);
+      }
     </style>
     <style id="spine-style">
-        path {
-            cursor: pointer;
-        }
+      path {
+        cursor: pointer;
+      }
 
-        g.active path:not([id^="D"]):not(.active):hover,
-        path.active:not([id^="D"]) {
-            animation: 1s vertebral infinite;
-        }
+      g.active path:not([id^="D"]):not(.active):hover,
+      path.active:not([id^="D"]) {
+        animation: 1s vertebral infinite;
+      }
 
-        path[id^="D"]:not(.active):hover,
-        path[id^="D"].active {
-            animation: 1s intervertebral infinite;
-        }
+      path[id^="D"]:not(.active):hover,
+      path[id^="D"].active {
+        animation: 1s intervertebral infinite;
+      }
 
-        @keyframes vertebral {
-            50% {
-                opacity: 0.8;
-                transform: translate(6px, 0);
-            }
+      @keyframes vertebral {
+        50% {
+          opacity: 0.8;
+          transform: translate(6px, 0);
         }
+      }
 
-        @keyframes intervertebral {
-            50% {
-                transform: translate(-12px, 0);
-            }
+      @keyframes intervertebral {
+        50% {
+          transform: translate(-12px, 0);
         }
+      }
 
-        .selection > g:not(.active) {
-            visibility: hidden;
-        }
+      .selection > g:not(.active) {
+        visibility: hidden;
+      }
 
-        .hidden {
-            visibility: hidden;
-        }
+      .hidden {
+        visibility: hidden;
+      }
 
-        .active {
-            visibility: visible;
-        }
+      .active {
+        visibility: visible;
+      }
 
-        #gCERVIX.active {
-            transform: scale(2) translate(-100px, 0);
-        }
+      #gCERVIX.active {
+        transform: scale(2) translate(-100px, 0);
+      }
 
-        #gTHORAX.active {
-            transform: scale(1.5) translate(-60px, -150px);
-        }
+      #gTHORAX.active {
+        transform: scale(1.5) translate(-60px, -150px);
+      }
 
-        #gLUMBAR.active {
-            transform: scale(2) translate(-100px, -450px);
-        }
+      #gLUMBAR.active {
+        transform: scale(2) translate(-100px, -450px);
+      }
     </style>
-</head>
-<body>
-<object id="spine" data="spine.svg" type="image/svg+xml"></object>
-<object id="hernia" data="hernia.svg" type="image/svg+xml"></object>
+  </head>
+  <body>
+    <object id="spine" data="spine.svg" type="image/svg+xml"></object>
+    <object id="hernia" data="hernia.svg" type="image/svg+xml"></object>
 
-<script>
-  function extend(p, o) {
-    for (const key in o) {
-      p[key] = o[key]
-    }
-  }
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-58031952-14"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
 
-  const Collection = {
-    on(event, listener) {
-      for (const node of this) {
-        node.addEventListener(event, listener)
+      function gtag() {
+        dataLayer.push(arguments);
       }
-    },
 
-    off(event, listener) {
-      for (const node of this) {
-        node.removeEventListener(event, listener)
-      }
-    },
+      gtag("js", new Date());
 
-    hasSelection() {
-      for (const node of this) {
-        if (node.classList.contains('active')) {
-          return true
-        }
-      }
-      return false
-    },
+      gtag("config", "UA-58031952-14");
+    </script>
 
-    clear(className = 'active') {
-      for (const node of this) {
-        node.classList.remove(className)
-      }
-    }
-  }
-
-  function setup(w = window) {
-    extend(w.NodeList.prototype, Collection)
-    extend(w.HTMLCollection.prototype, Collection)
-    extend(w.Element.prototype, {
-      select(activate) {
-        const isActive = !this.classList.contains('active')
-        if (activate === isActive) {
-          return activate
-        }
-        this.parentNode.classList.toggle('selection', isActive)
-        this.classList.toggle('active', isActive)
-        return isActive
-      },
-
-      selected(className = 'active') {
-        return this.classList.contains(className)
-      }
-    })
-
-    extend(w.HTMLObjectElement.prototype, {
-      all(selector) {
-        return this.contentDocument.querySelectorAll(selector)
-      }
-    })
-  }
-
-  setup()
-
-  function setupSpine() {
-    this.contentDocument.rootElement.appendChild(document.getElementById('spine-style'));
-    const parts = spine.all('g')
-    function onSelectPart() {
-      const paths = this.children
-      function onSelectPath() {
-        const isActive = this.select()
-        this.style.strokeWidth = isActive ? '4px' : '1px'
-        const hasSelection = isActive || paths.hasSelection()
-        hernia.classList.toggle('active', hasSelection)
-        if (!hasSelection) {
-          paths.off('click', onSelectPath)
-          parts.on('click', onSelectPart)
+    <script>
+      function extend(p, o) {
+        for (const key in o) {
+          p[key] = o[key];
         }
       }
 
-      if (this.select()) {
-        parts.off('click', onSelectPart)
-        paths.on('click', onSelectPath)
-      }
-    }
-    parts.on('click', onSelectPart)
-  }
+      const Collection = {
+        on(event, listener) {
+          for (const node of this) {
+            node.addEventListener(event, listener);
+          }
+        },
 
-  let spine
-  let hernia
-  document.addEventListener('DOMContentLoaded', function () {
-    spine = document.getElementById('spine')
-    hernia = document.getElementById('hernia')
-    setup(spine.contentWindow)
-    spine.addEventListener('load', setupSpine)
-  })
-</script>
-</body>
+        off(event, listener) {
+          for (const node of this) {
+            node.removeEventListener(event, listener);
+          }
+        },
+
+        hasSelection() {
+          for (const node of this) {
+            if (node.classList.contains("active")) {
+              return true;
+            }
+          }
+          return false;
+        },
+
+        clear(className = "active") {
+          for (const node of this) {
+            node.classList.remove(className);
+          }
+        },
+      };
+
+      function setup(w = window) {
+        extend(w.NodeList.prototype, Collection);
+        extend(w.HTMLCollection.prototype, Collection);
+        extend(w.Element.prototype, {
+          select(activate) {
+            const isActive = !this.classList.contains("active");
+            if (activate === isActive) {
+              return activate;
+            }
+            this.parentNode.classList.toggle("selection", isActive);
+            this.classList.toggle("active", isActive);
+            return isActive;
+          },
+
+          selected(className = "active") {
+            return this.classList.contains(className);
+          },
+        });
+
+        extend(w.HTMLObjectElement.prototype, {
+          all(selector) {
+            return this.contentDocument.querySelectorAll(selector);
+          },
+        });
+      }
+
+      setup();
+
+      function setupSpine() {
+        this.contentDocument.rootElement.appendChild(
+          document.getElementById("spine-style")
+        );
+        const parts = spine.all("g");
+        function onSelectPart() {
+          const paths = this.children;
+          function onSelectPath() {
+            const isActive = this.select();
+            this.style.strokeWidth = isActive ? "4px" : "1px";
+            const hasSelection = isActive || paths.hasSelection();
+            hernia.classList.toggle("active", hasSelection);
+            if (!hasSelection) {
+              paths.off("click", onSelectPath);
+              parts.on("click", onSelectPart);
+            }
+          }
+
+          if (this.select()) {
+            parts.off("click", onSelectPart);
+            paths.on("click", onSelectPath);
+          }
+        }
+        parts.on("click", onSelectPart);
+      }
+
+      let spine;
+      let hernia;
+      document.addEventListener("DOMContentLoaded", function () {
+        spine = document.getElementById("spine");
+        hernia = document.getElementById("hernia");
+        setup(spine.contentWindow);
+        spine.addEventListener("load", setupSpine);
+      });
+    </script>
+  </body>
 </html>
