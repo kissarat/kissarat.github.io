@@ -34,6 +34,18 @@ iframe {
     #app {
         justify-content: flex-start;
     }
+
+    header {
+        padding-left: 20px;
+    }
+
+    header img {
+        display: none;
+    }
+
+    #skill-logos {
+        display: none;
+    }
 }
 
 header {
@@ -101,9 +113,6 @@ article > dl > dd > dl > dt {
 
 .abstract .label {
     color: #7e7e7e;
-}
-
-.abstract .value {
 }
 
 a {
@@ -266,10 +275,6 @@ article > dl > dd {
     opacity: 0.5;
 }
 
-.confidential::after {
-    content: 'Confidential'
-}
-
 .item:first-child .property-since .value {
     font-weight: bold;
     text-decoration: underline;
@@ -367,4 +372,24 @@ header.large h2 {
     header h2 {
         font-size: 11pt;
     }
+}
+
+#skill-logos {
+    position: fixed;
+    width: 100vw;
+    opacity: 0.15;
+}
+
+#skill-logos > div {
+    margin: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#skill-logos .logo {
+    max-height: 100px;
+    max-width: 100px;
+    margin: 30px;
 }

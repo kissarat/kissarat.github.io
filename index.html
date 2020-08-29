@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.9" />
     <meta
       name="description"
-      content="PHP, Node.js, Python and Go Full Stack Developer"
+      content="PHP, Node.js, Python Full Stack Developer"
     />
     <title>Taras Labiak - Resume</title>
     <link
@@ -33,6 +33,10 @@
       gtag("config", "UA-58031952-14");
     </script>
 
+    <div id="skill-logos">
+      <div></div>
+    </div>
+
     <div id="app" itemscope itemtype="https://schema.org/Person">
       <div id="resume">
         <header v-bind:class="{large}">
@@ -54,7 +58,7 @@
               <span itemprop="givenName">Taras</span>
               <span itemprop="familyName">Labiak</span>
             </h1>
-            <button style="display: none;" class="english" type="button">
+            <button style="display: none" class="english" type="button">
               EN
             </button>
             <h2 class="notranslate">
@@ -105,7 +109,7 @@
               </div>
             </div>
           </div>
-          <div id="updated">Updated <span>2020-02-18T00:00:00Z</span></div>
+          <div id="updated">Updated <span>2020-08-28T00:00:00Z</span></div>
         </header>
         <article>
           <dl>
@@ -330,8 +334,10 @@
                   server configuration
                 </li>
                 <li>
-                  <a href="https://en.wikipedia.org/wiki/macOS">macOS</a> as
-                  workstation
+                  <a href="https://en.wikipedia.org/wiki/macOS">macOS</a>
+                  or
+                  <a href="https://en.wikipedia.org/wiki/Ubuntu">Ubuntu</a>
+                  as workstation
                 </li>
                 <li><a href="https://aws.amazon.com/ru/iot-core/">MQTT</a></li>
                 <li>
@@ -403,13 +409,30 @@
                     >Redux Saga</a
                   >
                 </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/TypeScript"
+                    >TypeScript</a
+                  >
+                </li>
+                <li>
+                  <a href="https://nestjs.com/">Nest.js</a>
+                </li>
+                <li>
+                  <a href="https://typeorm.io/">TypeORM</a>
+                </li>
+                <li>
+                  <a href="https://koa.js/">Koa.js</a>
+                </li>
+                <li>
+                  <a href="https://en.wikipedia.org/wiki/Google_App_Engine">Google App Engine</a>
+                </li>
               </ul>
             </dd>
             <dt class="experience">Experience</dt>
             <dd id="experience" class="robots-noindex" v-cloak>
               <div class="cloak">
                 <span class="please">Something wrong happens. Please</span>
-                <a class="download" href="https://grabify.link/TB2PKD"
+                <a class="download" href="https://grabify.link/TY69MA"
                   >download</a
                 >
                 <span class="pdf">resume in PDF format</span>
@@ -418,8 +441,8 @@
                 <div class="item" v-for="job in jobs">
                   <h4
                     class="notranslate confidential"
-                    v-if="job.name === 'Confidential'"
-                  ></h4>
+                    v-if="job.name === 'Confidential' || job.name === 'Hidden'"
+                  >{{ job.name }}</h4>
                   <h4 class="notranslate" v-else>{{ job.name }}</h4>
                   <div class="properties">
                     <div
@@ -430,8 +453,8 @@
                       <span class="label">{{ property.label }}:</span>
                       <span
                         class="value confidential"
-                        v-if="property.value === 'Confidential'"
-                      ></span>
+                        v-if="property.value === 'Confidential' || property.value === 'Hidden'"
+                      >{{ property.value }}</span>
                       <span class="value" v-else v-html="property.value"></span>
                     </div>
                   </div>
@@ -458,9 +481,7 @@
               </div>
               <div>
                 <div>2002 - 2006</div>
-                <div class="lyceum">
-                  High school degree | Technical Lyceum
-                </div>
+                <div class="lyceum">High school degree | Technical Lyceum</div>
               </div>
             </dd>
             <dt class="own-projects">Own Projects</dt>
@@ -528,7 +549,6 @@
       </a>
     </div>
     <script src="track/public/polyfill.js?v=1536475558698"></script>
-    <!--script src="https://kissarat.github.io/track/public/track.js?v=1557262896259"></script-->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js"
       integrity="sha256-VBLiveTKyUZMEzJd6z2mhfxIqz3ZATCuVMawPZGzIfA="
@@ -541,7 +561,7 @@
     ></script>
     <script src="resume/script.js"></script>
     <script src="resume/hired.js"></script>
-    <div id="hired" style="opacity: 0; display: none;">
+    <div id="hired" style="opacity: 0; display: none">
       <h1>I am hired</h1>
       <button type="button">OK</button>
     </div>

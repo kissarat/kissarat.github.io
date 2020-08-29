@@ -36,11 +36,19 @@ function loadExperience() {
         "aHR0cHM6Ly9raXNzYXJhdC5naXRodWIuaW8=" === btoa(location.origin),
       jobs: [
         {
+          name: 'Hidden',
+          position: "Node.js Backend Developer",
+          technologies:
+            "Nest.js, Koa.js, TypeORM, Redis, Jenkins, AWS S3",
+          since: "December 2019",
+          projects: "Hidden",
+        },
+        {
           name: atob("VUtFRVNT"),
           position: "Full Stack Web Developer",
           technologies:
             "React 16, Redux, Saga, express.js, immutable.js, jest, enzyme, Terraform, Jenkins, AWS",
-          since: "March 2019",
+          duration: "10 months",
           projects: "Confidential",
         },
         {
@@ -195,6 +203,59 @@ function loadLocalization() {
     });
     english.style.removeProperty("display");
   }
+
+  const logos = [
+    "angular.png",
+    "aws.png",
+    "bitcoin.png",
+    "docker.jpg",
+    "electron.png",
+    "freebsd.svg",
+    "git.png",
+    "google-app-engine.jpg",
+    "google-cloud.jpg",
+    "html.png",
+    "intellij.jpg",
+    "java.png",
+    "jenkins.jpg",
+    "js.png",
+    "koa.gif",
+    "linux.png",
+    "meteor.png",
+    "mongodb.png",
+    "mysql.png",
+    "nestjs.svg",
+    "net.png",
+    "nginx.png",
+    "nodejs.svg",
+    "opencv.png",
+    "php.png",
+    "postgresql.png",
+    "python.png",
+    "react.png",
+    "redis.png",
+    "ruby-on-rails.png",
+    "silverlight.png",
+    "solidity.png",
+    "svg.png",
+    "terraform.png",
+    "typeorm.png",
+    "ubuntu.png",
+    "vscode.png",
+    "vue.png",
+    "webpack.png",
+    "webrtc.png",
+    "yii.jpg",
+  ]
+  .sort(() => Math.random() > 0.5 ? 1 : -1);
+
+  const skillsEl = document.querySelector('#skill-logos > div');
+  logos.forEach(function(logo) {
+    const img = document.createElement('img');
+    img.classList.add('logo');
+    img.src = '/skills/' + logo;
+    skillsEl.appendChild(img);
+  })
 }
 
 function main() {
