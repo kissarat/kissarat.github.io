@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Twitter</title>
+    <style>
+      input {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="POST" action="https://api.twitter.com/oauth/access_token">
+      <fieldset>
+        <input name="oauth_token" placeholder="oauth_token" />
+        <input name="oauth_verifier" placeholder="oauth_verifier" />
+        <input name="oauth_consumer_key" placeholder="oauth_consumer_key" />
+      </fieldset>
+      <button>Send</button>
+    </form>
+  </body>
+</html>
