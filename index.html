@@ -92,12 +92,6 @@
                 <div class="label">Skype</div>
                 <div class="value">taradox89</div>
               </div>
-              <div>
-                <div class="label">GitHub</div>
-                <a href="https://github.com/kissarat" class="value"
-                  >github.com/kissarat</a
-                >
-              </div>
               <div class="tile website">
                 <div class="label">Website</div>
                 <a
@@ -105,6 +99,18 @@
                   href="https://kissarat.github.io/"
                   class="value"
                   >kissarat.github.io</a
+                >
+              </div>
+              <div>
+                <div class="label">GitHub</div>
+                <a href="https://github.com/kissarat" class="value"
+                  >github.com/kissarat</a
+                >
+              </div>
+              <div>
+                <div class="label">Bitbucket</div>
+                <a href="https://bitbucket.org/kissarat" class="value"
+                  >bitbucket.org/kissarat</a
                 >
               </div>
             </div>
@@ -424,7 +430,9 @@
                   <a href="https://koa.js/">Koa.js</a>
                 </li>
                 <li>
-                  <a href="https://en.wikipedia.org/wiki/Google_App_Engine">Google App Engine</a>
+                  <a href="https://en.wikipedia.org/wiki/Google_App_Engine"
+                    >Google App Engine</a
+                  >
                 </li>
               </ul>
             </dd>
@@ -442,7 +450,9 @@
                   <h4
                     class="notranslate confidential"
                     v-if="job.name === 'Confidential' || job.name === 'Hidden'"
-                  >{{ job.name }}</h4>
+                  >
+                    {{ job.name }}
+                  </h4>
                   <h4 class="notranslate" v-else>{{ job.name }}</h4>
                   <div class="properties">
                     <div
@@ -454,7 +464,8 @@
                       <span
                         class="value confidential"
                         v-if="property.value === 'Confidential' || property.value === 'Hidden'"
-                      >{{ property.value }}</span>
+                        >{{ property.value }}</span
+                      >
                       <span class="value" v-else v-html="property.value"></span>
                     </div>
                   </div>
