@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+      #card {
+        max-width: 400px;
+      }
+
+      form.disabled button {
+        display: none;
+      }
+
+      #token {
+        border: none;
+        font-family: "Courier New", Courier, monospace;
+        width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <form class="disabled">
+      <div id="card">Invalid Stripe public key</div>
+      <button>Pay</button>
+    </form>
+    <input id="token" readonly />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const tokenElement = document.getElementById("token");
+        const stripePublicKey = location.hash.slice(1);
+        if (!/^pk_(live|test)_\w+$/.test(stripePublicKey)) {
+          throw new Error("Invalid Stripe public key");
+        }
+        const stripe = Stripe(stripePublicKey);
+        const elements = stripe.elements();
+        const card = elements.create("card", {
+          base: {
+            fontSize: "16px",
+            color: "#32325d",
+          },
+        });
+        card.mount("#card");
+        const form = document.forms[0];
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const result = await stripe.createToken(card);
+          if (result.error) {
+            console.error(result.error);
+            alert(result.error.message);
+          } else {
+            console.log(result.token);
+            tokenElement.value = result.token.id;
+          }
+        });
+        form.classList.remove("disabled");
+      });
+    </script>
+  </body>
+</html>
