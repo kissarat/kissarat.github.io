@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dominant Colors</title>
+    <style>
+      textarea {
+        width: calc(100vw - 32px);
+        min-height: 200px;
+      }
+
+      .container {
+        display: flex;
+      }
+      .container > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        border-right: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Dominant Colors</h1>
+    <textarea></textarea>
+    <div class="container"></div>
+    <script>
+      function hex(number, size) {
+        const converted = number.toString(16);
+        if (converted.length < size) {
+          return ("0000000000000000000" + converted).slice(-size);
+        }
+        return converted;
+      }
+
+      function colorToHex({ red, green, blue }) {
+        return `#${hex(red, 2)}${hex(green, 2)}${hex(blue, 2)}`;
+      }
+
+      function invertColor({ red, green, blue }) {
+        return {
+          red: 255 - red,
+          green: 255 - green,
+          blue: 255 - blue,
+        };
+      }
+
+      const rgb = ["red", "green", "blue"];
+
+      function distance(color1, color2, keys = rgb) {
+        let sum = 0;
+        for (const key of keys) {
+          sum += (color2[key] - color1[key]) ** 2;
+        }
+        return Math.sqrt(sum);
+      }
+
+      function rgb2hsv(r, g, b) {
+        const v = Math.max(r, g, b);
+        const n = v - Math.min(r, g, b);
+        let h = 0;
+        if (0 === n) {
+          h = 0;
+        } else {
+          if (v === r) {
+            h = (g - b) / n;
+          } else if (v === g) {
+            h = 2 + (b - r) / n;
+          } else {
+            h = 4 + (r - g) / n;
+          }
+        }
+        return [
+          60 * (h < 0 ? h + 6 : h),
+          n ? (100 * n) / v : 0,
+          (100 * v) / 255,
+        ];
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const textarea = document.querySelector("textarea");
+        const div = document.querySelector("div");
+        const characteristic = "score";
+        textarea.addEventListener("change", function () {
+          let items = JSON.parse(textarea.value.replace(/\/\/[^\n]+/gm, ""));
+          if (items.imagePropertiesAnnotation) {
+            items = items.imagePropertiesAnnotation.dominantColors.colors;
+          }
+          items = items.sort((a, b) => b[characteristic] - a[characteristic]);
+          const fragment = document.createDocumentFragment();
+          let lastItem = null;
+          const distances = [];
+          for (const item of items) {
+            distances.push({
+              distance: lastItem ? distance(item.color, lastItem.color) : null,
+              hsl: rgb2hsv(...rgb.map((component) => item.color[component])),
+            });
+            lastItem = item;
+            const itemDiv = document.createElement("div");
+            const score = item[characteristic];
+            const value = score * 600;
+            itemDiv.style.width = `${value}px`;
+            itemDiv.style.backgroundColor = colorToHex(item.color);
+            itemDiv.style.color = colorToHex(invertColor(item.color));
+            if (value >= 50) {
+              itemDiv.innerHTML = Math.round(score * 1000) / 10 + "%";
+            }
+            fragment.appendChild(itemDiv);
+          }
+          div.innerHTML = "";
+          div.appendChild(fragment);
+          console.log(distances);
+        });
+      });
+    </script>
+  </body>
+</html>

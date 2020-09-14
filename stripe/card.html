@@ -19,6 +19,7 @@
     </style>
   </head>
   <body>
+    <input id="customer" placeholder="Stripe customer id" />
     <form class="disabled">
       <div id="card">Invalid Stripe public key</div>
       <button>Pay</button>
@@ -26,6 +27,7 @@
     <input id="token" readonly />
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        const customerElement = document.getElementById("customer");
         const tokenElement = document.getElementById("token");
         const stripePublicKey = location.hash.slice(1);
         if (!/^pk_(live|test)_\w+$/.test(stripePublicKey)) {
@@ -43,7 +45,11 @@
         const form = document.forms[0];
         form.addEventListener("submit", async function (e) {
           e.preventDefault();
-          const result = await stripe.createToken(card);
+          const options = {};
+          if (customerElement.value) {
+            options.customer = customerElement.value;
+          }
+          const result = await stripe.createToken(card, options);
           if (result.error) {
             console.error(result.error);
             alert(result.error.message);
