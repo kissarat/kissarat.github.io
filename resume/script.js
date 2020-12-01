@@ -40,7 +40,7 @@ function loadExperience() {
           position: "Node.js Backend Developer",
           technologies:
             "Nest.js, Koa.js, Sequelize, TypeORM, PostgreSQL, Redis, Jenkins, Docker, AWS S3, AWS CloudWatch",
-          duration: "12 months",
+          duration: "1 year",
           projects: "Survey API, User Management, Prizmar",
         },
         {
@@ -48,7 +48,7 @@ function loadExperience() {
           position: "Full Stack Web Developer",
           technologies:
             "React 16, Redux, Saga, express.js, immutable.js, jest, enzyme, Terraform, Jenkins, AWS",
-          duration: "10 months",
+          duration: "1 year 2 months",
           projects: "Confidential",
         },
         {
@@ -80,7 +80,7 @@ function loadExperience() {
             "PHP 7.2, Yii 2, PostgreSQL 9.6, Vue.js, SCSS, jQuery, block.io API, Ethereum parity API, Payeer API, Perfect Money API, AdvCash API",
           responsibilities:
             "Business logic implementation, database design. Integrating external payment API.",
-          duration: "3 months",
+          duration: "6 months",
         },
         {
           name: "ICO Holding",
@@ -89,13 +89,13 @@ function loadExperience() {
             "PHP 7.1, Yii 2, PostgreSQL 9.6, Vue.js, Bootstrap, HTML, CSS, jQuery, Perfect Money API, AdvCash API, Payeer API, block.io API, Ethereum parity API",
           responsibilities:
             "Implementing business logic, database design, frontend part. Integrating external payment API.",
-          duration: "6 months",
+          duration: "11 months",
         },
         {
           name: "MLBot for Skype",
           description:
             "Massive (and periodic) message sender, importing and adding contact list, automatic deletion of contacts. The backend is implemented on Node.js and PostgreSQL, the frontend is made using Electron, React.js.",
-          duration: "8 months",
+          duration: "1 year",
         },
         {
           name: "Evart Social Network",
