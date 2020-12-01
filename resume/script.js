@@ -110,7 +110,7 @@ function loadExperience() {
             "PHP 5.6, Yii 2, PostgreSQL 9.4, Bootstrap, HTML, CSS, jQuery, Perfect Money API, AdvCash API, NixMoney API",
           responsibilities:
             "Implementing business logic, database design. Integrating external payment API.",
-          duration: "10 months",
+          duration: "1 year 5 months",
         },
         {
           name: "IntelSCADA",
