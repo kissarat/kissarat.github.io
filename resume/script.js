@@ -36,12 +36,12 @@ function loadExperience() {
         "aHR0cHM6Ly9raXNzYXJhdC5naXRodWIuaW8=" === btoa(location.origin),
       jobs: [
         {
-          name: 'Hidden',
+          name: atob('U3RlbGxhclNvbHZlcnM='),
           position: "Node.js Backend Developer",
           technologies:
-            "Nest.js, Koa.js, TypeORM, Redis, Jenkins, AWS S3",
-          since: "December 2019",
-          projects: "Hidden",
+            "Nest.js, Koa.js, Sequelize, TypeORM, PostgreSQL, Redis, Jenkins, Docker, AWS S3, AWS CloudWatch",
+          duration: "12 months",
+          projects: "Survey API, User Management, Prizmar",
         },
         {
           name: atob("VUtFRVNT"),
