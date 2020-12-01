@@ -48,7 +48,7 @@ function loadExperience() {
           position: "Full Stack Web Developer",
           technologies:
             "React 16, Redux, Saga, express.js, immutable.js, jest, enzyme, Terraform, Jenkins, AWS",
-          duration: "1 year 2 months",
+          duration: "10 months",
           projects: "Confidential",
         },
         {
