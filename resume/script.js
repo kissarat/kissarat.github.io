@@ -22,7 +22,7 @@ function loadExperience() {
     return atob(encoded).split(" ").map(anchor).join(", ");
   }
 
-  const email = atob("bGFiaWFrQGFvbC5jb20=");
+  const email = atob("dGFyYXMubGFiaWFrQG91dGxvb2suY29t");
   const emailElement = document.querySelector("[itemprop=email]");
   emailElement.setAttribute("href", "mailto:" + email);
   emailElement.innerHTML = email;
@@ -154,9 +154,9 @@ function loadLocalization() {
   // Detecting support of Russian language
   let language =
     navigator.languages &&
-    (navigator.language || "").split("-")[0] !== "en" &&
-    navigator.languages.length > 0 &&
-    navigator.languages.indexOf("ru") >= 0
+      (navigator.language || "").split("-")[0] !== "en" &&
+      navigator.languages.length > 0 &&
+      navigator.languages.indexOf("ru") >= 0
       ? "ru"
       : "en";
   const languageSetting = localStorage.getItem("language") || "";
@@ -187,10 +187,10 @@ function loadLocalization() {
         if (elements.length !== 1) {
           console.warn(
             "Selector '" +
-              selector +
-              "' found " +
-              elements.length +
-              ' times for "ru"'
+            selector +
+            "' found " +
+            elements.length +
+            ' times for "ru"'
           );
         }
       }
@@ -247,10 +247,10 @@ function loadLocalization() {
     "webrtc.png",
     "yii.jpg",
   ]
-  .sort(() => Math.random() > 0.5 ? 1 : -1);
+    .sort(() => Math.random() > 0.5 ? 1 : -1);
 
   const skillsEl = document.querySelector('#skill-logos > div');
-  logos.forEach(function(logo) {
+  logos.forEach(function (logo) {
     const img = document.createElement('img');
     img.classList.add('logo');
     img.src = '/skills/' + logo;
