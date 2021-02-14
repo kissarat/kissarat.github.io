@@ -36,6 +36,13 @@ function loadExperience() {
         "aHR0cHM6Ly9raXNzYXJhdC5naXRodWIuaW8=" === btoa(location.origin),
       jobs: [
         {
+          name: 'Confidential',
+          position: "Node.js Backend Developer",
+          technologies: "Node.js 14, Express.js, Google Maps API, MongoDB 4.3, AWS EC2, AWS CloudWatch",
+          since: "2020-12-10",
+          projects: 'Confidential'
+        },
+        {
           name: atob('U3RlbGxhclNvbHZlcnM='),
           position: "Node.js Backend Developer",
           technologies:
