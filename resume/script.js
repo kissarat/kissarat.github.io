@@ -37,9 +37,9 @@ function loadExperience() {
       jobs: [
         {
           name: 'Confidential',
-          position: "Node.js Backend Developer",
-          technologies: "Node.js 14, Express.js, Google Maps API, MongoDB 4.3, AWS EC2, AWS CloudWatch",
-          since: "2020-12-10",
+          position: "Node.js Backend Developer, Tech Lead",
+          technologies: "Node.js 14, Express.js, Google Maps API, MongoDB 4.3, AWS EC2, AWS CloudWatch, Cloudinary, OneSignal, Twilio",
+          since: "2020-12-07",
           projects: 'Confidential'
         },
         {

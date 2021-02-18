@@ -276,8 +276,8 @@ article > dl > dd {
 }
 
 .item:first-child .property-since .value {
-    font-weight: bold;
-    text-decoration: underline;
+    /* font-weight: bold; */
+    /* text-decoration: underline; */
 }
 
 .english {

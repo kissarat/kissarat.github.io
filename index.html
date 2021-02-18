@@ -85,9 +85,13 @@
               <div class="label">Bitbucket</div>
               <a href="https://bitbucket.org/kissarat" class="value">bitbucket.org/kissarat</a>
             </div>
+            <div>
+              <div class="label">GitLab</div>
+              <a href="https://gitlab.com/kissarat" class="value">gitlab.com/kissarat</a>
+            </div>
           </div>
         </div>
-        <div id="updated">Updated <span>2020-12-01T00:00:00Z</span></div>
+        <div id="updated">Updated <span>2021-02-18T00:00:00Z</span></div>
       </header>
       <article>
         <dl>
@@ -156,6 +160,9 @@
                 <a href="https://en.wikipedia.org/wiki/jQuery">jQuery</a>
               </li>
               <li><a href="https://marionettejs.com/">Marionette.js</a></li>
+              <li><a href="https://cloudinary.com/">Cloudinary</a></li>
+              <li><a href="https://onesignal.com/about">OneSignal</a></li>
+              <li><a href="https://www.twilio.com/">Twilio</a></li>
               <li>
                 <a href="https://en.wikipedia.org/wiki/webpack">webpack</a>
               </li>
@@ -293,7 +300,8 @@
           <dd id="experience" class="robots-noindex" v-cloak>
             <div class="cloak">
               <span class="please">Something wrong happens. Please</span>
-              <a class="download" href="https://grabify.link/TM0ZDA">download</a>
+              <a class="download"
+                href="https://drive.google.com/file/d/1YOgf6okYrzCDE5AqAr8_8k5u84VDI0VR/view?usp=sharing">download</a>
               <span class="pdf">resume in PDF format</span>
             </div>
             <div v-if="original">
@@ -307,7 +315,9 @@
                     v-if="property">
                     <span class="label">{{ property.label }}:</span>
                     <span class="value confidential"
-                      v-if="property.value === 'Confidential' || property.value === 'Hidden'">{{ property.value }}</span>
+                      v-if="property.value === 'Confidential' || property.value === 'Hidden'">
+                      {{ property.value }}
+                    </span>
                     <span class="value" v-else v-html="property.value"></span>
                   </div>
                 </div>
