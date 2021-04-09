@@ -1,3 +1,7 @@
+/**
+ * This script is also my spaghetti-code example :)
+ */
+
 const isDebug =
   "object" === typeof localStorage &&
   +localStorage.getItem("kissarat.debug") > 0;
@@ -36,11 +40,10 @@ function loadExperience() {
         "aHR0cHM6Ly9raXNzYXJhdC5naXRodWIuaW8=" === btoa(location.origin),
       jobs: [
         {
-          name: 'Confidential',
-          position: "Node.js Backend Developer, Tech Lead",
+          name: atob('TGlrZSBDYXJnbw=='),
+          position: "Node.js Backend Developer, casually Tech Lead",
           technologies: "Node.js 14, Express.js, Google Maps API, MongoDB 4.3, AWS EC2, AWS CloudWatch, Cloudinary, OneSignal, Twilio",
-          since: "2020-12-07",
-          projects: 'Confidential'
+          since: "2020-12-07"
         },
         {
           name: atob('U3RlbGxhclNvbHZlcnM='),
