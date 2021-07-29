@@ -4,7 +4,7 @@ body {
 
 #app {
     position: absolute;
-    width: 100vw;
+    width: calc(100vw - 23px);
     min-height: 100vh;
     display: flex;
     /*align-items: center;*/
@@ -188,8 +188,6 @@ article>dl>dd {
 }
 
 [itemprop="description"] ul {
-    display: flex;
-    flex-wrap: wrap;
     padding-left: 0;
 }
 
@@ -345,11 +343,15 @@ header.large h2 {
     }
 }
 
-@media (max-width: 512px) {
+@media (max-width: 800px) {
     #pdf {
-        margin-right: 24px;
-        margin-top: 8px;
+        position: absolute;
+        right: 8px;
+        top: 8px;
     }
+}
+
+@media (max-width: 512px) {
     header div {
         margin-left: 4px;
     }
