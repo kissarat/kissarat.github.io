@@ -339,7 +339,7 @@ header.large h2 {
         height: 218px;
     }
     article {
-        margin-left: 24px;
+        margin-left: 4px;
     }
 }
 
@@ -347,7 +347,7 @@ header.large h2 {
     #pdf {
         position: absolute;
         right: 8px;
-        top: 8px;
+        top: 20px;
     }
 }
 
