@@ -26,11 +26,13 @@ function loadExperience() {
     return atob(encoded).split(" ").map(anchor).join(", ");
   }
 
+  // Email
   const email = atob("dGFyYXMubGFiaWFrQG91dGxvb2suY29t");
   const emailElement = document.querySelector("[itemprop=email]");
   emailElement.setAttribute("href", "mailto:" + email);
   emailElement.innerHTML = email;
 
+  // Experience
   new Vue({
     el: "#app",
     data: {
@@ -40,10 +42,16 @@ function loadExperience() {
         "aHR0cHM6Ly9raXNzYXJhdC5naXRodWIuaW8=" === btoa(location.origin),
       jobs: [
         {
+          name: atob('UGFydE92ZXI='),
+          position: "Full-Stack Developer",
+          technologies: "Node.js 14, MySQL 5.7, RabbitMQ, ElasticSearch 6.8, React/Redux, Nest.js, Swagger 3, Meteor, knex, yup, lodash",
+          duration: "4 months"
+        },
+        {
           name: atob('TGlrZSBDYXJnbw=='),
           position: "Node.js Backend Developer, casually Tech Lead",
-          technologies: "Node.js 14, Express.js, Google Maps API, MongoDB 4.3, AWS EC2, AWS CloudWatch, Cloudinary, OneSignal, Twilio",
-          since: "2020-12-07"
+          technologies: "Node.js 14, Express.js, Google Maps API, MongoDB 4.3, RabbitMQ, AWS EC2, AWS CloudWatch, Cloudinary, OneSignal, Twilio",
+          duration: "4 months"
         },
         {
           name: atob('U3RlbGxhclNvbHZlcnM='),
@@ -150,6 +158,7 @@ function loadExperience() {
   });
 }
 
+// Internationalization
 function loadLocalization() {
   function fetchJSON(url) {
     if ("function" === typeof window.fetch) {
@@ -214,6 +223,7 @@ function loadLocalization() {
     english.style.removeProperty("display");
   }
 
+  // Images in page background
   const logos = [
     "angular.png",
     "aws.png",
@@ -268,6 +278,7 @@ function loadLocalization() {
   })
 }
 
+// Entrypoint
 function main() {
   const isWideScreen =
     "function" === typeof matchMedia
@@ -294,19 +305,19 @@ function main() {
   if (updated) {
     updated.innerHTML = new Date(updated.innerHTML).toLocaleDateString();
   } else {
-    console.error("#updated not found");
+    throw new Error("#updated not found");
   }
 
   if ("function" === typeof Vue) {
     loadExperience();
   } else {
-    console.error("Vue.js is not loaded");
+    throw new Error("Vue.js is not loaded");
   }
 
   if ("function" === typeof window.fetch) {
     loadLocalization();
   } else {
-    console.error("Your browser does not support window.fetch");
+    throw new Error("Your browser does not support window.fetch");
   }
 }
 
