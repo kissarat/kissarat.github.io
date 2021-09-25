@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital@0;1&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+/* Import Google fonts */
+
+body {
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+}
+
+main {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+textarea {
+    height: 300px;
+    width: 98%;
+}
+
+#editor {
+    padding: 4px;
+    text-align: center;
+    background-color: red;
+}
+
+#editor, article {
+    width: 100%;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+article {
+    padding: 4px;
+}
+
+@media screen and (min-width: 600px) {
+    main {
+        width: calc(100vw - 24px);
+    }
+}
