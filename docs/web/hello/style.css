@@ -23,7 +23,7 @@ textarea {
 #editor {
     padding: 4px;
     text-align: center;
-    background-color: red;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #editor, article {
