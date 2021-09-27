@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Mastering SVG- CSS animation</title>
+    <style type="text/css">
+        @keyframes movement {
+            0% {
+                cx: 0;
+            }
+
+            20% {
+                cx: 1000;
+                transform: translate(0, -400px);
+            }
+
+            40% {
+                cx: 500;
+            }
+
+            60% {
+                cx: 1200;
+                transform: translate(0, 200px);
+            }
+
+            80% {
+                cx: 300;
+                transform: translate(0, -100px);
+            }
+
+            92% {
+                cx: 600;
+            }
+        }
+
+        g {
+            width: 100%;
+            height: 100%;
+        }
+
+        circle {
+            animation: movement 9s ease-in-out infinite;
+            /* fill: blue; */
+            transform: translate(0, 200px);
+        }
+
+        svg {
+            margin-top: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <template type="image/svg" id="rect">
+        <rect x="0" y="0" width="100" height="100" class="rect t1" />
+    </template>
+    <svg id="rect-playground" xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 -500 600 3000"
+        version="1.1">
+        <g width="100" height="100"></g>
+    </svg>
+    <script type="text/javascript">
+        const timingFunctions = ['ease', 'ease-in', 'ease-out', 'ease-in-out', 'linear',
+            // 'step-start', 'step-end',
+            // 'cubic-bezier(0.1, 0.7, 1.0, 0.1)', 'steps(4, end)', 'steps(4, jump-start)', 'steps(10, jump-end)', 'steps(20, jump-none)', 'steps(5, jump-both)', 'steps(6, start)',
+            // 'steps(8, end)', 'inherit', 'initial', 'unset',
+            'ease, step-start, cubic-bezier(0.1, 0.7, 1.0, 0.1)'
+        ]
+        const SVGXMLNS = "http://www.w3.org/2000/svg";
+        function move() {
+            let i = 0;
+            const rects = document.querySelectorAll('rect');
+            const playground = document.getElementById('rect-playground')
+            for (const tf of timingFunctions) {
+                const rect = document.createElementNS(SVGXMLNS, 'circle')
+                // rect.setAttribute('cx', '0')
+                rect.setAttribute('r', 20 + i / 20)
+                rect.classList.add('rect')
+                rect.setAttribute('cy', i.toString())
+                rect.style.animationTimingFunction = tf
+                const hue = i / 3;
+                rect.style.fill = `hsl(${hue}rad, 100%, 50%)`
+                playground.appendChild(rect)
+                i += 120;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', move)
+    </script>
+</body

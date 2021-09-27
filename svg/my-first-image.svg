@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="1000" height="450" version="1.1" id="canvas"
+     class="canvas">
+     <style>
+          rect {
+               opacity: 1;
+               transition: opacity 400ms;
+          }
+
+          rect:hover {
+               opacity: 0;
+          }
+
+          @keyframes box {
+               from {
+                    left: 0;
+               }
+
+               to {
+                    left: 300px;
+               }
+          }
+
+          circle[fill="red"] {
+               animation: box 4s ease-in-out;
+          }
+     </style>
+     <circle cx="455" cy="225" r="50" fill="red" />
+     <circle cx="495" cy="225" r="30" fill="green" />
+     <circle cx="495" cy="185" r="30" fill="blue" />
+     <rect x="0.5cm" y="0.5cm" width="2cm" height="1cm" />
+     <rect x="0.5cm" y="2cm" width="1cm" height="1.5cm" />
+</svg>
