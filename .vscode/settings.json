@@ -20,6 +20,7 @@
   "files.maxMemoryForLargeFilesMB": 4,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
+  "window.zoomLevel": 1,
   "files.watcherExclude": {
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
@@ -31,5 +32,9 @@
   "telemetry.enableTelemetry": false,
   "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}",
   "workbench.colorTheme": "Darcula Theme from IntelliJ",
-  "workbench.iconTheme": "material-icon-theme"
+  "workbench.iconTheme": "material-icon-theme",
+  "files.associations": {
+    "*.ttml": "xml",
+    "*.ttss": "css"
+  }
 }

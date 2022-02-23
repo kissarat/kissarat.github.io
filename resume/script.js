@@ -45,13 +45,13 @@ function loadExperience() {
           name: atob('UGFydE92ZXI='),
           position: "Full-Stack Developer",
           technologies: "Node.js 14, MySQL 5.7, RabbitMQ, ElasticSearch 6.8, React/Redux, Nest.js, Swagger 3, Meteor, knex, yup, lodash",
-          duration: "4 months"
+          duration: "1 year"
         },
         {
           name: atob('TGlrZSBDYXJnbw=='),
           position: "Node.js Backend Developer, casually Tech Lead",
           technologies: "Node.js 14, Express.js, Google Maps API, MongoDB 4.3, RabbitMQ, AWS EC2, AWS CloudWatch, Cloudinary, OneSignal, Twilio",
-          duration: "4 months"
+          duration: "6 months"
         },
         {
           name: atob('U3RlbGxhclNvbHZlcnM='),
