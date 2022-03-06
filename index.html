@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=0.9" />
-  <meta name="description" content="PHP, Node.js, Python Full Stack Developer" />
+  <meta name="description" content="Go, JavaScript, PHP, Python Full Stack Developer" />
   <title>Taras Labiak - Resume</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="resume/style.css" />
@@ -31,12 +31,12 @@
 
   <div id="app" itemscope itemtype="https://schema.org/Person">
     <div id="resume">
-      <header v-bind:class="{large}">
+      <header v-bind:class="{large, 'easter-block': true}">
         <a v-bind:href="large ? 'resume/avatar.jpg' : ''" v-on:click="$event.preventDefault()">
           <img alt="Taras Labiak" itemprop="image" id="avatar" src="resume/avatar.jpg" v-bind:class="{large: large}"
             v-on:click="large = !large" />
         </a>
-        <div>
+        <div class="about">
           <h1>
             <span itemprop="givenName">Taras</span>
             <span itemprop="familyName">Labiak</span>
@@ -45,7 +45,13 @@
             EN
           </button>
           <h2 class="notranslate">
-            Node.js, PHP, Python Full Stack Developer
+            Go, JavaScript, PHP, Python
+            <span class="easter">
+              <span class="visible">Full</span>
+              <span class="hidden">Fool</span>
+            </span>
+            Stack
+            Developer
           </h2>
           <!--<a class="export">PDF</a>-->
           <div v-bind:class="{abstract: !large, table: large}">
@@ -63,7 +69,7 @@
             </div>
             <div class="tile experience">
               <div class="label">Experience</div>
-              <div class="value">7 years</div>
+              <div class="value">over 7 years</div>
             </div>
             <div class="tile">
               <div class="label">Skype</div>
@@ -87,7 +93,7 @@
             </div>
           </div>
         </div>
-        <div id="updated">Updated <span>2021-07-29T00:00:00Z</span></div>
+        <div id="updated">Updated <span>2022-03-06T16:00:00Z</span></div>
       </header>
       <article>
         <dl>
@@ -110,8 +116,7 @@
               in their "concentration camps" for this. And I prefer to talk about eugenics with
               those who avoid these camps of peace. But I'm always welcome to be wrong because I am
               a skeptic. I guess what I (or we) need to believe to get the truth. The truth often
-              born in a discussion and other discussions are meaningless for me.
-              The truth often born in a discussion and other discussions are meaningless for me.</p>
+              born in a discussion and other discussions are meaningless for me.</p>
             <p>We are children, but someone ought to show how much he love adult porn or how many
               children she can born, cook and prepare for adult life and I have to be a nanny.
               The life of every creature is beautiful
@@ -135,6 +140,9 @@
               </li>
               <li>
                 <a href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java</a>
+              </li>
+              <li>
+                <a href="https://www.php.net/manual/en/intro-whatis.php">PHP</a>
               </li>
               <li>
                 <a href="https://en.wikipedia.org/wiki/Solidity" class="notranslate">Solidity</a>
@@ -320,7 +328,7 @@
               <span class="pdf">resume in PDF format</span>
             </div>
             <div v-if="original">
-              <div class="item" v-for="job in jobs">
+              <div v-bind:class="{item: true, [job.type || 'normal']: true}" v-for="job in jobs">
                 <h4 class="notranslate confidential" v-if="job.name === 'Confidential' || job.name === 'Hidden'">
                   {{ job.name }}
                 </h4>
@@ -347,6 +355,10 @@
             </div>
           </dd>
           <dt class="education">Education</dt>
+          <script>
+            const human = 'bot'
+            self['notfor' + human] = self['a' + (human.split('').reverse().join(''))];
+          </script>
           <dd id="education">
             <div>
               <div>2006 - 2011</div>
@@ -373,7 +385,7 @@
                 Generates anoymous function that compare equality of two
                 objects based on JSON description. You can see generator and
                 example of comparison schema description
-                <a href="comparator/index.html" class="anchor">here</a>
+                <a href="https://kissarat.github.io/comparator/index.html" class="anchor">here</a>
               </dd>
               <dt class="notranslate">Never Loose</dt>
               <dd>
@@ -427,4 +439,4 @@
 
 </html>
 
-<!-- Copyright (c) 2021, Taras Labiak -->
+<!-- Copyright (c) 2022, Taras Labiak -->

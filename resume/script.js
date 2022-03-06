@@ -23,11 +23,11 @@ function loadExperience() {
   }
 
   function anchorList(encoded) {
-    return atob(encoded).split(" ").map(anchor).join(", ");
+    return notforbot(encoded).split(" ").map(anchor).join(", ");
   }
 
   // Email
-  const email = atob("dGFyYXMubGFiaWFrQG91dGxvb2suY29t");
+  const email = notforbot("dGFyYXMubGFiaWFrQG91dGxvb2suY29t");
   const emailElement = document.querySelector("[itemprop=email]");
   emailElement.setAttribute("href", "mailto:" + email);
   emailElement.innerHTML = email;
@@ -39,22 +39,22 @@ function loadExperience() {
       large: false,
       original:
         isDebug ||
-        "aHR0cHM6Ly9raXNzYXJhdC5naXRodWIuaW8=" === btoa(location.origin),
+        "aHR0cHM6Ly9raXNzYXJhdC5naXRodWIuaW8=" === notforbot(location.origin),
       jobs: [
         {
-          name: atob('UGFydE92ZXI='),
+          name: notforbot('UGFydE92ZXI='),
           position: "Full-Stack Developer",
           technologies: "Node.js 14, MySQL 5.7, RabbitMQ, ElasticSearch 6.8, React/Redux, Nest.js, Swagger 3, Meteor, knex, yup, lodash",
           duration: "1 year"
         },
         {
-          name: atob('TGlrZSBDYXJnbw=='),
+          name: notforbot('TGlrZSBDYXJnbw=='),
           position: "Node.js Backend Developer, casually Tech Lead",
           technologies: "Node.js 14, Express.js, Google Maps API, MongoDB 4.3, RabbitMQ, AWS EC2, AWS CloudWatch, Cloudinary, OneSignal, Twilio",
           duration: "6 months"
         },
         {
-          name: atob('U3RlbGxhclNvbHZlcnM='),
+          name: notforbot('U3RlbGxhclNvbHZlcnM='),
           position: "Node.js Backend Developer",
           technologies:
             "Nest.js, Koa.js, Sequelize, TypeORM, PostgreSQL, Redis, Jenkins, Docker, AWS S3, AWS CloudWatch",
@@ -62,7 +62,7 @@ function loadExperience() {
           projects: "Survey API, User Management, Prizmar",
         },
         {
-          name: atob("VUtFRVNT"),
+          name: notforbot("VUtFRVNT"),
           position: "Full Stack Web Developer",
           technologies:
             "React 16, Redux, Saga, express.js, immutable.js, jest, enzyme, Terraform, Jenkins, AWS",
@@ -70,7 +70,7 @@ function loadExperience() {
           projects: "Confidential",
         },
         {
-          name: atob("SW5kZWVtYQ=="),
+          name: notforbot("SW5kZWVtYQ=="),
           position: "Web Backend Developer",
           website: anchorList("aW5kZWVtYS5jb20="),
           technologies:
@@ -83,13 +83,14 @@ function loadExperience() {
           ),
         },
         {
-          name: atob("T2NlYW4gb2YgRXRoZXJldW0="),
+          name: notforbot("T2NlYW4gb2YgRXRoZXJldW0="),
           position: "Full Stack Web Developer",
           technologies:
             "PHP 7.2, Yii 2, PostgreSQL 10, Vue.js, Ethereum parity API",
           responsibilities:
             'Implementing business logic, database design, frontend part. Integrating with Ethereum node API (<a href="https://www.parity.io/">parity</a>).',
           duration: "10 months",
+          type: 'financial'
         },
         {
           name: "Antikvar Plus",
@@ -99,6 +100,7 @@ function loadExperience() {
           responsibilities:
             "Business logic implementation, database design. Integrating external payment API.",
           duration: "6 months",
+          type: 'financial'
         },
         {
           name: "ICO Holding",
@@ -108,6 +110,7 @@ function loadExperience() {
           responsibilities:
             "Implementing business logic, database design, frontend part. Integrating external payment API.",
           duration: "11 months",
+          type: 'financial'
         },
         {
           name: "MLBot for Skype",
@@ -120,6 +123,7 @@ function loadExperience() {
           description:
             'The social network. Node.js + Marionette.js <a href="https://github.com/kissarat/evart-social-network-node.js">https://github.com/kissarat/evart-social-network-node.js</a> and on Meteor.js + React <a href="https://github.com/kissarat/evart-social-network-meteor">https://github.com/kissarat/evart-social-network-meteor</a>.',
           duration: "10 months",
+          type: 'financial'
         },
         {
           name: "BestChoice Club",
@@ -129,6 +133,7 @@ function loadExperience() {
           responsibilities:
             "Implementing business logic, database design. Integrating external payment API.",
           duration: "1 year 5 months",
+          type: 'financial'
         },
         {
           name: "IntelSCADA",

@@ -60,11 +60,24 @@ h1 {
 }
 
 h2 {
+    font-family: 'Courier New', Courier, monospace;
     margin-top: 0;
     margin-bottom: 8px;
-    font-size: 15pt;
-    color: #7e7e7e;
-    font-weight: 300;
+    font-size: 13pt;
+    color: #4a4a4a;
+    font-weight: bold;
+}
+
+.easter-block .easter .hidden {
+    display: none;
+}
+
+.easter-block:hover .easter .hidden {
+    display: inline-block;
+}
+
+.easter-block:hover .easter .visible {
+    display: none;
 }
 
 article>dl>dd>dl>dt {
@@ -148,7 +161,12 @@ article>dl>dt {
     font-weight: 700;
     margin-top: 16px;
     padding-bottom: 4px;
-    border-bottom: 1px solid rgba(126, 126, 126, 0.3);
+    border-bottom: 1px solid rgba(126, 126, 126, 0.6);
+}
+
+#experience .item.financial h4::after {
+    content: " *";
+    color: rgba(255, 0, 0, 0.4);
 }
 
 article>dl>dd {
