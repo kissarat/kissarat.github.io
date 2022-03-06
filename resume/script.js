@@ -39,7 +39,7 @@ function loadExperience() {
       large: false,
       original:
         isDebug ||
-        "aHR0cHM6Ly9raXNzYXJhdC5naXRodWIuaW8=" === notforbot(location.origin),
+        notforbot("aHR0cHM6Ly9raXNzYXJhdC5naXRodWIuaW8=") === location.origin,
       jobs: [
         {
           name: notforbot('UGFydE92ZXI='),
