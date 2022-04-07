@@ -44,7 +44,7 @@ function loadExperience() {
         {
           name: notforbot('UGFydE92ZXI='),
           position: "Full-Stack Developer",
-          technologies: "Node.js 14, MySQL 5.7, RabbitMQ, ElasticSearch 6.8, React/Redux, Nest.js, Swagger 3, Meteor, knex, yup, lodash",
+          technologies: "Node.js, MySQL, RabbitMQ, ElasticSearch, React/Redux, Nest.js, Swagger 3, Meteor, knex, yup, lodash, Docker Compose",
           duration: "1 year"
         },
         {
