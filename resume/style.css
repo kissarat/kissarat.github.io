@@ -30,15 +30,15 @@ iframe {
     #pdf {
         display: none;
     }
+
     #app {
         justify-content: flex-start;
     }
+
     header {
         padding-left: 20px;
     }
-    header img {
-        display: none;
-    }
+
     #skill-logos {
         display: none;
     }
@@ -101,7 +101,9 @@ article>dl>dd>dl>dt {
         flex-direction: column;
         align-items: center;
     }
-    h1, header h2 {
+
+    h1,
+    header h2 {
         text-align: center;
     }
 }
@@ -177,6 +179,7 @@ article>dl>dd {
     article>dl>dt {
         padding-left: 12px;
     }
+
     article>dl>dd {
         padding: 0 12px;
     }
@@ -260,7 +263,8 @@ article>dl>dd {
     display: block;
 }
 
-[v-cloak] .cloak a, .foreign a {
+[v-cloak] .cloak a,
+.foreign a {
     color: blue;
     text-decoration: underline;
     cursor: pointer;
@@ -284,11 +288,6 @@ article>dl>dd {
     opacity: 0.5;
 }
 
-.item:first-child .property-since .value {
-    /* font-weight: bold; */
-    /* text-decoration: underline; */
-}
-
 .english {
     background: white;
     padding: 4px 6px;
@@ -307,11 +306,13 @@ article>dl>dd {
     header {
         width: 768px;
     }
+
     #pdf {
         position: fixed;
         right: 8px;
         bottom: 8px;
     }
+
     .english {
         top: 8px;
         bottom: auto;
@@ -356,6 +357,7 @@ header.large h2 {
         width: 218px;
         height: 218px;
     }
+
     article {
         margin-left: 4px;
     }
@@ -373,9 +375,11 @@ header.large h2 {
     header div {
         margin-left: 4px;
     }
+
     header:not(.large) #avatar {
         margin-left: 20px;
     }
+
     header h2 {
         font-size: 11pt;
     }
