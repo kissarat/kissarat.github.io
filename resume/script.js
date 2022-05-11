@@ -2,9 +2,109 @@
  * This script is also my spaghetti-code example :)
  */
 
-const isDebug =
-  "object" === typeof localStorage &&
-  +localStorage.getItem("kissarat.debug") > 0;
+const jobs = [
+  {
+    name: notforbot('UGFydE92ZXI='),
+    position: "Full-Stack Developer",
+    technologies: "Node.js, MySQL, RabbitMQ, ElasticSearch, React/Redux, Nest.js, Swagger 3, Meteor, knex, yup, lodash, Docker Compose",
+    duration: "1 year"
+  },
+  {
+    name: notforbot('TGlrZSBDYXJnbw=='),
+    position: "Node.js Backend Developer, casually Tech Lead",
+    technologies: "Node.js 14, Express.js, Google Maps API, MongoDB 4.3, RabbitMQ, AWS EC2, AWS CloudWatch, Cloudinary, OneSignal, Twilio",
+    duration: "6 months"
+  },
+  {
+    name: notforbot('U3RlbGxhclNvbHZlcnM='),
+    position: "Node.js Backend Developer",
+    technologies:
+      "Nest.js, Koa.js, Sequelize, TypeORM, PostgreSQL, Redis, Jenkins, Docker, AWS S3, AWS CloudWatch",
+    duration: "1 year",
+    projects: "Survey API, User Management, Prizmar",
+  },
+  {
+    name: notforbot("VUtFRVNT"),
+    position: "Full Stack Web Developer",
+    technologies:
+      "React 16, Redux, Saga, express.js, immutable.js, jest, enzyme, Terraform, Jenkins, AWS",
+    duration: "10 months",
+    projects: "Confidential",
+  },
+  {
+    name: notforbot("SW5kZWVtYQ=="),
+    position: "Web Backend Developer",
+    website: anchorList("aW5kZWVtYS5jb20="),
+    technologies:
+      "Node.js, strapi 3, express.js, Stripe, Ethereum Solidity (ERC20), AWS EC2, MQTT (AWS IoT Core), MongoDB (Mongoose), microservices, AWS S3, AWS SES",
+    responsibilities:
+      "Developing architecture and implementation of backend on Node.js, MongoDB",
+    duration: "5 months",
+    projects: anchorList(
+      "dWJyZWV6LmNvbSBzeW5xaXViaXF1ZS5jbyB3YXNpaHViLmNvbQ=="
+    ),
+  },
+  {
+    name: notforbot("T2NlYW4gb2YgRXRoZXJldW0="),
+    position: "Full Stack Web Developer",
+    technologies:
+      "PHP 7.2, Yii 2, PostgreSQL 10, Vue.js, Ethereum parity API",
+    responsibilities:
+      'Implementing business logic, database design, frontend part. Integrating with Ethereum node API (<a href="https://www.parity.io/">parity</a>).',
+    duration: "10 months",
+    type: 'financial'
+  },
+  {
+    name: "Antikvar Plus",
+    position: "Full Stack Web Developer",
+    technologies:
+      "PHP 7.2, Yii 2, PostgreSQL 9.6, Vue.js, SCSS, jQuery, block.io API, Ethereum parity API, Payeer API, Perfect Money API, AdvCash API",
+    responsibilities:
+      "Business logic implementation, database design. Integrating external payment API.",
+    duration: "6 months",
+    type: 'financial'
+  },
+  {
+    name: "ICO Holding",
+    position: "Full Stack Web Developer",
+    technologies:
+      "PHP 7.1, Yii 2, PostgreSQL 9.6, Vue.js, Bootstrap, HTML, CSS, jQuery, Perfect Money API, AdvCash API, Payeer API, block.io API, Ethereum parity API",
+    responsibilities:
+      "Implementing business logic, database design, frontend part. Integrating external payment API.",
+    duration: "11 months",
+    type: 'financial'
+  },
+  {
+    name: "MLBot for Skype",
+    description:
+      "Massive (and periodic) message sender, importing and adding contact list, automatic deletion of contacts. The backend is implemented on Node.js and PostgreSQL, the frontend is made using Electron, React.js.",
+    duration: "1 year",
+  },
+  {
+    name: "Evart Social Network",
+    description:
+      'The social network. Node.js + Marionette.js <a href="https://github.com/kissarat/evart-social-network-node.js">https://github.com/kissarat/evart-social-network-node.js</a> and on Meteor.js + React <a href="https://github.com/kissarat/evart-social-network-meteor">https://github.com/kissarat/evart-social-network-meteor</a>.',
+    duration: "10 months",
+    type: 'financial'
+  },
+  {
+    name: "BestChoice Club",
+    position: "Full Stack Web Developer",
+    technologies:
+      "PHP 5.6, Yii 2, PostgreSQL 9.4, Bootstrap, HTML, CSS, jQuery, Perfect Money API, AdvCash API, NixMoney API",
+    responsibilities:
+      "Implementing business logic, database design. Integrating external payment API.",
+    duration: "1 year 5 months",
+    type: 'financial'
+  },
+  {
+    name: "IntelSCADA",
+    position: "Full Stack Web Developer",
+    technologies: "Python 3, tornado web framework, SVG",
+    responsibilities: "Implementing editor for building sensors viewer",
+    duration: "4 months",
+  },
+]
 
 function loadExperience() {
   const labels = [
@@ -18,163 +118,57 @@ function loadExperience() {
     "Since",
   ];
 
-  function anchor(hostname) {
-    return '<a href="https://' + hostname + '/">' + hostname + "</a>";
-  }
-
-  function anchorList(encoded) {
-    return notforbot(encoded).split(" ").map(anchor).join(", ");
-  }
-
   // Email
   const email = notforbot("dGFyYXMubGFiaWFrQG91dGxvb2suY29t");
   const emailElement = document.querySelector("[itemprop=email]");
   emailElement.setAttribute("href", "mailto:" + email);
   emailElement.innerHTML = email;
+  const original = isDebug || notforbot("aHR0cHM6Ly9raXNzYXJhdC5naXRodWIuaW8=") === location.origin
 
   // Experience
-  new Vue({
-    el: "#app",
-    data: {
+  const app = createApp({
+    data: () => ({
       large: false,
-      original:
-        isDebug ||
-        notforbot("aHR0cHM6Ly9raXNzYXJhdC5naXRodWIuaW8=") === location.origin,
-      jobs: [
-        {
-          name: notforbot('UGFydE92ZXI='),
-          position: "Full-Stack Developer",
-          technologies: "Node.js, MySQL, RabbitMQ, ElasticSearch, React/Redux, Nest.js, Swagger 3, Meteor, knex, yup, lodash, Docker Compose",
-          duration: "1 year"
-        },
-        {
-          name: notforbot('TGlrZSBDYXJnbw=='),
-          position: "Node.js Backend Developer, casually Tech Lead",
-          technologies: "Node.js 14, Express.js, Google Maps API, MongoDB 4.3, RabbitMQ, AWS EC2, AWS CloudWatch, Cloudinary, OneSignal, Twilio",
-          duration: "6 months"
-        },
-        {
-          name: notforbot('U3RlbGxhclNvbHZlcnM='),
-          position: "Node.js Backend Developer",
-          technologies:
-            "Nest.js, Koa.js, Sequelize, TypeORM, PostgreSQL, Redis, Jenkins, Docker, AWS S3, AWS CloudWatch",
-          duration: "1 year",
-          projects: "Survey API, User Management, Prizmar",
-        },
-        {
-          name: notforbot("VUtFRVNT"),
-          position: "Full Stack Web Developer",
-          technologies:
-            "React 16, Redux, Saga, express.js, immutable.js, jest, enzyme, Terraform, Jenkins, AWS",
-          duration: "10 months",
-          projects: "Confidential",
-        },
-        {
-          name: notforbot("SW5kZWVtYQ=="),
-          position: "Web Backend Developer",
-          website: anchorList("aW5kZWVtYS5jb20="),
-          technologies:
-            "Node.js, strapi 3, express.js, Stripe, Ethereum Solidity (ERC20), AWS EC2, MQTT (AWS IoT Core), MongoDB (Mongoose), microservices, AWS S3, AWS SES",
-          responsibilities:
-            "Developing architecture and implementation of backend on Node.js, MongoDB",
-          duration: "5 months",
-          projects: anchorList(
-            "dWJyZWV6LmNvbSBzeW5xaXViaXF1ZS5jbyB3YXNpaHViLmNvbQ=="
-          ),
-        },
-        {
-          name: notforbot("T2NlYW4gb2YgRXRoZXJldW0="),
-          position: "Full Stack Web Developer",
-          technologies:
-            "PHP 7.2, Yii 2, PostgreSQL 10, Vue.js, Ethereum parity API",
-          responsibilities:
-            'Implementing business logic, database design, frontend part. Integrating with Ethereum node API (<a href="https://www.parity.io/">parity</a>).',
-          duration: "10 months",
-          type: 'financial'
-        },
-        {
-          name: "Antikvar Plus",
-          position: "Full Stack Web Developer",
-          technologies:
-            "PHP 7.2, Yii 2, PostgreSQL 9.6, Vue.js, SCSS, jQuery, block.io API, Ethereum parity API, Payeer API, Perfect Money API, AdvCash API",
-          responsibilities:
-            "Business logic implementation, database design. Integrating external payment API.",
-          duration: "6 months",
-          type: 'financial'
-        },
-        {
-          name: "ICO Holding",
-          position: "Full Stack Web Developer",
-          technologies:
-            "PHP 7.1, Yii 2, PostgreSQL 9.6, Vue.js, Bootstrap, HTML, CSS, jQuery, Perfect Money API, AdvCash API, Payeer API, block.io API, Ethereum parity API",
-          responsibilities:
-            "Implementing business logic, database design, frontend part. Integrating external payment API.",
-          duration: "11 months",
-          type: 'financial'
-        },
-        {
-          name: "MLBot for Skype",
-          description:
-            "Massive (and periodic) message sender, importing and adding contact list, automatic deletion of contacts. The backend is implemented on Node.js and PostgreSQL, the frontend is made using Electron, React.js.",
-          duration: "1 year",
-        },
-        {
-          name: "Evart Social Network",
-          description:
-            'The social network. Node.js + Marionette.js <a href="https://github.com/kissarat/evart-social-network-node.js">https://github.com/kissarat/evart-social-network-node.js</a> and on Meteor.js + React <a href="https://github.com/kissarat/evart-social-network-meteor">https://github.com/kissarat/evart-social-network-meteor</a>.',
-          duration: "10 months",
-          type: 'financial'
-        },
-        {
-          name: "BestChoice Club",
-          position: "Full Stack Web Developer",
-          technologies:
-            "PHP 5.6, Yii 2, PostgreSQL 9.4, Bootstrap, HTML, CSS, jQuery, Perfect Money API, AdvCash API, NixMoney API",
-          responsibilities:
-            "Implementing business logic, database design. Integrating external payment API.",
-          duration: "1 year 5 months",
-          type: 'financial'
-        },
-        {
-          name: "IntelSCADA",
-          position: "Full Stack Web Developer",
-          technologies: "Python 3, tornado web framework, SVG",
-          responsibilities: "Implementing editor for building sensors viewer",
-          duration: "4 months",
-        },
-      ],
-    },
-    methods: {
-      describe(job) {
-        return labels.map(function (label) {
-          const key = label.toLowerCase();
-          const value = job[key];
-          if (value) {
-            return {
-              key,
-              label,
-              value,
-            };
-          }
-          return null;
-        });
-      },
+      original: true,
+    }),
+    computed: {
+      jobs() {
+        const jobInfos = jobs.map(job => ({
+          ...job,
+          classes: {
+            item: true, [job.type || 'normal']: true
+          },
+          isConfidential: job.name === 'Confidential' || job.name === 'Hidden',
+          properties: labels
+            .map(function (label) {
+              const key = label.toLowerCase();
+              const value = job[key];
+              if (!value) {
+                // throw new Error(`Label ${key} not available`)
+                return null
+              }
+              return {
+                isPlainText: value.indexOf('<') < 0,
+                classes: {
+                  [`property-${key}`]: true
+                },
+                key,
+                label,
+                value,
+              };
+            })
+            .filter(property => null !== property)
+        }));
+        trace(jobInfos)
+        return jobInfos;
+      }
     },
   });
+  app.mount("#app")
 }
 
 // Internationalization
 function loadLocalization() {
-  function fetchJSON(url) {
-    if ("function" === typeof window.fetch) {
-      return window.fetch(url).then(function (r) {
-        return r.json();
-      });
-    } else {
-      console.warn("Cannot load JSON");
-    }
-  }
-
   // Detecting support of Russian language
   let language =
     navigator.languages &&
@@ -313,17 +307,14 @@ function main() {
     throw new Error("#updated not found");
   }
 
-  if ("function" === typeof Vue) {
-    loadExperience();
-  } else {
-    throw new Error("Vue.js is not loaded");
-  }
-
-  if ("function" === typeof window.fetch) {
-    loadLocalization();
-  } else {
-    throw new Error("Your browser does not support window.fetch");
-  }
+  loadExperience();
+  loadLocalization();
 }
 
-document.addEventListener("DOMContentLoaded", main);
+entrypoint(
+  [
+    LabiakLibrary.Vue,
+    LabiakLibrary.Moment
+  ],
+  main
+)

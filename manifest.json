@@ -1,0 +1,19 @@
+{
+    "short_name": "Taras Labiak",
+    "name": "Taras Labiak - Resume",
+    "icons": [
+        {
+            "src": "/favicon.ico",
+            "type": "image/x-icon",
+            "sizes": "64x64"
+        }
+    ],
+    "start_url": "/?source=pwa",
+    "background_color": "#FFFFFF",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#000000",
+    "shortcuts": [],
+    "description": "Experiens and skills of Taras Labiak",
+    "screenshots": []
+}

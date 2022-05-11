@@ -112,6 +112,11 @@ article>dl>dd>dl>dt {
     margin-left: 8px;
 }
 
+.item>.value,
+.tile>.value {
+    margin-left: 3px;
+}
+
 .abstract>.tile {
     display: inline-block;
     width: 250px;

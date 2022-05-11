@@ -6,25 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9" />
   <meta name="description" content="Go, JavaScript, PHP, Python Full Stack Developer" />
   <title>Taras Labiak - Resume</title>
+  <link rel="manifest" href="/manifest.json">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="resume/style.css" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-58031952-14"></script>
+  <script src="labiak.js"></script>
 </head>
 
 <body>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-58031952-14"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag("js", new Date());
-
-    gtag("config", "UA-58031952-14");
-  </script>
-
   <div id="skill-logos">
     <div></div>
   </div>
@@ -83,15 +72,15 @@
               <div class="label">Website</div>
               <a itemprop="url" href="https://kissarat.github.io/" class="value">kissarat.github.io</a>
             </div-->
-            <div>
+            <div class="tile">
               <div class="label">GitHub</div>
               <a href="https://github.com/kissarat" class="value">github.com/kissarat</a>
             </div>
-            <div>
+            <div class="tile">
               <div class="label">Bitbucket</div>
               <a href="https://bitbucket.org/kissarat" class="value">bitbucket.org/kissarat</a>
             </div>
-            <div>
+            <div class="tile">
               <div class="label">GitLab</div>
               <a href="https://gitlab.com/kissarat" class="value">gitlab.com/kissarat</a>
             </div>
@@ -326,17 +315,15 @@
               <span class="pdf">resume in PDF format</span>
             </div>
             <div v-if="original">
-              <div v-bind:class="{item: true, [job.type || 'normal']: true}" v-for="job in jobs">
-                <h4 class="notranslate confidential" v-if="job.name === 'Confidential' || job.name === 'Hidden'">
+              <div v-bind:class="job.classes" v-for="job in jobs">
+                <h4 class="notranslate confidential" v-if="job.isConfidential">
                   {{ job.name }}
                 </h4>
                 <h4 class="notranslate" v-else>{{ job.name }}</h4>
                 <div class="properties">
-                  <div v-bind:class="{['property-' + property.key]: true}" v-for="property in describe(job)"
-                    v-if="property">
+                  <div v-bind:class="job.classes" v-for="property in job.properties">
                     <span class="label">{{ property.label }}:</span>
-                    <span class="value confidential"
-                      v-if="property.value === 'Confidential' || property.value === 'Hidden'">
+                    <span class="value" v-if="property.isPlainText">
                       {{ property.value }}
                     </span>
                     <span class="value" v-else v-html="property.value"></span>
@@ -353,10 +340,6 @@
             </div>
           </dd>
           <dt class="education">Education</dt>
-          <script>
-            const human = 'bot'
-            self['notfor' + human] = self['a' + (human.split('').reverse().join(''))];
-          </script>
           <dd id="education">
             <div>
               <div>2006 - 2011</div>
@@ -427,7 +410,6 @@
       <img alt="Save as PDF" src="images/pdf.png" />
     </a>
   </div>
-  <script src="track/public/polyfill.js?v=1536475558698"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js"
     integrity="sha256-VBLiveTKyUZMEzJd6z2mhfxIqz3ZATCuVMawPZGzIfA=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.min.js"
