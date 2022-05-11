@@ -94,7 +94,7 @@ function getScript(src) {
 
 function round(value, radix) {
     const scale = 10 ** radix
-    return (Math.floor((value + Number.EPSILON) * scale) / scale) + Number.EPSILON
+    return (Math.floor((value + Number.EPSILON) * scale) / scale)
 }
 
 const human = 'bot'
