@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>JSON to PHP array converter</title>
+    <style type="text/css">
+        body {
+            font-family: Segoe UI, Ubuntu;
+            text-align: center;
+        }
+
+        article {
+            margin: auto;
+            width: 80%;
+        }
+
+        textarea {
+            display: block;
+            margin: auto;
+            width: inherit;
+            height: 40vh;
+        }
+
+        button {
+            margin: 1mm 0.5mm;
+        }
+
+        #error {
+            color: red;
+        }
+    </style>
+    <script src="https://www.googletagmanager.com/gtag/js?id=UA-58031952-14"></script>
+</head>
+
+<body>
+    <article>
+        <h1>JSON to PHP array converter</h1>
+        <textarea id="input"></textarea>
+        <div id="error"></div>
+        <button id="json2php">JSON to PHP Array</button>
+        <textarea id="output"></textarea>
+    </article>
+    <script src="/labiak.js"></script>
+    <script>
+        function object2array(object) {
+            var lines = [];
+            lines.push('array(');
+            for (var key in object) {
+                var value = object[key];
+                var line = "'" + key + "' => ";
+                if ('object' == typeof value) {
+                    var object_lines = object2array(value);
+                    line += object_lines[0];
+                    lines.push(line);
+                    var last = object_lines.length - 1;
+                    for (var i = 1; i < last; i++)
+                        lines.push('\t' + object_lines[i]);
+                    lines.push(object_lines[last] + ',');
+                    continue;
+                } else if (undefined === value || null === value) {
+                    line += 'null';
+                } else {
+                    switch (typeof value) {
+                        case 'number':
+                        case 'boolean':
+                            line += value;
+                            break;
+                        case 'string':
+                            line += "'" + value + "'";
+                            break;
+                    }
+                }
+                lines.push(line + ',');
+            }
+            lines.push(')');
+            return lines;
+        }
+
+        json2php.addEventListener('click', function () {
+            var buffer = input.value;
+            error.innerHTML = '';
+            output.value = '';
+            try {
+                buffer = JSON.parse(buffer);
+            } catch (ex) {
+                error.innerHTML = ex.message;
+                return false;
+            }
+            var lines = object2array(buffer);
+            output.value = lines.join('\n');
+            return false;
+        });
+
+        addEventListener('unload', function () {
+            var buffer = input.value;
+            buffer = buffer.trim();
+            if (buffer) {
+                localStorage.buffer = buffer;
+            } else {
+                delete localStorage.buffer;
+            }
+        });
+
+        entrypoint([], function () {
+            if (localStorage.buffer) {
+                input.value = localStorage.buffer;
+            }
+        });
+    </script>
+</body>
+
+</html>
