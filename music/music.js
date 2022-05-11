@@ -6,14 +6,23 @@ const AudioContext = window.audioContext
     || window.webkitAudioContext
     ;
 
-/**
- * @param {function} cb
- */
-function withAudioContext(cb) {
+function getAudioContext() {
+    return context;
+}
+
+function hasAudioContext() {
+    return !!getAudioContext()
+}
+
+function setAudioContext(newContext = new AudioContext()) {
     if (context) {
-        context.close()
+        context.close();
     }
-    context = new AudioContext();
+    context = newContext;
+}
+
+function withAudioContext(cb) {
+    setAudioContext();
     cb(context);
 }
 
