@@ -1,6 +1,6 @@
 {
   "name": "taras-labiak-resume",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Taras Labiak resume",
   "scripts": {
     "start": "node server",
