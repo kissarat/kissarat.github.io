@@ -23,8 +23,13 @@
             flex: 1;
         }
 
-        li a {
-            display: block;
+        nav {
+            margin-top: 8px;
+            margin-left: 8px;
+        }
+
+        nav a.list-group-item {
+            min-width: 200px;
         }
     </style>
 </head>
@@ -32,12 +37,8 @@
 <body>
     <main>
         <aside>
-            <nav>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a href="harmonics.html">Harmonics</a>
-                    </li>
-                </ul>
+            <nav class="list-group">
+                <a class="list-group-item" href="harmonics.html">Harmonics</a>
             </nav>
         </aside>
         <iframe></iframe>
@@ -47,7 +48,7 @@
         const isWide = (innerWidth > innerHeight) && innerWidth >= 800;
 
         function eachItems(cb) {
-            const items = document.querySelectorAll('li a');
+            const items = document.querySelectorAll('a');
             for (let i = 0; i < items.length; i++) {
                 cb(items[i]);
             }
@@ -60,18 +61,18 @@
         }
 
         function loadPage(name) {
-            const frame = document.querySelector('iframe')
-            frame.src = `${name}.html`
+            const frame = document.querySelector('iframe');
+            frame.src = `${name}.html`;
         }
 
         function clickItem(item) {
-            item.parentNode.classList.add('active')
-            const extension = '.html'.length
-            location.hash = '#' + item.getAttribute('href').slice(0, -extension)
+            item.classList.add('active')
+            const extension = '.html'.length;
+            location.hash = '#' + item.getAttribute('href').slice(0, -extension);
         }
 
         function getCurrentPageName() {
-            return location.hash.slice(1)
+            return location.hash.slice(1);
         }
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -80,12 +81,13 @@
                 const selected = `${name}.html`
                 eachItems(function (item) {
                     item.addEventListener('click', function (e) {
-                        e.preventDefault()
-                        clickItem(item)
+                        e.preventDefault();
+                        clickItem(item);
+                        return false;
                     })
                     if (selected === item.getAttribute('href')) {
-                        item.parentNode.classList.add('active')
-                        loadPage(name)
+                        item.classList.add('active');
+                        loadPage(name);
                     }
                     return false
                 })
