@@ -73,7 +73,7 @@ function getScript(src) {
             referrerpolicy: 'no-referrer'
         },
             'string' == typeof src
-                ? { source: src }
+                ? { src }
                 : src
         )
         const script = document.createElement('script')
@@ -141,26 +141,30 @@ function setupGoogleAnalytics(id = googleAnalyticsId) {
     gtag("config", id);
 }
 
-async function setup(scripts) {
-    const googleAnalyticsWasLoaded = hasGoogleAnalytics()
-    if (googleAnalyticsWasLoaded) {
-        setupGoogleAnalytics()
-    } else {
-        console.warn('Google Analytics required')
-        scripts.unshift(LabiakLibrary.GoogleAnalytics)
-    }
-    await Promise.all(scripts.map(getScript))
-    if (!googleAnalyticsWasLoaded) {
-        setupGoogleAnalytics()
-    }
-}
 
 function entrypoint(scripts, cb) {
-    if ('complete' === document.readyState) {
-        setup(scripts).then(cb)
-    } else {
-        document.addEventListener('DOMContentLoaded', () => setup(scripts).then(cb))
+    async function setup() {
+        try {
+            const googleAnalyticsWasLoaded = hasGoogleAnalytics()
+            if (googleAnalyticsWasLoaded) {
+                setupGoogleAnalytics()
+            } else {
+                console.warn('Google Analytics required')
+                scripts.unshift(LabiakLibrary.GoogleAnalytics)
+            }
+            await Promise.all(scripts.map(getScript))
+            if (!googleAnalyticsWasLoaded) {
+                setupGoogleAnalytics()
+            }
+            cb()
+        } catch (err) {
+            console.log(err)
+        }
     }
+    if ('complete' === document.readyState) {
+        return setup()
+    }
+    document.addEventListener('DOMContentLoaded', setup)
 }
 
 function createApp(options) {
@@ -180,7 +184,7 @@ class StateStore {
         this.version = version
     }
 
-    getState() {
+    getState(defaultState = null) {
         try {
             const stateString = localStorage.getItem(this.name)
             if (stateString) {
@@ -192,7 +196,7 @@ class StateStore {
         } catch (err) {
             console.warn(err)
         }
-        return null;
+        return defaultState;
     }
 
     setState(state) {

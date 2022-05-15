@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Scanner</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        main {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 100vh;
+        }
+
+        #last-parsed {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+        }
+
+        main:not([v-cloak])>.cloak {
+            display: none;
+        }
+
+        main[v-cloak]> :not(.cloak) {
+            display: none;
+        }
+
+        main[v-cloak]>.cloak {
+            text-align: center;
+            vertical-align: middle;
+            line-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .controls {
+            text-align: center;
+        }
+
+        textarea {
+            margin: 8px 8px;
+        }
+
+        #input {
+            flex: 1;
+        }
+
+        #output {
+            min-height: 30vh;
+        }
+
+        #output:disabled {
+            border-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <main id="app" v-cloak>
+        <h1>Scanner</h1>
+        <form @submit="submit">
+            <textarea id="input" v-model="input" placeholder="Source code"></textarea>
+            <div class="controls">
+                <button type="submit" class="btn btn-primary" v-bind:disabled="!canParse">
+                    Parse
+                </button>
+            </div>
+            <textarea id="output" v-model="output" readonly v-bind:disabled="!wasParsed"></textarea>
+        </form>
+        <div v-if="wasParsed" id="last-parsed">{{ lastParsedTime }}</div>
+        <div class="cloak">Loading...</div>
+    </main>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-58031952-14"></script>
+    <script src="/labiak.js"></script>
+    <script>
+        const parserState = new StateStore('parser', '1.0')
+
+        function main() {
+            const app = createApp({
+                data() {
+                    const state = parserState.getState({
+                        input: ''
+                    })
+                    return {
+                        ...state,
+                        output: '',
+                        lastParsed: new Date(0)
+                    }
+                },
+                computed: {
+                    canParse() {
+                        return this.input.length > 0
+                    },
+
+                    wasParsed() {
+                        return this.lastParsed.getTime() > 0
+                    },
+
+                    lastParsedTime() {
+                        return this.wasParsed
+                            ? this.lastParsed.toString()
+                            : ''
+                    }
+                },
+                methods: {
+                    submit(e) {
+                        e.preventDefault()
+                        // return true
+                        this.parse()
+                    },
+                    parse() {
+                        parserState.setState({
+                            input: this.input
+                        })
+                        const fragments = this.input.split(/\s+/g)
+                        const tokens = []
+                        for (const token of scan(fragments)) {
+                            tokens.push(token)
+                        }
+                        this.output = tokens
+                            .map(token => token.toLocaleString())
+                            .join(' ')
+                        this.lastParsed = new Date()
+                    }
+                }
+            })
+            app.mount('#app')
+        }
+
+        entrypoint([LabiakLibrary.Vue, 'scan.js'], main)
+    </script>
+</body>
+
+</html>
