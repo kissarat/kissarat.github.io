@@ -38,6 +38,7 @@
     <main>
         <aside>
             <nav class="list-group">
+                <a class="list-group-item" href="piano.html">Piano</a>
                 <a class="list-group-item" href="harmonics.html">Harmonics</a>
             </nav>
         </aside>
@@ -66,7 +67,8 @@
         }
 
         function clickItem(item) {
-            item.classList.add('active')
+            eachItems(otherItem => otherItem.classList.remove('active'));
+            item.classList.add('active');
             const extension = '.html'.length;
             location.hash = '#' + item.getAttribute('href').slice(0, -extension);
         }

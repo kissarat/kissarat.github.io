@@ -109,6 +109,18 @@ class ValueToken extends Token {
     }
 }
 
+class SyntaxNode {
+    constructor(token, left, right) {
+        this.token = token
+        this.left = left
+        this.right = right
+    }
+}
+
+function findLexeme(value) {
+    return lexemes.find(lexeme => value === lexeme.value)
+}
+
 const Space = lexemes.find(lexeme => 'Space' === lexeme.name)
 
 const maxGas = 8 * 1024
@@ -158,5 +170,28 @@ function* scan(fragments) {
             }
             yield token
         }
+    }
+}
+
+const leftBrackets = ['(', '{', '['] //.map(findLexeme)
+const rightBrackets = [')', '}', ']'] //.map(findLexeme)
+const binary = ['+', '|', '='] //.map(findLexeme)
+
+function* parse(tokens) {
+    const heap = []
+    const stack = []
+    for (const token of tokens) {
+        const lex = token.lexeme.value
+        if (leftBrackets.indexOf(lex) >= 0) {
+            stack.push(heap)
+        }
+        if (rightBrackets.indexOf(lex) >= 0) {
+
+            stack.push(heap)
+        }
+        if (binary.indexOf(lex) >= 0) {
+
+        }
+        heap.push(token)
     }
 }
