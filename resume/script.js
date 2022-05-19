@@ -129,7 +129,7 @@ function loadExperience() {
   const app = createApp({
     data: () => ({
       large: false,
-      original: true,
+      original,
     }),
     computed: {
       jobs() {
@@ -309,6 +309,15 @@ function main() {
 
   loadExperience();
   loadLocalization();
+
+  const targetId = window.location.hash.slice(1)
+  if (targetId.length > 0) {
+    const target = document.getElementById(targetId)
+    if (!target) {
+      throw new Error(`Target ${targetId} not found`)
+    }
+    target.scrollIntoView()
+  }
 }
 
 entrypoint(
