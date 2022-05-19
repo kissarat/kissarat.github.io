@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>XO</title>
+  <style>
+    #app {
+      display: table;
+      border-left: 1px solid black;
+      border-top: 1px solid black;
+    }
+
+    .row {
+      display: table-row;
+    }
+
+    .row>* {
+      display: table-cell;
+      width: 40px;
+      height: 40px;
+      border-right: 1px solid black;
+      border-bottom: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <main id="app">
+    <div v-for="(row, i) in matrix.array" class="row">
+      <div v-for="(node, j) in row" v-bind:style="{'background-color': node.type}" @click="take(i, j)"></div>
+    </div>
+  </main>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-58031952-14"></script>
+  <script src="/labiak.js"></script>
+  <script>
+    class Matrix {
+      constructor() {
+        this.array = []
+      }
+
+      at(i, j) {
+        const row = this.array[i]
+        if (row) {
+          return row[j]
+        }
+      }
+
+      weight(i, j, k) {
+        return this.at(i, j).weight(k)
+      }
+
+      toString() {
+        return this.map(row => row.map(node => node.type).join('\t')).join('\n')
+      }
+    }
+
+    const neighbors = [
+      { x: -1, y: 0 },
+      { x: -1, y: -1 },
+      { x: 0, y: -1 },
+      { x: 1, y: -1 },
+      { x: 1, y: 0 },
+      { x: 1, y: 1 },
+      { x: 0, y: 1 },
+      { x: -1, y: 1 },
+    ];
+
+    class Node {
+      constructor(options) {
+        Object.assign(this, options)
+      }
+
+      neighbor(i) {
+        const n = neighbors[i]
+        return this.matrix.at(this.x + n.x, this.y + n.y)
+      }
+
+      weight(i) {
+        const n = this.neighbor(i)
+        if (n && this.type === n.type) {
+          return 1 + n.weight(i)
+        }
+        return 0
+      }
+    }
+
+    const types = {
+      SPACE: 'white',
+      ONE: 'green',
+      TWO: 'red',
+    }
+
+    const matrix = new Matrix()
+    const size = 15
+    for (let i = 0; i < size; i++) {
+      const row = []
+      for (let j = 0; j < size; j++) {
+        row.push(new Node({ x: i, y: j, type: types.SPACE, matrix }))
+      }
+      matrix.array.push(row)
+    }
+
+    function main() {
+      const app = createApp({
+        data: () => ({
+          number: 0,
+          matrix: matrix
+        }),
+        methods: {
+          take(i, j) {
+            const n = this.matrix.at(i, j)
+            if (types.SPACE === n.type) {
+              this.number++
+              n.type = this.number % 2 === 0 ? types.ONE : types.TWO
+              for (let k = 0; k < 4; k++) {
+                const weight = 1 + n.weight(k) + n.weight(4 + k)
+                if (weight >= 5) {
+                  setTimeout(function () {
+                    alert(n.type + ' wins')
+                  }, 20)
+                }
+              }
+            }
+          },
+        }
+      })
+      app.mount('#app')
+    }
+
+    entrypoint([LabiakLibrary.Vue], main)
+  </script>
+</body>
+
+</html>
