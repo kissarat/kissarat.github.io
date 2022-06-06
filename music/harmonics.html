@@ -62,9 +62,21 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
+                        <label for="wave-type" class="form-label">Wave Type</label>
                         <div class="list-group" id="wave-type">
                             <div v-bind:class="{'list-group-item': true, active: type.active }"
                                 v-for="type in waveTypes" @click="waveType = type.value">
+                                {{type.title}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="filter-type" class="form-label">Filter Type</label>
+                        <div class="list-group" id="filter-type">
+                            <div v-bind:class="{'list-group-item': true, active: type.active }"
+                                v-for="type in filterTypes" @click="filterType = type.value">
                                 {{type.title}}
                             </div>
                         </div>
@@ -101,7 +113,7 @@
     <script src="/labiak.js"></script>
     <script src="music.js"></script>
     <script>
-        const store = new StateStore('harmonics', '1.0')
+        const store = new StateStore('harmonics', '1.1')
 
         const PeriodicWaveType = {
             sawtooth: 'Sawtooth',
@@ -110,11 +122,22 @@
             triangle: 'Triangle',
         }
 
-        function* getWaveTypes(active = 'sine') {
-            for (const value in PeriodicWaveType) {
+        const BiquadFilterType = {
+            lowpass: 'LowPass',
+            highpass: 'HighPass',
+            bandpass: 'BandPass',
+            lowshelf: 'LowShelf',
+            highshelf: 'HighShelf',
+            peaking: 'Peaking',
+            notch: 'Notch',
+            allpass: 'AllPass',
+        }
+
+        function* generateSelectOptions(active, type) {
+            for (const value in type) {
                 yield {
                     value: value,
-                    title: PeriodicWaveType[value],
+                    title: type[value],
                     active: active === value
                 }
             }
@@ -123,7 +146,8 @@
         const getDefaultState = () => ({
             harmonics: 0,
             base: 261.626,
-            waveType: 'sine'
+            waveType: 'sine',
+            filterType: 'allpass'
         })
 
         function* getFrequencies(frequency, harmonics = 0) {
@@ -136,7 +160,8 @@
             }
         }
 
-        const play = (frequency, harmonics = 0, waveType = 'sine') => withAudioContext(context => {
+        const play = (frequency, harmonics = 0, waveType = 'sine', filterType = 'allpass') => withAudioContext(context => {
+            const filter = new BiquadFilterNode(context, { type: filterType })
             for (const item of getFrequencies(frequency, harmonics)) {
                 const volume = context.createGain();
                 volume.gain.value = item.volume;
@@ -144,9 +169,10 @@
                 oscillator.frequency.value = item.frequency;
                 oscillator.type = waveType;
                 oscillator.connect(volume);
-                volume.connect(context.destination);
+                volume.connect(filter);
                 oscillator.start()
             }
+            filter.connect(context.destination);
         })
 
         const createComponent = () => Vue.createApp({
@@ -156,13 +182,16 @@
                     return Array.from(getFrequencies(this.base, this.harmonics))
                 },
                 waveTypes() {
-                    return Array.from(getWaveTypes(this.waveType))
+                    return Array.from(generateSelectOptions(this.waveType, PeriodicWaveType))
+                },
+                filterTypes() {
+                    return Array.from(generateSelectOptions(this.filterType, BiquadFilterType))
                 }
             },
             methods: {
                 play(e) {
                     e.preventDefault();
-                    play(this.base, this.harmonics, this.waveType)
+                    play(this.base, this.harmonics, this.waveType, this.filterType)
                     store.setState(this.$data)
                 },
 
